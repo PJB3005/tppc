@@ -1,6 +1,7 @@
 #include <dolphin/dolphin.h>
 #include <dolphin/mtx.h>
 #include <sdk_math.h>
+#include <pc_compat.h>
 
 void C_MTXMultVec(const Mtx m, const Vec* src, Vec* dst) {
     Vec vTmp;
@@ -17,7 +18,7 @@ void C_MTXMultVec(const Mtx m, const Vec* src, Vec* dst) {
     dst->z = vTmp.z;
 }
 
-asm void PSMTXMultVec(const __REGISTER Mtx m, const __REGISTER Vec* src, __REGISTER Vec* dst) {
+/* asm void PSMTXMultVec(const __REGISTER Mtx m, const __REGISTER Vec* src, __REGISTER Vec* dst) {
     nofralloc
     psq_l f0, Vec.x(src), 0, 0
     psq_l f2, 0(m), 0, 0
@@ -40,7 +41,7 @@ asm void PSMTXMultVec(const __REGISTER Mtx m, const __REGISTER Vec* src, __REGIS
     ps_sum0 f6, f5, f6, f5
     psq_st f6, Vec.z(dst), 1, 0
     blr
-}
+} */
 
 void C_MTXMultVecArray(const Mtx m, const Vec* srcBase, Vec* dstBase, u32 count) {
     u32 i;
@@ -63,7 +64,7 @@ void C_MTXMultVecArray(const Mtx m, const Vec* srcBase, Vec* dstBase, u32 count)
     }
 }
 
-asm void PSMTXMultVecArray(const __REGISTER Mtx m, const __REGISTER Vec* srcBase, __REGISTER Vec* dstBase, __REGISTER u32 count) {
+/* asm void PSMTXMultVecArray(const __REGISTER Mtx m, const __REGISTER Vec* srcBase, __REGISTER Vec* dstBase, __REGISTER u32 count) {
     nofralloc
     psq_l f13, 0x0(m), 0, 0
     psq_l f12, 0x10(m), 0, 0
@@ -101,7 +102,7 @@ L_000003C4:
     psq_stu f12, 0x4(dstBase), 0, 0
     psq_stu f13, 0x8(dstBase), 1, 0
     blr
-}
+} */
 
 void C_MTXMultVecSR(const Mtx m, const Vec* src, Vec* dst) {
     Vec vTmp;
@@ -118,7 +119,7 @@ void C_MTXMultVecSR(const Mtx m, const Vec* src, Vec* dst) {
     dst->z = vTmp.z;
 }
 
-asm void PSMTXMultVecSR(const __REGISTER Mtx m, const __REGISTER Vec* src, __REGISTER Vec* dst) {
+/* asm void PSMTXMultVecSR(const __REGISTER Mtx m, const __REGISTER Vec* src, __REGISTER Vec* dst) {
     nofralloc
     psq_l f0, 0x0(m), 0, 0
     psq_l f6, 0x0(src), 0, 0
@@ -141,7 +142,7 @@ asm void PSMTXMultVecSR(const __REGISTER Mtx m, const __REGISTER Vec* src, __REG
     ps_madd f13, f5, f7, f12
     psq_st f13, 0x8(dst), 1, 0
     blr
-}
+} */
 
 void C_MTXMultVecArraySR(const Mtx m, const Vec* srcBase, Vec* dstBase, u32 count) {
     u32 i;
@@ -164,7 +165,7 @@ void C_MTXMultVecArraySR(const Mtx m, const Vec* srcBase, Vec* dstBase, u32 coun
     }
 }
 
-asm void PSMTXMultVecArraySR(const __REGISTER Mtx m, const __REGISTER Vec* srcBase, __REGISTER Vec* dstBase, __REGISTER u32 count) {
+/* asm void PSMTXMultVecArraySR(const __REGISTER Mtx m, const __REGISTER Vec* srcBase, __REGISTER Vec* dstBase, __REGISTER u32 count) {
     nofralloc
     psq_l f13, 0x0(m), 0, 0
     psq_l f12, 0x10(m), 0, 0
@@ -201,4 +202,4 @@ L_000007D0:
     psq_stu f12, 0x4(dstBase), 0, 0
     psq_stu f13, 0x8(dstBase), 1, 0
     blr
-}
+} */

@@ -1,3 +1,5 @@
+#include <cmath>
+
 #include <dolphin/dolphin.h>
 #include <dolphin/mtx.h>
 #include <sdk_math.h>
@@ -13,7 +15,7 @@ void C_QUATAdd(const Quaternion* p, const Quaternion* q, Quaternion* r) {
     r->w = p->w + q->w;
 }
 
-void PSQUATAdd(const __REGISTER Quaternion* p, const __REGISTER Quaternion* q, __REGISTER Quaternion* r) {
+/* void PSQUATAdd(const __REGISTER Quaternion* p, const __REGISTER Quaternion* q, __REGISTER Quaternion* r) {
     __REGISTER f32 pxy, qxy, rxy, pzw, qzw, rzw;
 
     asm {
@@ -26,7 +28,7 @@ void PSQUATAdd(const __REGISTER Quaternion* p, const __REGISTER Quaternion* q, _
         ps_add rzw, pzw, qzw
         psq_st rzw, 8(r), 0, 0
     }
-}
+} */
 
 void C_QUATSubtract(const Quaternion* p, const Quaternion* q, Quaternion* r) {
     ASSERTMSGLINE(133, p, "QUATSubtract():  NULL QuaternionPtr 'p' ");
@@ -39,7 +41,7 @@ void C_QUATSubtract(const Quaternion* p, const Quaternion* q, Quaternion* r) {
     r->w = p->w - q->w;
 }
 
-void PSQUATSubtract(const __REGISTER Quaternion* p, const __REGISTER Quaternion* q, __REGISTER Quaternion* r) {
+/* void PSQUATSubtract(const __REGISTER Quaternion* p, const __REGISTER Quaternion* q, __REGISTER Quaternion* r) {
     __REGISTER f32 pxy, qxy, rxy, pzw, qzw, rzw;
 
     asm {
@@ -52,7 +54,7 @@ void PSQUATSubtract(const __REGISTER Quaternion* p, const __REGISTER Quaternion*
         ps_sub rzw, pzw, qzw
         psq_st rzw, 8(r), 0, 0
     }
-}
+} */
 
 void C_QUATMultiply(const Quaternion* p, const Quaternion* q, Quaternion* pq) {
     Quaternion* r;
@@ -78,7 +80,7 @@ void C_QUATMultiply(const Quaternion* p, const Quaternion* q, Quaternion* pq) {
     }
 }
 
-void PSQUATMultiply(const __REGISTER Quaternion* p, const __REGISTER Quaternion* q, __REGISTER Quaternion* pq) {
+/* void PSQUATMultiply(const __REGISTER Quaternion* p, const __REGISTER Quaternion* q, __REGISTER Quaternion* pq) {
     __REGISTER f32 pxy, pzw;
     __REGISTER f32 qxy, qzw;
     __REGISTER f32 pnxy, pnzw, pnxny, pnznw;
@@ -109,7 +111,7 @@ void PSQUATMultiply(const __REGISTER Quaternion* p, const __REGISTER Quaternion*
         ps_sub rzw, rzw, szw
         psq_st rzw, 0x8(pq), 0, 0
     }
-}
+} */
 
 void C_QUATScale(const Quaternion* q, Quaternion* r, f32 scale) {
     ASSERTMSGLINE(306, q, "QUATScale():  NULL QuaternionPtr 'q' ");
@@ -121,7 +123,7 @@ void C_QUATScale(const Quaternion* q, Quaternion* r, f32 scale) {
     r->w = q->w * scale;
 }
 
-void PSQUATScale(const __REGISTER Quaternion* q, __REGISTER Quaternion* r, __REGISTER f32 scale) {
+/* void PSQUATScale(const __REGISTER Quaternion* q, __REGISTER Quaternion* r, __REGISTER f32 scale) {
     __REGISTER f32 rxy, rzw;
     
     asm {
@@ -132,7 +134,7 @@ void PSQUATScale(const __REGISTER Quaternion* q, __REGISTER Quaternion* r, __REG
         ps_muls0 rzw, rzw, scale
         psq_st rzw, 8(r), 0, 0
     }
-}
+} */
 
 f32 C_QUATDotProduct(const Quaternion* p, const Quaternion* q) {
     ASSERTMSGLINE(357, p, "QUATDotProduct():  NULL QuaternionPtr 'p' ");
@@ -141,7 +143,7 @@ f32 C_QUATDotProduct(const Quaternion* p, const Quaternion* q) {
     return (q->x * p->x) + (q->y * p->y) + (q->z * p->z) + (q->w * p->w);
 }
 
-f32 PSQUATDotProduct(const __REGISTER Quaternion* p, const __REGISTER Quaternion* q) {
+/* f32 PSQUATDotProduct(const __REGISTER Quaternion* p, const __REGISTER Quaternion* q) {
     __REGISTER f32 pxy, pzw, qxy, qzw, dp;
 
     asm {
@@ -155,7 +157,7 @@ f32 PSQUATDotProduct(const __REGISTER Quaternion* p, const __REGISTER Quaternion
     }
 
     return dp;
-}
+} */
 
 void C_QUATNormalize(const Quaternion* src, Quaternion* unit) {
     f32 mag;
@@ -175,7 +177,7 @@ void C_QUATNormalize(const Quaternion* src, Quaternion* unit) {
     }
 }
 
-void PSQUATNormalize(const __REGISTER Quaternion* src, __REGISTER Quaternion* unit) {
+/* void PSQUATNormalize(const __REGISTER Quaternion* src, __REGISTER Quaternion* unit) {
     __REGISTER f32 sxy, szw;
     __REGISTER f32 mag, rsqmag;
     __REGISTER f32 diff;
@@ -205,7 +207,7 @@ void PSQUATNormalize(const __REGISTER Quaternion* src, __REGISTER Quaternion* un
         psq_st sxy, 0x0(unit), 0, 0
         psq_st szw, 0x8(unit), 0, 0
     }
-}
+} */
 
 void C_QUATInverse(const Quaternion* src, Quaternion* inv) {
     f32 mag, norminv;
@@ -224,7 +226,7 @@ void C_QUATInverse(const Quaternion* src, Quaternion* inv) {
     inv->w =  src->w * norminv;
 }
 
-void PSQUATInverse(const __REGISTER Quaternion* src, __REGISTER Quaternion* inv) {
+/* void PSQUATInverse(const __REGISTER Quaternion* src, __REGISTER Quaternion* inv) {
     __REGISTER f32 sxy, szw;
     __REGISTER f32 izz, iww;
     __REGISTER f32 mag, nmag;
@@ -260,7 +262,7 @@ void PSQUATInverse(const __REGISTER Quaternion* src, __REGISTER Quaternion* inv)
         psq_st sxy, 0x0(inv), 0, 0
         psq_st izz, 0x8(inv), 1, 0
     }
-}
+} */
 
 void C_QUATDivide(const Quaternion* p, const Quaternion* q, Quaternion* r) {
     Quaternion qtmp;
@@ -272,12 +274,12 @@ void C_QUATDivide(const Quaternion* p, const Quaternion* q, Quaternion* r) {
     C_QUATMultiply(&qtmp, p, r);
 }
 
-void PSQUATDivide(const Quaternion* p, const Quaternion* q, Quaternion* r) {
+/* void PSQUATDivide(const Quaternion* p, const Quaternion* q, Quaternion* r) {
     Quaternion qtmp;
 
     PSQUATInverse(q, &qtmp);
     PSQUATMultiply(&qtmp, p, r);
-}
+} */
 
 void C_QUATExp(const Quaternion* q, Quaternion* r)  {
     f32 theta, scale;

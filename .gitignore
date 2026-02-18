@@ -39,3 +39,6 @@ compile_commands.json
 
 # ISOs
 *.iso
+
+!CMakeLists.txt
+CMakeUserPresets.json

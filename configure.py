@@ -12,6 +12,7 @@
 # Append --help to see available options.
 ###
 
+"""
 import argparse
 import json
 import sys
@@ -26,6 +27,7 @@ from tools.project import (
     generate_build,
     is_windows,
 )
+"""
 
 # Game versions
 DEFAULT_VERSION = 0
@@ -72,6 +74,8 @@ SHIELD_VERSIONS = [
     "ShieldP",   # Shield Production
     "ShieldD",   # Shield Debug
 ]
+
+"""
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -440,6 +444,7 @@ cflags_dolzel_rel = [
     *cflags_rel,
 ]
 
+
 def MWVersion(cfg_version: str | None) -> str:
     match cfg_version:
         case "GZ2E01" | "GZ2P01" | "GZ2J01":
@@ -536,13 +541,13 @@ Matching = True                   # Object matches and should be linked
 NonMatching = False               # Object does not match and should not be linked
 Equivalent = config.non_matching  # Object should be linked when configured with --non-matching
 
+"""
 
 ALL_GCN = ["GZ2E01", "GZ2P01", "GZ2J01"]
 ALL_WII = ["RZDE01_00", "RZDE01_02", "RZDP01", "RZDJ01"] # , "RZDK01"]
 ALL_DEMO = ["DZDE01", "DZDP01"]
 ALL_SHIELD = ["Shield", "ShieldD"] # , "ShieldP"]
 ALL = ALL_GCN + ALL_WII + ALL_SHIELD
-
 
 # Object is only matching for specific versions
 def MatchingFor(*versions) -> bool:
@@ -554,6 +559,8 @@ def MatchingFor(*versions) -> bool:
             fullset.add(vers)
 
     return config.version in fullset
+
+"""
 
 
 config.warn_missing_config = True
@@ -575,6 +582,56 @@ config.precompiled_headers = [
         "cflags": ["-lang=c++", *cflags_framework],
     },
 ]
+"""
+
+from types import SimpleNamespace
+
+config = SimpleNamespace()
+config.version = "GZ2E01"
+
+def MWVersion(*args):
+    return None
+
+cflags_framework = []
+cflags_noopt = []
+cflags_runtime = []
+cflags_trk = []
+cflags_dolphin = []
+cflags_rel = []
+
+type OBJECT_TYPE = str
+type LIB = dict
+
+def Object(matching: bool, path: str, **kwargs) -> OBJECT_TYPE:
+    return path
+
+Matching = True
+NonMatching = False
+Equivalent = False
+
+
+def lib(name: str, objects: list[OBJECT_TYPE], **kwargs) -> LIB:
+    return {
+        "lib": name,
+        "objects": objects
+    }
+
+def DolphinLib(name: str, objects: list[OBJECT_TYPE], **kwargs) -> LIB:
+    return {
+        "lib": name,
+        "objects": objects,
+        "progress_category": "sdk"
+    }
+
+def RevolutionLib(name: str, objects: list[OBJECT_TYPE], **kwargs) -> LIB:
+    return {}
+
+JSystemLib = Rel = lib
+
+def ActorRel(status: bool, rel_name: str, extra_cflags: list[str]=[]) -> LIB:
+    return Rel(rel_name, [Object(status, f"d/actor/{rel_name}.cpp", extra_cflags=extra_cflags, scratch_preset_id=70)])
+
+
 config.libs = [
     {
         "lib": "machine",
@@ -2946,6 +3003,8 @@ config.libs = [
     ActorRel(MatchingFor(ALL_GCN), "d_a_warp_bug"),
 ]
 
+"""
+
 
 # Define our custom asset processing scripts
 config.custom_build_rules = [
@@ -3039,3 +3098,5 @@ elif args.mode == "progress":
     calculate_progress(config)
 else:
     sys.exit("Unknown mode: " + args.mode)
+
+"""

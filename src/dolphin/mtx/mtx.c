@@ -23,6 +23,7 @@ void C_MTXIdentity(Mtx m) {
     m[2][3] = 0;
 }
 
+/*
 void PSMTXIdentity(__REGISTER Mtx m) {
     __REGISTER f32 c_zero = 0.0f;
     __REGISTER f32 c_one = 1.0f;
@@ -40,6 +41,7 @@ void PSMTXIdentity(__REGISTER Mtx m) {
         psq_st c_10, 40(m), 0, 0
     }
 }
+*/
 
 void C_MTXCopy(const Mtx src, Mtx dst) {
     ASSERTMSGLINE(250, src, "MTXCopy():  NULL MtxPtr 'src' ");
@@ -60,6 +62,7 @@ void C_MTXCopy(const Mtx src, Mtx dst) {
     }
 }
 
+/*
 asm void PSMTXCopy(const __REGISTER Mtx src, __REGISTER Mtx dst) {
     psq_l f0, 0(src), 0, 0
     psq_st f0, 0(dst), 0, 0
@@ -74,6 +77,7 @@ asm void PSMTXCopy(const __REGISTER Mtx src, __REGISTER Mtx dst) {
     psq_l f5, 40(src), 0, 0
     psq_st f5, 40(dst), 0, 0
 }
+*/
 
 void C_MTXConcat(const Mtx a, const Mtx b, Mtx ab) {
     Mtx mTmp;
@@ -109,6 +113,7 @@ void C_MTXConcat(const Mtx a, const Mtx b, Mtx ab) {
     }
 }
 
+/*
 asm void PSMTXConcat(const __REGISTER Mtx a, const __REGISTER Mtx b, __REGISTER Mtx ab) {
     nofralloc
     stwu r1, -64(r1)
@@ -163,6 +168,7 @@ asm void PSMTXConcat(const __REGISTER Mtx a, const __REGISTER Mtx b, __REGISTER 
     addi r1, r1, 64
     blr
 }
+*/
 
 void C_MTXConcatArray(const Mtx a, const Mtx* srcBase, Mtx* dstBase, u32 count) {
     u32 i;
@@ -179,6 +185,7 @@ void C_MTXConcatArray(const Mtx a, const Mtx* srcBase, Mtx* dstBase, u32 count) 
     }
 }
 
+/*
 #if DEBUG
 #pragma push
 #pragma optimization_level 1
@@ -276,6 +283,7 @@ void PSMTXConcatArray(const __REGISTER Mtx a, const __REGISTER Mtx* srcBase, __R
 #if DEBUG
 #pragma pop
 #endif
+*/
 
 void C_MTXTranspose(const Mtx src, Mtx xPose) {
     Mtx mTmp;
@@ -307,6 +315,7 @@ void C_MTXTranspose(const Mtx src, Mtx xPose) {
     }
 }
 
+/*
 void PSMTXTranspose(const __REGISTER Mtx src, __REGISTER Mtx xPose) {
     __REGISTER f32 c_zero = 0;
     __REGISTER f32 row0a;
@@ -342,6 +351,7 @@ void PSMTXTranspose(const __REGISTER Mtx src, __REGISTER Mtx xPose) {
     }
     xPose[2][2] = row0b;
 }
+*/
 
 u32 C_MTXInverse(const Mtx src, Mtx inv) {
     Mtx mTmp;
@@ -388,6 +398,7 @@ u32 C_MTXInverse(const Mtx src, Mtx inv) {
     return 1;
 }
 
+/*
 asm u32 PSMTXInverse(const __REGISTER Mtx src, __REGISTER Mtx inv) {
     psq_l f0, 0(src), 1, 0
     psq_l f1, 4(src), 0, 0
@@ -452,6 +463,7 @@ skip_return:
     li r3, 1
     psq_st f7, 44(inv), 1, 0
 }
+*/
 
 u32 C_MTXInvXpose(const Mtx src, Mtx invX) {
     Mtx mTmp;
@@ -498,7 +510,7 @@ u32 C_MTXInvXpose(const Mtx src, Mtx invX) {
     return 1;
 }
 
-asm u32 PSMTXInvXpose(const __REGISTER Mtx src, __REGISTER Mtx invX) {
+/* asm u32 PSMTXInvXpose(const __REGISTER Mtx src, __REGISTER Mtx invX) {
 	psq_l f0, 0(src), 1, 0
 	psq_l f1, 4(src), 0, 0
 	psq_l f2, 16(src), 1, 0
@@ -549,7 +561,7 @@ skip_return:
 	li r3, 1
     psq_st f9, 24(invX), 1, 0
 	psq_st f8, 40(invX), 1, 0
-}
+} */
 
 void C_MTXRotRad(Mtx m, char axis, f32 rad) {
     f32 sinA;
@@ -561,12 +573,12 @@ void C_MTXRotRad(Mtx m, char axis, f32 rad) {
     C_MTXRotTrig(m, axis, sinA, cosA);
 }
 
-void PSMTXRotRad(Mtx m, char axis, f32 rad) {
+/* void PSMTXRotRad(Mtx m, char axis, f32 rad) {
     f32 sinA, cosA;
     sinA = sinf(rad);
     cosA = cosf(rad);
     PSMTXRotTrig(m, axis, sinA, cosA);
-}
+} */
 
 void C_MTXRotTrig(Mtx m, char axis, f32 sinA, f32 cosA) {
     ASSERTMSGLINE(1502, m, "MTXRotTrig():  NULL MtxPtr 'm' ");
@@ -622,7 +634,7 @@ void C_MTXRotTrig(Mtx m, char axis, f32 sinA, f32 cosA) {
     }
 }
 
-void PSMTXRotTrig(__REGISTER Mtx m, __REGISTER char axis, __REGISTER f32 sinA, __REGISTER f32 cosA) {
+/* void PSMTXRotTrig(__REGISTER Mtx m, __REGISTER char axis, __REGISTER f32 sinA, __REGISTER f32 cosA) {
     __REGISTER f32 fc0, fc1, nsinA;
     __REGISTER f32 fw0, fw1, fw2, fw3;
 
@@ -683,9 +695,9 @@ void PSMTXRotTrig(__REGISTER Mtx m, __REGISTER char axis, __REGISTER f32 sinA, _
 
 	_end:
 	}
-}
+} */
 
-static void __PSMTXRotAxisRadInternal(__REGISTER Mtx m, const __REGISTER Vec* axis, __REGISTER f32 sT, __REGISTER f32 cT) {
+/* static void __PSMTXRotAxisRadInternal(__REGISTER Mtx m, const __REGISTER Vec* axis, __REGISTER f32 sT, __REGISTER f32 cT) {
     __REGISTER f32 tT, fc0;
     __REGISTER f32 tmp0, tmp1, tmp2, tmp3, tmp4;
     __REGISTER f32 tmp5, tmp6, tmp7, tmp8, tmp9;
@@ -735,16 +747,16 @@ static void __PSMTXRotAxisRadInternal(__REGISTER Mtx m, const __REGISTER Vec* ax
         psq_st tmp4, 32(m), 0, 0;
         psq_st tmp5, 40(m), 0, 0;
     }
-}
+} */
 
-void PSMTXRotAxisRad(Mtx m, const Vec* axis, f32 rad) {
+/* void PSMTXRotAxisRad(Mtx m, const Vec* axis, f32 rad) {
     f32 sinT, cosT;
 
     sinT = sinf(rad);
     cosT = cosf(rad);
 
     __PSMTXRotAxisRadInternal(m, axis, sinT, cosT);
-}
+} */
 
 void C_MTXRotAxisRad(Mtx m, const Vec* axis, f32 rad) {
     Vec vN;
@@ -801,7 +813,7 @@ void C_MTXTrans(Mtx m, f32 xT, f32 yT, f32 zT) {
     m[2][3] = zT;
 }
 
-void PSMTXTrans(__REGISTER Mtx m, __REGISTER f32 xT, __REGISTER f32 yT, __REGISTER f32 zT) {
+/* void PSMTXTrans(__REGISTER Mtx m, __REGISTER f32 xT, __REGISTER f32 yT, __REGISTER f32 zT) {
     __REGISTER f32 c0 = 0.0f;
     __REGISTER f32 c1 = 1.0f;
 
@@ -817,7 +829,7 @@ void PSMTXTrans(__REGISTER Mtx m, __REGISTER f32 xT, __REGISTER f32 yT, __REGIST
 		stfs zT, 44(m)
 		stfs c1, 0(m)
 	}
-}
+} */
 
 void C_MTXTransApply(const Mtx src, Mtx dst, f32 xT, f32 yT, f32 zT) {
     ASSERTMSGLINE(1933, src, "MTXTransApply(): NULL MtxPtr 'src' ");
@@ -840,7 +852,7 @@ void C_MTXTransApply(const Mtx src, Mtx dst, f32 xT, f32 yT, f32 zT) {
     dst[2][3] = (src[2][3] + zT);
 }
 
-asm void PSMTXTransApply(const __REGISTER Mtx src, __REGISTER Mtx dst, __REGISTER f32 xT, __REGISTER f32 yT, __REGISTER f32 zT) {
+/* asm void PSMTXTransApply(const __REGISTER Mtx src, __REGISTER Mtx dst, __REGISTER f32 xT, __REGISTER f32 yT, __REGISTER f32 zT) {
     nofralloc
     psq_l fp4, 0(src), 0, 0
     frsp xT, xT
@@ -861,7 +873,7 @@ asm void PSMTXTransApply(const __REGISTER Mtx src, __REGISTER Mtx dst, __REGISTE
     psq_st fp9, 32(dst), 0, 0
     psq_st fp8, 40(dst), 0, 0
     blr
-}
+} */
 
 void C_MTXScale(Mtx m, f32 xS, f32 yS, f32 zS) {
     ASSERTMSGLINE(2008, m, "MTXScale():  NULL MtxPtr 'm' ");
@@ -879,7 +891,7 @@ void C_MTXScale(Mtx m, f32 xS, f32 yS, f32 zS) {
     m[2][3] = 0;
 }
 
-void PSMTXScale(__REGISTER Mtx m, __REGISTER f32 xS, __REGISTER f32 yS, __REGISTER f32 zS) {
+/* void PSMTXScale(__REGISTER Mtx m, __REGISTER f32 xS, __REGISTER f32 yS, __REGISTER f32 zS) {
     __REGISTER f32 c0 = 0.0f;
 
 	asm {
@@ -892,7 +904,7 @@ void PSMTXScale(__REGISTER Mtx m, __REGISTER f32 xS, __REGISTER f32 yS, __REGIST
 		stfs zS, 40(m)
 		stfs c0, 44(m)
 	}
-}
+} */
 
 void C_MTXScaleApply(const Mtx src, Mtx dst, f32 xS, f32 yS, f32 zS) {
     ASSERTMSGLINE(2070, src, "MTXScaleApply(): NULL MtxPtr 'src' ");
@@ -911,7 +923,7 @@ void C_MTXScaleApply(const Mtx src, Mtx dst, f32 xS, f32 yS, f32 zS) {
     dst[2][3] = (src[2][3] * zS);
 }
 
-asm void PSMTXScaleApply(const __REGISTER Mtx src, __REGISTER Mtx dst, __REGISTER f32 xS, __REGISTER f32 yS, __REGISTER f32 zS) {
+/* asm void PSMTXScaleApply(const __REGISTER Mtx src, __REGISTER Mtx dst, __REGISTER f32 xS, __REGISTER f32 yS, __REGISTER f32 zS) {
     nofralloc
     frsp xS, xS
     psq_l fp4, 0(src), 0, 0
@@ -935,7 +947,7 @@ asm void PSMTXScaleApply(const __REGISTER Mtx src, __REGISTER Mtx dst, __REGISTE
     psq_st fp8, 32(dst), 0, 0
     psq_st fp2, 40(dst), 0, 0
     blr
-}
+} */
 
 void C_MTXQuat(Mtx m, const Quaternion* q) {
     f32 s;
@@ -982,7 +994,7 @@ void C_MTXQuat(Mtx m, const Quaternion* q) {
     m[2][3] = 0;
 }
 
-void PSMTXQuat(__REGISTER Mtx m, const __REGISTER Quaternion* q) {
+/* void PSMTXQuat(__REGISTER Mtx m, const __REGISTER Quaternion* q) {
     __REGISTER f32 c_zero, c_one, c_two, scale;
     __REGISTER f32 tmp0, tmp1, tmp2, tmp3, tmp4;
     __REGISTER f32 tmp5, tmp6, tmp7, tmp8, tmp9;
@@ -1029,7 +1041,7 @@ void PSMTXQuat(__REGISTER Mtx m, const __REGISTER Quaternion* q) {
         psq_st tmp3, 24(m), 0, 0
         psq_st tmp9, 32(m), 0, 0
 	}
-}
+} */
 
 void C_MTXReflect(Mtx m, const Vec* p, const Vec* n) {
     f32 vxy;
@@ -1055,7 +1067,7 @@ void C_MTXReflect(Mtx m, const Vec* p, const Vec* n) {
     m[2][3] = (pdotn * n->z);
 }
 
-void PSMTXReflect(__REGISTER Mtx m, const __REGISTER Vec* p, const __REGISTER Vec* n) {
+/* void PSMTXReflect(__REGISTER Mtx m, const __REGISTER Vec* p, const __REGISTER Vec* n) {
     __REGISTER f32 c_one;
     __REGISTER f32 vn_xy, vn_z1;
     __REGISTER f32 n2vn_xy, n2vn_z1;
@@ -1093,7 +1105,7 @@ void PSMTXReflect(__REGISTER Mtx m, const __REGISTER Vec* p, const __REGISTER Ve
         psq_st tmp5, 0x18(m), 0, 0
         psq_st tmp6, 0x28(m), 0, 0
     }
-}
+} */
 
 void C_MTXLookAt(Mtx m, const Point3d* camPos, const Vec* camUp, const Point3d* target) {
     Vec vLook;

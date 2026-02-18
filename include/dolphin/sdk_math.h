@@ -1,6 +1,10 @@
 // fake MSL_C math for sdk specifically since it differs from game MSL_C math
 
-extern inline float sqrtf(float x) {
+#include <pc_compat.h>
+
+#include <cmath>
+
+/* extern inline float sqrtf(float x) {
     static const double _half=.5;
     static const double _three=3.0;
     volatile float y;
@@ -66,3 +70,4 @@ inline float floor(float x) {
         // x < 0 -> int conversion of x above rounded toward zero(so decrement)                
     return (float)i;
 }
+ */

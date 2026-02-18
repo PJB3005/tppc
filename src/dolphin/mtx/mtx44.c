@@ -112,7 +112,7 @@ void C_MTX44Identity(Mtx44 m) {
     m[3][3] = 1.0f;
 }
 
-void PSMTX44Identity(__REGISTER Mtx44 m) {
+/* void PSMTX44Identity(__REGISTER Mtx44 m) {
     __REGISTER f32 c1 = 1.0f;
     __REGISTER f32 c0 = 0.0f;
 
@@ -128,7 +128,7 @@ void PSMTX44Identity(__REGISTER Mtx44 m) {
         psq_st c0, 0x34(m), 0, 0
         stfs c1, 0x3c(m)
     }
-}
+} */
 
 void C_MTX44Copy(const Mtx44 src, Mtx44 dst) {
     ASSERTMSGLINE(382, src != 0, "MTX44Copy():  NULL Mtx44Ptr 'src' ");
@@ -154,7 +154,7 @@ void C_MTX44Copy(const Mtx44 src, Mtx44 dst) {
     }
 }
 
-asm void PSMTX44Copy(const __REGISTER Mtx44 src, __REGISTER Mtx44 dst) {
+/* asm void PSMTX44Copy(const __REGISTER Mtx44 src, __REGISTER Mtx44 dst) {
     nofralloc
     psq_l f1, 0x0(src), 0, 0
     psq_st f1, 0x0(dst), 0, 0
@@ -173,7 +173,7 @@ asm void PSMTX44Copy(const __REGISTER Mtx44 src, __REGISTER Mtx44 dst) {
     psq_l f1, 0x38(src), 0, 0
     psq_st f1, 0x38(dst), 0, 0
     blr
-}
+} */
 
 void C_MTX44Concat(const Mtx44 a, const Mtx44 b, Mtx44 ab) {
     Mtx44 mTmp;
@@ -214,7 +214,7 @@ void C_MTX44Concat(const Mtx44 a, const Mtx44 b, Mtx44 ab) {
     }
 }
 
-asm void PSMTX44Concat(const __REGISTER Mtx44 a, const __REGISTER Mtx44 b, __REGISTER Mtx44 ab) {
+/* asm void PSMTX44Concat(const __REGISTER Mtx44 a, const __REGISTER Mtx44 b, __REGISTER Mtx44 ab) {
     nofralloc
     psq_l f0, 0x0(a), 0, 0
     psq_l f2, 0x0(b), 0, 0
@@ -281,7 +281,7 @@ asm void PSMTX44Concat(const __REGISTER Mtx44 a, const __REGISTER Mtx44 b, __REG
     ps_madds1 f13, f5, f1, f13
     psq_st f13, 0x38(ab), 0, 0
     blr
-}
+} */
 
 void C_MTX44Transpose(const Mtx44 src, Mtx44 xPose) {
     Mtx44 mTmp;
@@ -318,7 +318,7 @@ void C_MTX44Transpose(const Mtx44 src, Mtx44 xPose) {
     }
 }
 
-asm void PSMTX44Transpose(const __REGISTER Mtx44 src, __REGISTER Mtx44 xPose) {
+/* asm void PSMTX44Transpose(const __REGISTER Mtx44 src, __REGISTER Mtx44 xPose) {
     nofralloc
     psq_l f0, 0x0(src), 0, 0
     psq_l f1, 0x10(src), 0, 0
@@ -345,7 +345,7 @@ asm void PSMTX44Transpose(const __REGISTER Mtx44 src, __REGISTER Mtx44 xPose) {
     ps_merge11 f5, f2, f3
     psq_st f5, 0x38(xPose), 0, 0
     blr
-}
+} */
 
 #define SWAP(a, b) \
     {              \
@@ -438,7 +438,7 @@ void C_MTX44Trans(Mtx44 m, f32 xT, f32 yT, f32 zT) {
     m[3][3] = 1.0f;
 }
 
-void PSMTX44Trans(__REGISTER Mtx44 m, __REGISTER f32 xT, __REGISTER f32 yT, __REGISTER f32 zT) {
+/* void PSMTX44Trans(__REGISTER Mtx44 m, __REGISTER f32 xT, __REGISTER f32 yT, __REGISTER f32 zT) {
     __REGISTER f32 c_zero = 0.0f;
     __REGISTER f32 c_one = 1.0f;
     __REGISTER f32 c_01;
@@ -457,7 +457,7 @@ void PSMTX44Trans(__REGISTER Mtx44 m, __REGISTER f32 xT, __REGISTER f32 yT, __RE
         psq_st c_zero, 0x30(m), 0, 0
         psq_st c_01, 0x38(m), 0, 0
     }
-}
+} */
 
 void C_MTX44TransApply(const Mtx44 src, Mtx44 dst, f32 xT, f32 yT, f32 zT) {
     ASSERTMSGLINE(899, src, "MTX44TransApply(): NULL Mtx44Ptr 'src' ");
@@ -488,7 +488,7 @@ void C_MTX44TransApply(const Mtx44 src, Mtx44 dst, f32 xT, f32 yT, f32 zT) {
     dst[2][3] = (src[2][3] + zT);
 }
 
-asm void PSMTX44TransApply(const __REGISTER Mtx44 src, __REGISTER Mtx44 dst, __REGISTER f32 xT, __REGISTER f32 yT, __REGISTER f32 zT) {
+/* asm void PSMTX44TransApply(const __REGISTER Mtx44 src, __REGISTER Mtx44 dst, __REGISTER f32 xT, __REGISTER f32 yT, __REGISTER f32 zT) {
     nofralloc
     psq_l f4, 0x0(src), 0, 0
     frsp xT, xT
@@ -513,7 +513,7 @@ asm void PSMTX44TransApply(const __REGISTER Mtx44 src, __REGISTER Mtx44 dst, __R
     psq_st f5, 0x30(dst), 0, 0
     psq_st f6, 0x38(dst), 0, 0
     blr
-}
+} */
 
 void C_MTX44Scale(Mtx44 m, f32 xS, f32 yS, f32 zS) {
     ASSERTMSGLINE(976, m, "MTX44Scale():  NULL Mtx44Ptr 'm' ");
@@ -538,7 +538,7 @@ void C_MTX44Scale(Mtx44 m, f32 xS, f32 yS, f32 zS) {
     m[3][3] = 1.0f;
 }
 
-void PSMTX44Scale(__REGISTER Mtx44 m, __REGISTER f32 xS, __REGISTER f32 yS, __REGISTER f32 zS) {
+/* void PSMTX44Scale(__REGISTER Mtx44 m, __REGISTER f32 xS, __REGISTER f32 yS, __REGISTER f32 zS) {
     __REGISTER f32 c_zero = 0.0f;
     __REGISTER f32 c_one = 1.0f;
 
@@ -554,7 +554,7 @@ void PSMTX44Scale(__REGISTER Mtx44 m, __REGISTER f32 xS, __REGISTER f32 yS, __RE
         psq_st c_zero, 0x34(m), 0, 0
         stfs c_one, 0x3c(m)
     }
-}
+} */
 
 void C_MTX44ScaleApply(const Mtx44 src, Mtx44 dst, f32 xS, f32 yS, f32 zS) {
     ASSERTMSGLINE(1036, src, "MTX44ScaleApply(): NULL Mtx44Ptr 'src' ");
@@ -581,7 +581,7 @@ void C_MTX44ScaleApply(const Mtx44 src, Mtx44 dst, f32 xS, f32 yS, f32 zS) {
     dst[3][3] = src[3][3];
 }
 
-asm void PSMTX44ScaleApply(const __REGISTER Mtx44 src, __REGISTER Mtx44 dst, __REGISTER f32 xS, __REGISTER f32 yS, __REGISTER f32 zS) {
+/* asm void PSMTX44ScaleApply(const __REGISTER Mtx44 src, __REGISTER Mtx44 dst, __REGISTER f32 xS, __REGISTER f32 yS, __REGISTER f32 zS) {
     nofralloc
     psq_l f4, 0x0(src), 0, 0
     frsp xS, xS
@@ -609,7 +609,7 @@ asm void PSMTX44ScaleApply(const __REGISTER Mtx44 src, __REGISTER Mtx44 dst, __R
     psq_st f10, 0x30(dst), 0, 0
     psq_st f11, 0x38(dst), 0, 0
     blr
-}
+} */
 
 void C_MTX44RotRad(Mtx44 m, char axis, f32 rad) {
     f32 sinA;
@@ -621,14 +621,14 @@ void C_MTX44RotRad(Mtx44 m, char axis, f32 rad) {
     C_MTX44RotTrig(m, axis, sinA, cosA);
 }
 
-void PSMTX44RotRad(Mtx44 m, char axis, f32 rad) {
+/* void PSMTX44RotRad(Mtx44 m, char axis, f32 rad) {
     f32 sinA;
     f32 cosA;
 
     sinA = sinf(rad);
     cosA = cosf(rad);
     PSMTX44RotTrig(m, axis, sinA, cosA);
-}
+} */
 
 void C_MTX44RotTrig(Mtx44 m, char axis, f32 sinA, f32 cosA) {
     ASSERTMSGLINE(1163, m, "MTX44RotTrig():  NULL Mtx44Ptr 'm' ");
@@ -695,7 +695,7 @@ void C_MTX44RotTrig(Mtx44 m, char axis, f32 sinA, f32 cosA) {
     }
 }
 
-void PSMTX44RotTrig(__REGISTER Mtx44 m, __REGISTER char axis, __REGISTER f32 sinA, __REGISTER f32 cosA) {
+/* void PSMTX44RotTrig(__REGISTER Mtx44 m, __REGISTER char axis, __REGISTER f32 sinA, __REGISTER f32 cosA) {
     __REGISTER f32 ftmp0;
     __REGISTER f32 ftmp1;
     __REGISTER f32 ftmp2;
@@ -761,7 +761,7 @@ void PSMTX44RotTrig(__REGISTER Mtx44 m, __REGISTER char axis, __REGISTER f32 sin
         psq_st ftmp4, 0x0(m), 0, 0
     L_00001B54:    
     }
-}
+} */
 
 void C_MTX44RotAxisRad(Mtx44 m, const Vec* axis, f32 rad) {
     Vec vN;
@@ -813,7 +813,7 @@ void C_MTX44RotAxisRad(Mtx44 m, const Vec* axis, f32 rad) {
     m[3][3] = 1.0f;
 }
 
-static void __PSMTX44RotAxisRadInternal(__REGISTER Mtx44 m, const __REGISTER Vec* axis, __REGISTER f32 sT, __REGISTER f32 cT) {
+/* static void __PSMTX44RotAxisRadInternal(__REGISTER Mtx44 m, const __REGISTER Vec* axis, __REGISTER f32 sT, __REGISTER f32 cT) {
     __REGISTER f32 tT;
     __REGISTER f32 fc0;
     __REGISTER f32 tmp0;
@@ -886,3 +886,4 @@ void PSMTX44RotAxisRad(Mtx44 m, const Vec* axis, f32 rad) {
 
     __PSMTX44RotAxisRadInternal(m, axis, sinT, cosT);
 }
+ */

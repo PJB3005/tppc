@@ -11,7 +11,7 @@ void C_VECAdd(const Vec* a, const Vec* b, Vec* ab) {
     ab->z = a->z + b->z;
 }
 
-asm void PSVECAdd(const __REGISTER Vec* a, const __REGISTER Vec* b, __REGISTER Vec* ab) {
+/* asm void PSVECAdd(const __REGISTER Vec* a, const __REGISTER Vec* b, __REGISTER Vec* ab) {
     psq_l f2, Vec.x(a), 0, 0
     psq_l f4, Vec.x(b), 0, 0
     ps_add f6, f2, f4
@@ -20,7 +20,7 @@ asm void PSVECAdd(const __REGISTER Vec* a, const __REGISTER Vec* b, __REGISTER V
     psq_l f5, Vec.z(b), 1, 0
     ps_add f7, f3, f5
     psq_st f7, Vec.z(ab), 1, 0
-}
+} */
 
 void C_VECSubtract(const Vec* a, const Vec* b, Vec* a_b) {
     ASSERTMSGLINE(177, a, "VECSubtract():  NULL VecPtr 'a' ");
@@ -31,7 +31,7 @@ void C_VECSubtract(const Vec* a, const Vec* b, Vec* a_b) {
     a_b->z = a->z - b->z;
 }
 
-asm void PSVECSubtract(const __REGISTER Vec* a, const __REGISTER Vec* b, __REGISTER Vec* a_b) {
+/* asm void PSVECSubtract(const __REGISTER Vec* a, const __REGISTER Vec* b, __REGISTER Vec* a_b) {
     psq_l f2, Vec.x(a), 0, 0
     psq_l f4, Vec.x(b), 0, 0
     ps_sub f6, f2, f4
@@ -40,7 +40,7 @@ asm void PSVECSubtract(const __REGISTER Vec* a, const __REGISTER Vec* b, __REGIS
     psq_l f5, Vec.z(b), 1, 0
     ps_sub f7, f3, f5
     psq_st f7, Vec.z(a_b), 1, 0
-}
+} */
 
 void C_VECScale(const Vec* src, Vec* dst, f32 scale) {
     ASSERTMSGLINE(247, src, "VECScale():  NULL VecPtr 'src' ");
@@ -50,7 +50,7 @@ void C_VECScale(const Vec* src, Vec* dst, f32 scale) {
     dst->z = (src->z * scale);
 }
 
-void PSVECScale(const __REGISTER Vec* src, __REGISTER Vec* dst, __REGISTER f32 scale) {
+/* void PSVECScale(const __REGISTER Vec* src, __REGISTER Vec* dst, __REGISTER f32 scale) {
     __REGISTER f32 vxy, vz, rxy, rz;
 
     asm {
@@ -61,7 +61,7 @@ void PSVECScale(const __REGISTER Vec* src, __REGISTER Vec* dst, __REGISTER f32 s
         ps_muls0 rz, vz, scale
         psq_st rz, 0x8(dst), 1, 0
     }
-}
+} */
 
 void C_VECNormalize(const Vec* src, Vec* unit) {
     f32 mag;
@@ -78,7 +78,7 @@ void C_VECNormalize(const Vec* src, Vec* unit) {
     unit->z = src->z * mag;
 }
 
-void PSVECNormalize(const __REGISTER Vec* src, __REGISTER Vec* unit) {
+/* void PSVECNormalize(const __REGISTER Vec* src, __REGISTER Vec* unit) {
     __REGISTER float c_half = 0.5f;
     __REGISTER float c_three = 3.0f;
     __REGISTER float v1_xy;
@@ -106,7 +106,7 @@ void PSVECNormalize(const __REGISTER Vec* src, __REGISTER Vec* unit) {
         ps_muls0 v1_z, v1_z, rsqrt
         psq_st v1_z, 0x8(unit), 1, 0
     }
-}
+} */
 
 f32 C_VECSquareMag(const Vec* v) {
     f32 sqmag;
@@ -117,7 +117,7 @@ f32 C_VECSquareMag(const Vec* v) {
     return sqmag;
 }
 
-f32 PSVECSquareMag(const __REGISTER Vec* v) {
+/* f32 PSVECSquareMag(const __REGISTER Vec* v) {
     __REGISTER f32 vxy, vzz, sqmag;
 
     asm {
@@ -129,13 +129,13 @@ f32 PSVECSquareMag(const __REGISTER Vec* v) {
     }
 
     return sqmag;
-}
+} */
 
 f32 C_VECMag(const Vec* v) {
     return sqrtf(C_VECSquareMag(v));
 }
 
-f32 PSVECMag(const __REGISTER Vec* v) {
+/* f32 PSVECMag(const __REGISTER Vec* v) {
     __REGISTER f32 vxy, vzz;
     __REGISTER f32 sqmag, rmag;
     __REGISTER f32 nwork0, nwork1;
@@ -167,7 +167,7 @@ f32 PSVECMag(const __REGISTER Vec* v) {
     }
 
     return sqmag;
-}
+} */
 
 f32 C_VECDotProduct(const Vec* a, const Vec* b) {
     f32 dot;
@@ -178,7 +178,7 @@ f32 C_VECDotProduct(const Vec* a, const Vec* b) {
     return dot;
 }
 
-asm f32 PSVECDotProduct(const __REGISTER Vec* a, const __REGISTER Vec* b) {
+/* asm f32 PSVECDotProduct(const __REGISTER Vec* a, const __REGISTER Vec* b) {
     psq_l f2, Vec.y(a), 0, 0
     psq_l f3, Vec.y(b), 0, 0
     ps_mul f2, f2, f3
@@ -186,7 +186,7 @@ asm f32 PSVECDotProduct(const __REGISTER Vec* a, const __REGISTER Vec* b) {
     psq_l f4, Vec.x(b), 0, 0
     ps_madd f3, f5, f4, f2
     ps_sum0 f1, f3, f2, f2
-}
+} */
 
 void C_VECCrossProduct(const Vec* a, const Vec* b, Vec* axb) {
     Vec vTmp;
@@ -203,7 +203,7 @@ void C_VECCrossProduct(const Vec* a, const Vec* b, Vec* axb) {
     axb->z = vTmp.z;
 }
 
-asm void PSVECCrossProduct(const __REGISTER Vec* a, const __REGISTER Vec* b, __REGISTER Vec* axb) {
+/* asm void PSVECCrossProduct(const __REGISTER Vec* a, const __REGISTER Vec* b, __REGISTER Vec* axb) {
     psq_l f1, Vec.x(b), 0, 0
     lfs f2, Vec.z(a)
     psq_l f0, Vec.x(a), 0, 0
@@ -218,7 +218,7 @@ asm void PSVECCrossProduct(const __REGISTER Vec* a, const __REGISTER Vec* b, __R
     psq_st f9, Vec.x(axb), 1, 0
     ps_neg f10, f10
     psq_st f10, Vec.y(axb), 0, 0
-}
+} */
 
 void C_VECHalfAngle(const Vec* a, const Vec* b, Vec* half) {
     Vec aTmp;
@@ -279,7 +279,7 @@ f32 C_VECSquareDistance(const Vec* a, const Vec* b) {
     return (diff.z * diff.z) + ((diff.x * diff.x) + (diff.y * diff.y));
 }
 
-f32 PSVECSquareDistance(const __REGISTER Vec* a, const __REGISTER Vec* b) {
+/* f32 PSVECSquareDistance(const __REGISTER Vec* a, const __REGISTER Vec* b) {
     __REGISTER f32 v0yz, v1yz, v0xy, v1xy, dyz, dxy;
     __REGISTER f32 sqdist;
 
@@ -296,13 +296,13 @@ f32 PSVECSquareDistance(const __REGISTER Vec* a, const __REGISTER Vec* b) {
     }
 
     return sqdist;
-}
+} */
 
 f32 C_VECDistance(const Vec* a, const Vec* b) {
     return sqrtf(C_VECSquareDistance(a, b));
 }
 
-f32 PSVECDistance(const __REGISTER Vec* a, const __REGISTER Vec* b) {
+/* f32 PSVECDistance(const __REGISTER Vec* a, const __REGISTER Vec* b) {
     __REGISTER f32 v0yz, v1yz, v0xy, v1xy, dyz, dxy;
     __REGISTER f32 sqdist, rdist;
     __REGISTER f32 nwork0, nwork1;
@@ -341,4 +341,4 @@ f32 PSVECDistance(const __REGISTER Vec* a, const __REGISTER Vec* b) {
     }
 
     return sqdist;
-}
+} */
