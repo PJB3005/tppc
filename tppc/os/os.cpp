@@ -115,8 +115,7 @@ void OSLockMutex(OSMutex* mutex) {
 }
 
 void OSInitMutex(OSMutex* mutex) {
-    UNIMPLEMENTED();
-
+    SOFT_UNIMPLEMENTED();
 }
 
 void OSUnlockMutex(OSMutex* mutex) {
@@ -337,8 +336,9 @@ void OSRegisterVersion(const char* id) {
 }
 
 void OSInitThreadQueue(OSThreadQueue* queue) {
-    UNIMPLEMENTED();
+    queue->head = queue->tail = nullptr;
 }
+
 void OSSleepThread(OSThreadQueue* queue) {
     UNIMPLEMENTED();
 }
@@ -410,7 +410,12 @@ void* OSGetThreadSpecific(s32 index) {
 }
 
 void OSInitMessageQueue(OSMessageQueue* mq, void* msgArray, s32 msgCount) {
-    UNIMPLEMENTED();
+    OSInitThreadQueue(&mq->queueSend);
+    OSInitThreadQueue(&mq->queueReceive);
+    mq->msgArray = msgArray;
+    mq->msgCount = msgCount;
+    mq->firstIndex = 0;
+    mq->usedCount = 0;
 }
 int OSSendMessage(OSMessageQueue* mq, void* msg, s32 flags) {
     UNIMPLEMENTED();
