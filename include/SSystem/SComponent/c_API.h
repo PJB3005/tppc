@@ -1,7 +1,7 @@
 #ifndef C_API_H
 #define C_API_H
 
-typedef void (*cAPIGph_Mthd)(void);
+typedef int (*cAPIGph_Mthd)(void);
 
 struct cAPI_Interface {
     /* 0x00 */ cAPIGph_Mthd createMtd;

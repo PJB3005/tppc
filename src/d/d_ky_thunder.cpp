@@ -270,7 +270,7 @@ static leafdraw_method_class l_dThunder_Method = {
 };
 
 kankyo_process_profile_definition g_profile_KY_THUNDER = {
-    fpcLy_CURRENT_e,
+    static_cast<unsigned int>(fpcLy_CURRENT_e),
     7,
     fpcPi_CURRENT_e,
     PROC_KY_THUNDER,

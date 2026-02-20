@@ -14,7 +14,9 @@
 
 #ifndef __MWERKS__
 #include <limits>
+#ifndef FLT_EPSILON // TPPC
 #define FLT_EPSILON std::numeric_limits<float>::epsilon()
+#endif
 #endif
 
 const f32 G_CM3D_F_ABS_MIN = 32 * FLT_EPSILON;

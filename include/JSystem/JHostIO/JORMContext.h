@@ -32,6 +32,13 @@
 #define JORM_DEFAULT_COMBOBOX_WIDTH 0x100
 #define JORM_DEFAULT_COMBOBOX_HEIGHT 0x1a
 
+#if TPPC
+#define DEFINE_GEN_CHECKBOX(T, kind)                                                               \
+    void genCheckBox(const char* label, T* pSrc, T mask, u32 style = 0,                            \
+                     JOREventListener* pListener = NULL, u16 posX = -1, u16 posY = -1,             \
+                     u16 width = JORM_DEFAULT_WIDTH, u16 height = JORM_DEFAULT_HEIGHT) {           \
+    }
+#else
 #define DEFINE_GEN_CHECKBOX(T, kind)                                                               \
     void genCheckBox(const char* label, T* pSrc, T mask, u32 style = 0,                            \
                      JOREventListener* pListener = NULL, u16 posX = -1, u16 posY = -1,             \
@@ -39,6 +46,7 @@
         genCheckBoxSub(kind, label, (uintptr_t)pSrc, style, *pSrc, mask, pListener, posX, posY,    \
                        width, height);                                                             \
     }
+#endif
 
 #define DEFINE_GEN_CHECKBOX_ID(T, kind)                                                            \
     void genCheckBoxID(const char* label, u32 id, T mask, T initValue, u32 style = 0,              \

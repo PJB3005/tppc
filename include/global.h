@@ -103,7 +103,7 @@ static const float INF = 2000000000.0f;
 #ifdef __MWERKS__
 #define NO_INLINE __attribute__((never_inline))
 #else
-#define NO_INLINE
+#define NO_INLINE __attribute__((noinline))
 #endif
 #endif
     

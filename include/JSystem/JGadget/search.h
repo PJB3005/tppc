@@ -16,6 +16,11 @@ struct TExpandStride_<s32> {
     static s32 get(s32 n) { return n << 3; }
 };
 
+template <>
+struct TExpandStride_<s64> {
+    static s32 get(s64 n) { abort(); } // TODO TPPC what
+};
+
 struct TPR1IsEqual_string_ {
     TPR1IsEqual_string_(const char* sz) {
         string_ = sz;

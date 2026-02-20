@@ -1,6 +1,8 @@
 #ifndef _REVOLUTION_TYPES_H_
 #define _REVOLUTION_TYPES_H_
 
+#error "Don't include Revolution!"
+
 typedef signed   char          s8;
 typedef unsigned char          u8;
 typedef signed   short int     s16;

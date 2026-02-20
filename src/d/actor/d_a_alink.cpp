@@ -1506,7 +1506,7 @@ static f32 l_ladderAnmBaseTransY = 102.00054168701172f;
 
 static dCcD_SrcCyl l_cylSrc = {
     {
-        {0, {{AT_TYPE_WOLF_ATTACK, 3, 0x1A}, {0xD8FFFDFF, 5}, 0x73}},
+        {0, {{AT_TYPE_WOLF_ATTACK, 3, 0x1A}, {static_cast<s32>(0xD8FFFDFF, 5)}, 0x73}},
         {dCcD_SE_WOLF_BITE, 3, 1, 0, {1}},
         {dCcD_SE_NONE, 6, 0, 0, {0}},
         {0},
@@ -1522,7 +1522,7 @@ static dCcD_SrcCyl l_cylSrc = {
 
 static dCcD_SrcSph l_sphSrc = {
     {
-        {0, {{AT_TYPE_NORMAL_SWORD, 3, 0x1A}, {0xD8FBFDFF, 5}, 0x73}},
+        {0, {{AT_TYPE_NORMAL_SWORD, 3, 0x1A}, {static_cast<s32>(0xD8FBFDFF, 5)}, 0x73}},
         {dCcD_SE_SWORD, 3, 1, 0, {1}},
         {dCcD_SE_NONE, 6, 0, 0, {0}},
         {0},
@@ -19604,7 +19604,7 @@ static actor_method_class l_daAlink_Method = {
 };
 
 actor_process_profile_definition g_profile_ALINK = {
-    fpcLy_CURRENT_e,
+    static_cast<unsigned int>(fpcLy_CURRENT_e),
     5,
     fpcPi_CURRENT_e,
     PROC_ALINK,

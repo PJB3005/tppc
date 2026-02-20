@@ -3084,7 +3084,7 @@ static leafdraw_method_class l_dMeter2_Method = {
 };
 
 msg_process_profile_definition g_profile_METER2 = {
-    fpcLy_CURRENT_e,
+    static_cast<unsigned int>(fpcLy_CURRENT_e),
     12,
     fpcPi_CURRENT_e,
     PROC_METER2,

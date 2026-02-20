@@ -157,7 +157,7 @@ static actor_method_class daNocrm_METHODS = {
 };
 
 actor_process_profile_definition g_profile_NO_CHG_ROOM = {
-    fpcLy_CURRENT_e,
+    static_cast<unsigned int>(fpcLy_CURRENT_e), // TPPC
     2,
     fpcPi_CURRENT_e,
     PROC_NO_CHG_ROOM,

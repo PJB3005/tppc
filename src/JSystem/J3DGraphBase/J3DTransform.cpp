@@ -543,7 +543,11 @@ loop:
 #undef FP31
 #undef UNIT_R
 }
-#endif // clang-format on
+#else // clang-format on
+void J3DPSMtxArrayConcat(register Mtx mA, register Mtx mB, register Mtx mAB, register u32 count) {
+    OSPanic(__FILE__, __LINE__, "Unimplemented J3DPSMtxArrayConcat");
+}
+#endif
 
 f32 const PSMulUnit01[] = {
     0.0f,

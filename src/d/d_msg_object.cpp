@@ -2462,7 +2462,7 @@ static leafdraw_method_class l_dMsgObject_Method = {
 };
 
 msg_process_profile_definition g_profile_MSG_OBJECT = {
-  fpcLy_CURRENT_e,        // mLayerID
+  static_cast<unsigned int>(fpcLy_CURRENT_e),        // mLayerID
   12,                     // mListID
   fpcPi_CURRENT_e,        // mListPrio
   PROC_MSG_OBJECT,        // mProcName

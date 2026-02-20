@@ -78,12 +78,14 @@ void fpcM_Management(fpcM_ManagementFunc i_preExecuteFn, fpcM_ManagementFunc i_p
                 i_preExecuteFn();
             }
 
+#if DEBUG // TPPC
             if (!fapGm_HIO_c::isCaptureScreen()) {
                 fpcEx_Handler((fpcLnIt_QueueFunc)fpcM_Execute);
             }
             if (!fapGm_HIO_c::isCaptureScreen() || fapGm_HIO_c::getCaptureScreenDivH() != 1) {
                 fpcDw_Handler((fpcDw_HandlerFuncFunc)fpcM_DrawIterater, (fpcDw_HandlerFunc)fpcM_Draw);
             }
+#endif
 
             if (i_postExecuteFn != NULL) {
                 i_postExecuteFn();

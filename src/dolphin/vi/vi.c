@@ -544,7 +544,7 @@ static void setInterruptRegs(VITiming* tm) {
 #endif
     u16 borrow;
 
-    vct = tm->nhlines / 2;
+    vct = tm->nhlines / 2;z
     borrow = tm->nhlines % 2;
     if (borrow != 0) {
         hct = tm->hlw;

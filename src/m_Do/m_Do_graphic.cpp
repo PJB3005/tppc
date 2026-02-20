@@ -680,9 +680,13 @@ void mDoGph_gInf_c::releaseCsr(void) {
 }
 #endif
 
-void mDoGph_BlankingON() {}
+int mDoGph_BlankingON() {
+    return 1;
+}
 
-void mDoGph_BlankingOFF() {}
+int mDoGph_BlankingOFF() {
+    return 1;
+}
 
 static void dScnPly_BeforeOfPaint() {
     dComIfGd_reset();

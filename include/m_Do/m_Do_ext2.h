@@ -12,6 +12,7 @@ public:
     BOOL check();
     BOOL diff();
 
+    static FixedMemoryCheck* easyCreate(void* param_1, s64 param_2) { return easyCreate(param_1, u32(param_2)); }
     static FixedMemoryCheck* easyCreate(void* param_1, s32 param_2) { return easyCreate(param_1, u32(param_2)); }
     static FixedMemoryCheck* easyCreate(void*, u32);
     static BOOL checkAll();

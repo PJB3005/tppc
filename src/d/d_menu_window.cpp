@@ -1729,7 +1729,7 @@ static leafdraw_method_class l_dMw_Method = {
 };
 
 msg_process_profile_definition g_profile_MENUWINDOW = {
-    fpcLy_CURRENT_e,
+    static_cast<unsigned int>(fpcLy_CURRENT_e),
     12,
     fpcPi_CURRENT_e,
     PROC_MENUWINDOW,

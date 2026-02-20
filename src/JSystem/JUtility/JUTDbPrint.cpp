@@ -6,6 +6,8 @@
 #include "JSystem/JUtility/JUTVideo.h"
 #include <cstdio>
 
+#include <stdarg.h>
+
 JUTDbPrint::JUTDbPrint(JUTFont* pFont, JKRHeap* pHeap) {
     mFont = pFont;
     mFirst = NULL;

@@ -1,6 +1,6 @@
 // fake MSL_C math for sdk specifically since it differs from game MSL_C math
 
-#include <pc_compat.h>
+#include <tppc_compat.h>
 
 #include <cmath>
 

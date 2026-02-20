@@ -471,6 +471,7 @@ void mDoMain_HIO_c::listenPropertyEvent(const JORPropertyEvent* property) {
 }
 #endif
 
+#if !TPPC
 bool Debug_console(u32 i_padNo) {
     JUTConsole* console = JFWSystem::getSystemConsole();
     if (console != NULL) {
@@ -568,6 +569,7 @@ bool Debug_console(u32 i_padNo) {
 
     return 0;
 }
+#endif
 
 #if PLATFORM_GCN
 #define COPYDATE_PATH "/str/Final/Release/COPYDATE"
@@ -591,6 +593,7 @@ s32 LOAD_COPYDATE(void*) {
 }
 
 static void debug() {
+#if !TPPC
     #if DEBUG
     if (mPrintFrameLine) {
         printFrameLine();
@@ -646,6 +649,7 @@ static void debug() {
         fapGm_HIO_c::offCpuTimer();
         #endif
     }
+#endif
 }
 
 // linker generated symbols
@@ -861,6 +865,7 @@ void parse_args(int argc, const char* argv[]) {
 }
 #endif
 
+#if 0 // TPPC
 static u8 mainThreadStack[32768];
 
 OSThread mainThread;
@@ -933,76 +938,77 @@ void main(int argc, const char* argv[]) {
     OSSetThreadPriority(current_thread, 0x1F);
     OSSuspendThread(current_thread);
 }
+#endif // TPPC
 
 bool JKRHeap::dump_sort() {
     return true;
 }
 
 template<>
-Z2WolfHowlMgr* JASGlobalInstance<Z2WolfHowlMgr>::sInstance;
+Z2WolfHowlMgr* JASGlobalInstance<Z2WolfHowlMgr>::sInstance {};
 
 template<>
-Z2EnvSeMgr* JASGlobalInstance<Z2EnvSeMgr>::sInstance;
+Z2EnvSeMgr* JASGlobalInstance<Z2EnvSeMgr>::sInstance {};
 
 template<>
-Z2FxLineMgr* JASGlobalInstance<Z2FxLineMgr>::sInstance;
+Z2FxLineMgr* JASGlobalInstance<Z2FxLineMgr>::sInstance {};
 
 template<>
-Z2Audience* JASGlobalInstance<Z2Audience>::sInstance;
+Z2Audience* JASGlobalInstance<Z2Audience>::sInstance {};
 
 template<>
-Z2SoundObjMgr* JASGlobalInstance<Z2SoundObjMgr>::sInstance;
+Z2SoundObjMgr* JASGlobalInstance<Z2SoundObjMgr>::sInstance {};
 
 template<>
-Z2SoundInfo* JASGlobalInstance<Z2SoundInfo>::sInstance;
+Z2SoundInfo* JASGlobalInstance<Z2SoundInfo>::sInstance {};
 
 template<>
-JAUSoundInfo* JASGlobalInstance<JAUSoundInfo>::sInstance;
+JAUSoundInfo* JASGlobalInstance<JAUSoundInfo>::sInstance {};
 
 template<>
-JAUSoundNameTable* JASGlobalInstance<JAUSoundNameTable>::sInstance;
+JAUSoundNameTable* JASGlobalInstance<JAUSoundNameTable>::sInstance {};
 
 template<>
-JAUSoundTable* JASGlobalInstance<JAUSoundTable>::sInstance;
+JAUSoundTable* JASGlobalInstance<JAUSoundTable>::sInstance {};
 
 template<>
-JAISoundInfo* JASGlobalInstance<JAISoundInfo>::sInstance;
+JAISoundInfo* JASGlobalInstance<JAISoundInfo>::sInstance {};
 
 template<>
-Z2SoundMgr* JASGlobalInstance<Z2SoundMgr>::sInstance;
+Z2SoundMgr* JASGlobalInstance<Z2SoundMgr>::sInstance {};
 
 template<>
-JAIStreamMgr* JASGlobalInstance<JAIStreamMgr>::sInstance;
+JAIStreamMgr* JASGlobalInstance<JAIStreamMgr>::sInstance {};
 
 template<>
-JAISeqMgr* JASGlobalInstance<JAISeqMgr>::sInstance;
+JAISeqMgr* JASGlobalInstance<JAISeqMgr>::sInstance {};
 
 template<>
-JAISeMgr* JASGlobalInstance<JAISeMgr>::sInstance;
+JAISeMgr* JASGlobalInstance<JAISeMgr>::sInstance {};
 
 template<>
-Z2SpeechMgr2* JASGlobalInstance<Z2SpeechMgr2>::sInstance;
+Z2SpeechMgr2* JASGlobalInstance<Z2SpeechMgr2>::sInstance {};
 
 template<>
-Z2SoundStarter* JASGlobalInstance<Z2SoundStarter>::sInstance;
+Z2SoundStarter* JASGlobalInstance<Z2SoundStarter>::sInstance {};
 
 template<>
-JAISoundStarter* JASGlobalInstance<JAISoundStarter>::sInstance;
+JAISoundStarter* JASGlobalInstance<JAISoundStarter>::sInstance {};
 
 template<>
-Z2StatusMgr* JASGlobalInstance<Z2StatusMgr>::sInstance;
+Z2StatusMgr* JASGlobalInstance<Z2StatusMgr>::sInstance {};
 
 template<>
-Z2SceneMgr* JASGlobalInstance<Z2SceneMgr>::sInstance;
+Z2SceneMgr* JASGlobalInstance<Z2SceneMgr>::sInstance {};
 
 template<>
-Z2SeqMgr* JASGlobalInstance<Z2SeqMgr>::sInstance;
+Z2SeqMgr* JASGlobalInstance<Z2SeqMgr>::sInstance {};
 
 template<>
-Z2SeMgr* JASGlobalInstance<Z2SeMgr>::sInstance;
+Z2SeMgr* JASGlobalInstance<Z2SeMgr>::sInstance {};
 
 template<>
-JASAudioThread* JASGlobalInstance<JASAudioThread>::sInstance;
+JASAudioThread* JASGlobalInstance<JASAudioThread>::sInstance {};
 
 template<>
-JASDefaultBankTable* JASGlobalInstance<JASDefaultBankTable>::sInstance;
+JASDefaultBankTable* JASGlobalInstance<JASDefaultBankTable>::sInstance {};

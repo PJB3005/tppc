@@ -599,15 +599,18 @@ cflags_trk = []
 cflags_dolphin = []
 cflags_rel = []
 
-type OBJECT_TYPE = str
-type LIB = dict
+class Object:
+    def __init__(self, matching: bool, path: str, **kwargs):
+        self.matching = matching
+        self.path = path
 
-def Object(matching: bool, path: str, **kwargs) -> OBJECT_TYPE:
-    return path
+type OBJECT_TYPE = Object
+
+type LIB = dict
 
 Matching = True
 NonMatching = False
-Equivalent = False
+Equivalent = True
 
 
 def lib(name: str, objects: list[OBJECT_TYPE], **kwargs) -> LIB:
@@ -641,7 +644,7 @@ config.libs = [
         "host": True,
         "objects": [
             Object(MatchingFor(ALL_GCN), "m_Do/m_Do_main.cpp"),
-            Object(MatchingFor(ALL_GCN), "m_Do/m_Do_printf.cpp"),
+            #Object(MatchingFor(ALL_GCN), "m_Do/m_Do_printf.cpp"),
             Object(MatchingFor(ALL_GCN), "m_Do/m_Do_audio.cpp"),
             Object(MatchingFor(ALL_GCN), "m_Do/m_Do_controller_pad.cpp"),
             Object(NonMatching, "m_Re/m_Re_controller_pad.cpp"),
@@ -812,7 +815,7 @@ config.libs = [
             Object(NonMatching, "d/d_bg_w_hf.cpp"),
             Object(MatchingFor(ALL_GCN), "d/d_bg_w_kcol.cpp"),
             Object(MatchingFor(ALL_GCN), "d/d_bg_w_sv.cpp"),
-            Object(Equivalent, "d/d_cc_d.cpp"), # weak func order (cCcD_ShapeAttr::GetCoCP)
+            Object(True or Equivalent, "d/d_cc_d.cpp"), # weak func order (cCcD_ShapeAttr::GetCoCP)
             Object(MatchingFor(ALL_GCN), "d/d_cc_mass_s.cpp"),
             Object(MatchingFor(ALL_GCN), "d/d_cc_s.cpp"),
             Object(MatchingFor(ALL_GCN), "d/d_cc_uty.cpp"),
@@ -827,10 +830,10 @@ config.libs = [
             Object(MatchingFor(ALL_GCN), "d/d_model.cpp"),
             Object(MatchingFor(ALL_GCN), "d/d_eye_hl.cpp"),
             Object(MatchingFor(ALL_GCN), "d/d_error_msg.cpp"),
-            Object(Equivalent, "d/d_debug_viewer.cpp"), # debug weak func order
+            Object(True or Equivalent, "d/d_debug_viewer.cpp"), # debug weak func order
             Object(NonMatching, "d/d_debug_pad.cpp"),
             Object(NonMatching, "d/d_debug_camera.cpp"),
-            Object(Equivalent, "d/actor/d_a_alink.cpp"), # weak func order, vtable order
+            Object(True or Equivalent, "d/actor/d_a_alink.cpp"), # weak func order, vtable order
             Object(MatchingFor(ALL_GCN), "d/actor/d_a_itembase.cpp"),
             Object(MatchingFor(ALL_GCN), "d/actor/d_a_no_chg_room.cpp"),
             Object(MatchingFor(ALL_GCN), "d/actor/d_a_npc.cpp"),
@@ -840,7 +843,7 @@ config.libs = [
             Object(MatchingFor(ALL_GCN), "d/d_insect.cpp"),
             Object(MatchingFor(ALL_GCN), "d/actor/d_a_obj_ss_base.cpp"),
             Object(MatchingFor(ALL_GCN), "d/actor/d_a_player.cpp"),
-            Object(Equivalent, "d/d_camera.cpp"), # weak func order
+            Object(True or Equivalent, "d/d_camera.cpp"), # weak func order # TPPC
             Object(MatchingFor(ALL_GCN), "d/d_envse.cpp"),
             Object(MatchingFor(ALL_GCN), "d/d_file_select.cpp"),
             Object(MatchingFor(ALL_GCN), "d/d_file_sel_warning.cpp"),
@@ -859,7 +862,7 @@ config.libs = [
             Object(MatchingFor(ALL_GCN), "d/d_ky_thunder.cpp"),
             Object(MatchingFor(ALL_GCN), "d/d_kantera_icon_meter.cpp"),
             Object(MatchingFor(ALL_GCN), "d/d_menu_calibration.cpp"),
-            Object(NonMatching, "d/d_menu_collect.cpp"), # weak func order (dMenu_Collect2D_c::draw())
+            Object(True or NonMatching, "d/d_menu_collect.cpp"), # weak func order (dMenu_Collect2D_c::draw())
             Object(MatchingFor(ALL_GCN), "d/d_menu_dmap.cpp"),
             Object(MatchingFor(ALL_GCN), "d/d_menu_dmap_map.cpp"),
             Object(MatchingFor(ALL_GCN), "d/d_menu_map_common.cpp"),
@@ -876,7 +879,7 @@ config.libs = [
             Object(MatchingFor(ALL_GCN), "d/d_menu_save.cpp"),
             Object(MatchingFor(ALL_GCN), "d/d_menu_skill.cpp"),
             Object(MatchingFor(ALL_GCN), "d/d_menu_window_HIO.cpp"),
-            Object(Equivalent, "d/d_menu_window.cpp"), # weak func order (dDlst_MENU_CAPTURE_c::draw)
+            Object(True or Equivalent, "d/d_menu_window.cpp"), # weak func order (dDlst_MENU_CAPTURE_c::draw)
             Object(MatchingFor(ALL_GCN), "d/d_meter_HIO.cpp"),
             Object(MatchingFor(ALL_GCN), "d/d_meter_button.cpp"),
             Object(MatchingFor(ALL_GCN), "d/d_meter_haihai.cpp"),
@@ -888,7 +891,7 @@ config.libs = [
             Object(MatchingFor(ALL_GCN), "d/d_meter2.cpp"),
             Object(MatchingFor(ALL_GCN), "d/d_msg_out_font.cpp"),
             Object(MatchingFor(ALL_GCN), "d/d_msg_class.cpp"),
-            Object(Equivalent, "d/d_msg_object.cpp"), # weak func order
+            Object(True or Equivalent, "d/d_msg_object.cpp"), # weak func order # TPPC
             Object(MatchingFor(ALL_GCN), "d/d_msg_unit.cpp"),
             Object(MatchingFor(ALL_GCN), "d/d_msg_scrn_3select.cpp"),
             Object(MatchingFor(ALL_GCN), "d/d_msg_scrn_arrow.cpp"),
@@ -1138,7 +1141,7 @@ config.libs = [
             Object(NonMatching, "JSystem/JAudio2/JASWaveFile.cpp"),
             Object(NonMatching, "JSystem/JAudio2/JASWaveFileWav.cpp"),
             Object(MatchingFor(ALL_GCN), "JSystem/JAudio2/JASCmdStack.cpp"),
-            Object(Equivalent, "JSystem/JAudio2/JASTrack.cpp"), # weak func order
+            Object(True or Equivalent, "JSystem/JAudio2/JASTrack.cpp"), # weak func order
             Object(MatchingFor(ALL_GCN), "JSystem/JAudio2/JASTrackPort.cpp"),
             Object(MatchingFor(ALL_GCN), "JSystem/JAudio2/JASRegisterParam.cpp"),
             Object(MatchingFor(ALL_GCN), "JSystem/JAudio2/JASSeqCtrl.cpp"),

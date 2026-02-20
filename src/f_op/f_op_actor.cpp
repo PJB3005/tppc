@@ -643,4 +643,4 @@ actor_method_class g_fopAc_Method = {
 
 class JAUSectionHeap;
 template<>
-JAUSectionHeap* JASGlobalInstance<JAUSectionHeap>::sInstance;
+JAUSectionHeap* JASGlobalInstance<JAUSectionHeap>::sInstance { };

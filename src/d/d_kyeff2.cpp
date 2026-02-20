@@ -44,7 +44,7 @@ static leafdraw_method_class l_dKyeff2_Method = {
 };
 
 kankyo_process_profile_definition g_profile_KYEFF2 = {
-    fpcLy_CURRENT_e,
+    static_cast<unsigned int>(fpcLy_CURRENT_e), // TPPC
     12,
     fpcPi_CURRENT_e,
     PROC_KYEFF2,

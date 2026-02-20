@@ -160,7 +160,13 @@ public:
     static u32 getMemorySize(void) { return mMemorySize; }
     static JKRHeap* getRootHeap() { return sRootHeap; }
 
-    static JKRHeap* getRootHeap2() { return sRootHeap2; }
+    static JKRHeap* getRootHeap2() {
+#if TPPC
+        OSPanic(__FILE__, __LINE__, "getRootHeap2");
+#else
+        return sRootHeap2;
+#endif
+    }
 
     static JKRHeap* getSystemHeap() { return sSystemHeap; }
     static JKRHeap* getCurrentHeap() { return sCurrentHeap; }

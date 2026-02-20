@@ -1,12 +1,14 @@
 #include "Z2AudioLib/Z2Audience.h"
-#include "Z2AudioLib/Z2SoundInfo.h"
-#include "Z2AudioLib/Z2Calc.h"
-#include "Z2AudioLib/Z2Param.h"
+
+#include "JSystem/J3DU/J3DUD.h"
 #include "JSystem/JAudio2/JAISound.h"
+#include "JSystem/JGeometry.h"
 #include "JSystem/JKernel/JKRHeap.h"
 #include "JSystem/JMath/JMATrigonometric.h"
-#include "JSystem/JGeometry.h"
-#include "JSystem/J3DU/J3DUD.h"
+#include "Z2AudioLib/Z2Calc.h"
+#include "Z2AudioLib/Z2Param.h"
+#include "Z2AudioLib/Z2SoundInfo.h"
+#include "tppc_compat.h"
 
 void Z2AudibleAbsPos::calc(const JGeometry::TVec3<f32>& pos) {
     velocity_.sub(pos, field_0x0);

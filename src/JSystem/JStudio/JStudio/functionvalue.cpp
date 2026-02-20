@@ -724,6 +724,9 @@ void TFunctionValue_list_parameter::prepare() {
 }
 
 f64 TFunctionValue_list_parameter::getValue(f64 param_0) {
+#if TPPC
+    abort();
+#else
     param_0 = range_getParameter(param_0, data_getValue_front(), data_getValue_back());
     JUT_ASSERT(1395, pfData_!=NULL)
 
@@ -740,6 +743,7 @@ f64 TFunctionValue_list_parameter::getValue(f64 param_0) {
     JUT_ASSERT(1411, (pfData_<=pf-suData_size)&&(pf<pfData_+suData_size*uData_));
     JUT_ASSERT(1412, pfnUpdate_!=NULL);
     return pfnUpdate_(*this, param_0);
+#endif
 }
 
 f64 TFunctionValue_list_parameter::update_INTERPOLATE_NONE_(
@@ -880,6 +884,9 @@ void TFunctionValue_hermite::prepare() {
 }
 
 f64 TFunctionValue_hermite::getValue(f64 param_0) {
+#if TPPC
+    abort();
+#else
     param_0 = range_getParameter(param_0, data_getValue_front(), data_getValue_back());
     JUT_ASSERT(1716, pfData_!=NULL)
     
@@ -899,6 +906,7 @@ f64 TFunctionValue_hermite::getValue(f64 param_0) {
         param_0, pfVar7[0], pfVar7[1],
         pfVar7[uSize_ - 1], pfVar5[0],
         pfVar5[1], pfVar5[2]);
+#endif
 }
 
 }  // namespace JStudio

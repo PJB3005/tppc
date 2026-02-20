@@ -1035,10 +1035,12 @@ u32 mDoExt_adjustSolidHeapToSystem(JKRSolidHeap* i_heap) {
 
 void mDoExt_destroySolidHeap(JKRSolidHeap* i_heap) {
     JKRDestroySolidHeap(i_heap);
+#if !TPPC
     if (g_printOtherHeapDebug) {
         // "Solid heap destruction"
         OS_REPORT("mDoExt_destroySolidHeap ソリッドヒープ破壊 %08x\n", i_heap);
     }
+#endif
 }
 
 void mDoExt_destroyExpHeap(JKRExpHeap* i_heap) {

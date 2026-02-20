@@ -4,6 +4,8 @@
 #include <dolphin/mtx.h>
 #include <cmath>
 
+#include "tppc_compat.h"
+
 #define m_PI_D 3.141592653589793
 
 namespace JStudio {

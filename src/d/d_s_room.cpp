@@ -443,7 +443,7 @@ static scene_method_class l_dScnRoom_Method = {
 };
 
 scene_process_profile_definition g_profile_ROOM_SCENE = {
-    fpcLy_CURRENT_e,                            // mLayerID
+    static_cast<unsigned int>(fpcLy_CURRENT_e),                            // mLayerID
     0,                                          // mListID
     fpcPi_CURRENT_e,                            // mListPrio
     PROC_ROOM_SCENE,                            // mProcName

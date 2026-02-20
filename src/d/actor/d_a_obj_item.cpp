@@ -1161,7 +1161,7 @@ procFunc daItem_c::mFuncPtr[] = {
 
 const dCcD_SrcCyl daItem_c::m_cyl_src = {
     {
-        {0, {{0, 0, 0}, {0xFFFFFFFF, 17}, 0x59}},
+        {0, {{0, 0, 0}, {static_cast<s32>(0xFFFFFFFF), 17}, 0x59}},
         {dCcD_SE_NONE, 0, 0, 0, {0}},
         {dCcD_SE_NONE, 0, 0, 0, {4}},
         {0},
@@ -1240,7 +1240,7 @@ static actor_method_class l_daItem_Method = {
 };
 
 actor_process_profile_definition g_profile_ITEM = {
-    fpcLy_CURRENT_e,
+    static_cast<unsigned int>(fpcLy_CURRENT_e),
     7,
     fpcPi_CURRENT_e,
     PROC_ITEM,

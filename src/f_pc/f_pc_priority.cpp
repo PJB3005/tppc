@@ -51,7 +51,7 @@ process_priority_class* fpcPi_GetFromQueue() {
 
 int fpcPi_Delete(process_priority_class* i_procPriority) {
     static priority_id crear = {
-        fpcLy_NONE_e,
+        static_cast<unsigned int>(fpcLy_NONE_e), // TPPC
         0xFFFF,
         fpcPi_NONE_e,
     };

@@ -3,6 +3,8 @@
 #include "JSystem/J3DU/J3DUClipper.h"
 #include <cmath>
 
+#include "tppc_compat.h"
+
 void J3DUClipper::init() {
     mNear = 1.0f;
     mFar = 100000.0f;

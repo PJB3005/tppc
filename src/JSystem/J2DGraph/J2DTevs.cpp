@@ -9,6 +9,8 @@
 #include <cmath>
 #include <dolphin/gx.h>
 
+#include "tppc_compat.h"
+
 void J2DTexMtx::load(u32 mtxIdx) {
     GXLoadTexMtxImm(mTexMtx, mtxIdx * 3 + GX_TEXMTX0, (GXTexMtxType)mInfo.mTexMtxType);
 }

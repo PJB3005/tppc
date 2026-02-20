@@ -250,10 +250,10 @@ public:
 
 class JAISoundHandle;
 class JAIAudible;
-class JAIAudience;
+struct JAIAudience; // TPPC: Fix forward declare
 class JAISe;
 class JAISeq;
-class JAISoundChild;
+struct JAISoundChild;
 class JAIStream;
 class JAITempoMgr;
 

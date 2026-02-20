@@ -1633,7 +1633,7 @@ static leafdraw_method_class l_dTimer_Method = {
 };
 
 msg_process_profile_definition g_profile_TIMER = {
-    fpcLy_CURRENT_e,
+    static_cast<unsigned int>(fpcLy_CURRENT_e),
     12,
     fpcPi_CURRENT_e,
     PROC_TIMER,

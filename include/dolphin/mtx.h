@@ -68,6 +68,24 @@ void C_MTXQuat(Mtx m, const Quaternion* q);
 void C_MTXReflect(Mtx m, const Vec* p, const Vec* n);
 
 // PS version
+#if TPPC
+#define PSMTXIdentity C_MTXIdentity
+#define PSMTXCopy C_MTXCopy
+#define PSMTXConcat C_MTXConcat
+#define PSMTXConcatArray C_MTXConcatArray
+#define PSMTXTranspose C_MTXTranspose
+#define PSMTXInverse C_MTXInverse
+#define PSMTXInvXpose C_MTXInvXpose
+#define PSMTXRotRad C_MTXRotRad
+#define PSMTXRotTrig C_MTXRotTrig
+#define PSMTXRotAxisRad C_MTXRotAxisRad
+#define PSMTXTrans C_MTXTrans
+#define PSMTXTransApply C_MTXTransApply
+#define PSMTXScale C_MTXScale
+#define PSMTXScaleApply C_MTXScaleApply
+#define PSMTXQuat C_MTXQuat
+#define PSMTXReflect C_MTXReflect
+#else
 void PSMTXIdentity(Mtx m);
 void PSMTXCopy(const Mtx src, Mtx dst);
 void PSMTXConcat(const Mtx a, const Mtx b, Mtx ab);
@@ -84,8 +102,9 @@ void PSMTXScale(Mtx m, f32 xS, f32 yS, f32 zS);
 void PSMTXScaleApply(const Mtx src, Mtx dst, f32 xS, f32 yS, f32 zS);
 void PSMTXQuat(Mtx m, const Quaternion* q);
 void PSMTXReflect(Mtx m, const Vec* p, const Vec* n);
+#endif
 
-#if DEBUG
+#if TPPC || DEBUG
 #define MTXIdentity   C_MTXIdentity
 #define MTXCopy       C_MTXCopy
 #define MTXConcat     C_MTXConcat
@@ -139,13 +158,20 @@ void C_MTXMultVecArray(const Mtx m, const Vec* srcBase, Vec* dstBase, u32 count)
 void C_MTXMultVecSR(const Mtx m, const Vec* src, Vec* dst);
 void C_MTXMultVecArraySR(const Mtx m, const Vec* srcBase, Vec* dstBase, u32 count);
 
+#if TPPC
+#define PSMTXMultVec MTXMultVec
+#define PSMTXMultVecArray MTXMultVecArray
+#define PSMTXMultVecSR MTXMultVecSR
+#define PSMTXMultVecArraySR MTXMultVecArraySR
+#else
 // PS versions
 void PSMTXMultVec(const Mtx m, const Vec* src, Vec* dst);
 void PSMTXMultVecArray(const Mtx m, const Vec* srcBase, Vec* dstBase, u32 count);
 void PSMTXMultVecSR(const Mtx m, const Vec* src, Vec* dst);
 void PSMTXMultVecArraySR(const Mtx m, const Vec* srcBase, Vec* dstBase, u32 count);
+#endif
 
-#if DEBUG
+#if TPPC || DEBUG
 #define MTXMultVec        C_MTXMultVec
 #define MTXMultVecArray   C_MTXMultVecArray
 #define MTXMultVecSR      C_MTXMultVecSR
@@ -184,7 +210,7 @@ void PSMTX44RotRad(Mtx44 m, char axis, f32 rad);
 void PSMTX44RotTrig(Mtx44 m, char axis, f32 sinA, f32 cosA);
 void PSMTX44RotAxisRad(Mtx44 m, const Vec* axis, f32 rad);
 
-#if DEBUG
+#if TPPC || DEBUG
 #define MTX44Identity   C_MTX44Identity
 #define MTX44Copy       C_MTX44Copy
 #define MTX44Concat     C_MTX44Concat
@@ -234,7 +260,7 @@ void PSMTX44MultVecArray(const Mtx44 m, const Vec* srcBase, Vec* dstBase, u32 co
 void PSMTX44MultVecSR(const Mtx44 m, const Vec* src, Vec* dst);
 void PSMTX44MultVecArraySR(const Mtx44 m, const Vec* srcBase, Vec* dstBase, u32 count);
 
-#if DEBUG
+#if TPPC || DEBUG
 #define MTX44MultVec        C_MTX44MultVec
 #define MTX44MultVecArray   C_MTX44MultVecArray
 #define MTX44MultVecSR      C_MTX44MultVecSR
@@ -275,6 +301,18 @@ void C_VECCrossProduct(const Vec* a, const Vec* b, Vec* axb);
 f32 C_VECSquareDistance(const Vec* a, const Vec* b);
 f32 C_VECDistance(const Vec* a, const Vec* b);
 
+#if TPPC
+#define             PSVECAdd VECAdd
+#define        PSVECSubtract VECSubtract
+#define           PSVECScale VECScale
+#define       PSVECNormalize VECNormalize
+#define       PSVECSquareMag VECSquareMag
+#define             PSVECMag VECMag
+#define      PSVECDotProduct VECDotProduct
+#define    PSVECCrossProduct VECCrossProduct
+#define  PSVECSquareDistance VECSquareDistance
+#define        PSVECDistance VECDistance
+#else
 // PS versions
 void PSVECAdd(const Vec* a, const Vec* b, Vec* ab);
 void PSVECSubtract(const Vec* a, const Vec* b, Vec* a_b);
@@ -286,8 +324,9 @@ f32 PSVECDotProduct(const Vec* a, const Vec* b);
 void PSVECCrossProduct(const Vec* a, const Vec* b, Vec* axb);
 f32 PSVECSquareDistance(const Vec* a, const Vec* b);
 f32 PSVECDistance(const Vec* a, const Vec* b);
+#endif
 
-#if DEBUG
+#if TPPC || DEBUG
 #define VECAdd            C_VECAdd
 #define VECSubtract       C_VECSubtract
 #define VECScale          C_VECScale
@@ -338,7 +377,7 @@ void PSQUATNormalize(const Quaternion* src, Quaternion* unit);
 void PSQUATInverse(const Quaternion* src, Quaternion* inv);
 void PSQUATDivide(const Quaternion* p, const Quaternion* q, Quaternion* r);
 
-#if DEBUG
+#if TPPC || DEBUG
 #define QUATAdd        C_QUATAdd
 #define QUATSubtract   C_QUATSubtract
 #define QUATMultiply   C_QUATMultiply

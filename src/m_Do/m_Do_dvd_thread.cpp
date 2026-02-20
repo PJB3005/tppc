@@ -184,9 +184,11 @@ mDoDvdThd_callback_c* mDoDvdThd_callback_c::create(mDoDvdThd_callback_func pFunc
         new (mDoExt_getCommandHeap(), -4) mDoDvdThd_callback_c(pFunc, pData);
     if (callCmd != NULL) {
         mDoDvdThd::l_param.addition(callCmd);
+#if DEBUG
         if (mDoDvdThd::DVDLogoMode) {
             OS_REPORT("\x1b[34m<DVD> callback %08x %08x %08x\n\x1b[m", callCmd, pFunc, pData);
         }
+#endif
     }
     return callCmd;
 }
@@ -222,9 +224,11 @@ mDoDvdThd_mountArchive_c* mDoDvdThd_mountArchive_c::create(char const* pArchiveP
         } else {
             mountArcCmd->mHeap = pHeap;
             mDoDvdThd::l_param.addition(mountArcCmd);
+#if DEBUG
             if (mDoDvdThd::DVDLogoMode) {
                 OS_REPORT("\x1b[34m<DVD> mountArchive(%d:%s)\n\x1b[m", mountArcCmd->mEntryNumber, pArchivePath);
             }
+#endif
         }
     }
     return mountArcCmd;
@@ -377,9 +381,11 @@ mDoDvdThd_mountXArchive_c* mDoDvdThd_mountXArchive_c::create(char const* pArchiv
         } else {
             mountXArcCmd->mHeap = pHeap;
             mDoDvdThd::l_param.addition(mountXArcCmd);
+#if DEBUG
             if (mDoDvdThd::DVDLogoMode) {
                 OS_WARNING("<DVD> mountXArchive(%d:%s)\n", mountXArcCmd->mEntryNum, pArchivePath);
             }
+#endif
         }
     }
     return mountXArcCmd;
@@ -461,9 +467,11 @@ mDoDvdThd_toMainRam_c* mDoDvdThd_toMainRam_c::create(char const* pArchivePath, u
         } else {
             toMainRAMCmd->mHeap = pHeap;
             mDoDvdThd::l_param.addition(toMainRAMCmd);
+#if DEBUG
             if (mDoDvdThd::DVDLogoMode) {
                 OS_WARNING("<DVD> toMainRam(%d:%s)\n", toMainRAMCmd->mEntryNum, pArchivePath);
             }
+#endif
         }
     }
     return toMainRAMCmd;

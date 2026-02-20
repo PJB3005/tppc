@@ -493,7 +493,7 @@ u32 PPCMfl2cr();
 void PPCMtl2cr(u32 newL2cr);
 void PPCMtdec(u32 newDec);
 void PPCSync();
-void PPCHalt();
+void PPCHalt [[noreturn]]();
 u32 PPCMffpscr();
 void PPCMtfpscr(u32 newFPSCR);
 u32 PPCMfhid2();

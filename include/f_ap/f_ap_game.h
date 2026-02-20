@@ -28,7 +28,9 @@ public:
     static void executeCaptureScreen() {}
 
     static void createCaptureScreen() {
+#if DEBUG // TPPC
         mCaptureScreen = new CaptureScreen(JFWDisplay::getManager());
+#endif
         JUT_ASSERT(46, mCaptureScreen != NULL);
     }
 
@@ -48,17 +50,20 @@ public:
         m_CpuTimerOff = FALSE;
     }
 
+#if DEBUG
     static u8 getCaptureScreenNumH() { return mCaptureScreenNumH; }
     static u8 getCaptureScreenNumV() { return mCaptureScreenNumV; }
 
     static u8 getCaptureScreenDivH() { return mCaptureScreenDivH; }
     static u8 getCaptureScreenDivV() { return mCaptureScreenDivV; }
+#endif
 
     static u8 m_CpuTimerOn;
     static u8 m_CpuTimerOff;
     static u8 m_CpuTimerStart;
     static u32 m_CpuTimerTick;
 
+#if DEBUG
     static CaptureScreen* mCaptureScreen;
     static void* mCaptureScreenBuffer;
     static s16 mCaptureScreenFlag;
@@ -75,6 +80,7 @@ public:
 
     static u8 mCaptureScreenDivH;
     static u8 mCaptureScreenDivV;
+#endif
 
     static u8 mPackArchiveMode;
 

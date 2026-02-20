@@ -35,26 +35,35 @@ void dDbVw_deleteDrawPacketList() {
 }
 
 void dDbVw_drawCube8p(int i_bufferType, cXyz* i_points, const GXColor& i_color) {
+#if DEBUG // TPPC
     mDoExt_cube8pPacket* packet = new mDoExt_cube8pPacket(i_points, i_color);
     dDbVw_setDrawPacketList(packet, i_bufferType);
+#endif
 }
 
 void dDbVw_drawCube(int i_bufferType, cXyz& i_pos, cXyz& i_size, csXyz& i_angle, const GXColor& i_color) {
+#if DEBUG // TPPC
     mDoExt_cubePacket* packet = new mDoExt_cubePacket(i_pos, i_size, i_angle, i_color);
     dDbVw_setDrawPacketList(packet, i_bufferType);
+#endif
 }
 
 void dDbVw_drawTriangle(int i_bufferType, cXyz* i_points, const GXColor& i_color, u8 i_clipZ) {
+#if DEBUG // TPPC
     mDoExt_trianglePacket* packet = new mDoExt_trianglePacket(i_points, i_color, i_clipZ);
     dDbVw_setDrawPacketList(packet, i_bufferType);
+#endif
 }
 
 void dDbVw_drawQuad(int i_bufferType, cXyz* i_points, const GXColor& i_color, u8 i_clipZ) {
+#if DEBUG // TPPC
     mDoExt_quadPacket* packet = new mDoExt_quadPacket(i_points, i_color, i_clipZ);
     dDbVw_setDrawPacketList(packet, i_bufferType);
+#endif
 }
 
 void dDbVw_drawQuad(int i_bufferType, cXyz* param_1, cXyz* param_2, cXyz* i_pos, s16 i_rotY, const GXColor& i_color, u8 i_clipZ) {
+#if DEBUG // TPPC
     cXyz points[4];
 
     points[0] = *param_1;
@@ -77,45 +86,64 @@ void dDbVw_drawQuad(int i_bufferType, cXyz* param_1, cXyz* param_2, cXyz* i_pos,
 
     mDoExt_quadPacket* packet = new mDoExt_quadPacket(points, i_color, i_clipZ);
     dDbVw_setDrawPacketList(packet, i_bufferType);
+#endif
 }
 
 void dDbVw_drawLine(int i_bufferType, cXyz& i_start, cXyz& i_end, const GXColor& i_color, u8 i_clipZ, u8 i_width) {
+#if DEBUG // TPPC
     mDoExt_linePacket* packet = new mDoExt_linePacket(i_start, i_end, i_color, i_clipZ, i_width);
     dDbVw_setDrawPacketList(packet, i_bufferType);
+#endif
 }
 
 void dDbVw_drawArrow(int i_bufferType, cXyz& i_pos, cXyz& param_2, const GXColor& i_color, u8 i_clipZ, u8 i_width) {
+#if DEBUG // TPPC
     mDoExt_ArrowPacket* packet = new mDoExt_ArrowPacket(i_pos, param_2, i_color, i_clipZ, i_width);
     dDbVw_setDrawPacketList(packet, i_bufferType);
+#endif
 }
 
 void dDbVw_drawPoint(int i_bufferType, cXyz& i_pos, const GXColor& i_color, u8 i_clipZ, u8 i_width) {
+#if DEBUG // TPPC
     mDoExt_pointPacket* packet = new mDoExt_pointPacket(i_pos, i_color, i_clipZ, i_width);
     dDbVw_setDrawPacketList(packet, i_bufferType);
+#endif
 }
 
 void dDbVw_drawCircle(int i_bufferType, cXyz& i_pos, f32 i_radius, const GXColor& i_color, u8 i_clipZ, u8 i_width) {
+#if DEBUG // TPPC
     mDoExt_circlePacket* packet = new mDoExt_circlePacket(i_pos, i_radius, i_color, i_clipZ, i_width);
     dDbVw_setDrawPacketList(packet, i_bufferType);
+#endif
 }
 
 void dDbVw_drawSphere(int i_bufferType, cXyz& i_pos, f32 i_size, const GXColor& i_color, u8 i_clipZ) {
+#if DEBUG // TPPC
     mDoExt_spherePacket* packet = new mDoExt_spherePacket(i_pos, i_size, i_color, i_clipZ);
     dDbVw_setDrawPacketList(packet, i_bufferType);
+#endif
 }
 
 void dDbVw_drawCylinder(int i_bufferType, cXyz& i_pos, f32 i_radius, f32 i_height, const GXColor& i_color, u8 i_clipZ) {
+#if DEBUG // TPPC
     mDoExt_cylinderPacket* packet = new mDoExt_cylinderPacket(i_pos, i_radius, i_height, i_color, i_clipZ);
     dDbVw_setDrawPacketList(packet, i_bufferType);
+#endif
 }
 
 void dDbVw_drawCylinderM(int i_bufferType, Mtx i_mtx, const GXColor& i_color, u8 i_clipZ) {
+#if DEBUG // TPPC
     mDoExt_cylinderMPacket* packet = new mDoExt_cylinderMPacket(i_mtx, i_color, i_clipZ);
     dDbVw_setDrawPacketList(packet, i_bufferType);
+#endif
 }
 
 static bool reportOK() {
+#if !DEBUG // TPPC
+    return true;
+#else
     return !dComIfG_isDebugMode() && !dDebugPad.Active();
+#endif
 }
 
 static JUtility::TColor ShadowDarkColor(0, 0, 0, 0x80);

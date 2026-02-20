@@ -5,7 +5,7 @@
 
 class CPaneMgr;
 class J2DTextBox;
-struct JMSMesgEntry_c;
+class JMSMesgEntry_c; // TPPC: class instead of struct
 class JUTFont;
 
 struct dMenu_LetterData {

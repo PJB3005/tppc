@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.23)
-
 project(Tppc)
 
 find_package(SDL3 CONFIG REQUIRED)
@@ -12,15 +11,22 @@ target_sources(
     PRIVATE
         tppc/main.cpp)
 
-add_compile_definitions(DEBUG=1 TPPC=1)
+add_compile_definitions(TPPC=1 TPPC_DEBUG=1)
+add_compile_definitions(VERSION=0) # VERSION_GCN_USA
 
+add_compile_options(-Wno-microsoft-string-literal-from-predefined -fno-rtti)
+
+# Decompiled code
+include(decompiled.cmake)
+
+# Normal gamedev libs
 target_link_libraries(Tppc PRIVATE SDL3::SDL3)
-target_link_libraries(Tppc PRIVATE mtx)
 target_link_libraries(Tppc PRIVATE fmt::fmt)
 
 add_subdirectory(tppc/os/)
-target_link_libraries(Tppc PRIVATE tppc_os)
+add_subdirectory(tppc/gx/)
+add_subdirectory(tppc/ar/)
+
+target_link_libraries(Tppc PRIVATE tppc_os tppc_gx tppc_ar)
 
 target_include_directories(Tppc SYSTEM PRIVATE include/)
-
-include(decompiled.cmake)

@@ -1,6 +1,8 @@
 #ifndef C_ANGLE_H
 #define C_ANGLE_H
 
+#include <tppc_compat.h>
+
 #include "SSystem/SComponent/c_xyz.h"
 
 #define ADD_VAR(x, y)  ((x) += (y))

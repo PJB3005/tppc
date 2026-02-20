@@ -517,11 +517,19 @@ inline void dMsgObject_setPortalMessageID(u16 id) {
 }
 
 inline void dMsgObject_setWord(const char* i_word) {
+#if TPPC
+    OSPanic(__FILE__, __LINE__, "setWord missing");
+#else
     dMsgObject_getMsgObjectClass()->setWord(i_word);
+#endif
 }
 
 inline void dMsgObject_setSelectWord(int i_no, const char* i_word) {
+#if TPPC
+    OSPanic(__FILE__, __LINE__, "setSelectWord missing");
+#else
     dMsgObject_getMsgObjectClass()->setSelectWord(i_no, i_word);
+#endif
 }
 
 inline u8* dMsgObject_getMsgDtPtr() {
