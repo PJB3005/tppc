@@ -45,6 +45,8 @@
 
 #define ROUND(n, a) (((u32)(n) + (a)-1) & ~((a)-1))
 #define TRUNC(n, a) (((u32)(n)) & ~((a)-1))
+#define ROUND64(n, a) (((u64)(n) + (a)-1) & ~((a)-1))
+#define TRUNC64(n, a) (((u64)(n)) & ~((a)-1))
 
 // Silence unused parameter warnings.
 // Necessary for debug matches.
@@ -87,8 +89,8 @@ void* __memcpy(void*, const void*, int);
 
 #define SQUARE(x) ((x) * (x))
 
-#define POINTER_ADD_TYPE(type_, ptr_, offset_) ((type_)((unsigned long)(ptr_) + (unsigned long)(offset_)))
-#define POINTER_ADD(ptr_, offset_) POINTER_ADD_TYPE(__typeof__(ptr_), ptr_, offset_)
+#define POINTER_ADD_TYPE(type_, ptr_, offset_) ((type_)((uintptr_t)(ptr_) + (uintptr_t)(offset_)))
+#define POINTER_ADD(ptr_, offset_) POINTER_ADD_TYPE(decltype(ptr_), ptr_, offset_)
 
 // floating-point constants
 static const float INF = 2000000000.0f;

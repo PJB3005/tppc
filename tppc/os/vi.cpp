@@ -57,5 +57,6 @@ u32 VIGetScanMode(void) {
     UNIMPLEMENTED();
 }
 u32 VIGetDTVStatus(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return 0;
 }

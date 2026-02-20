@@ -9,7 +9,8 @@
 #include "os_impl.hpp"
 
 void OSPanic(const char* file, int line, const char* msg, ...) {
-    fmt::print("ABORT [{}:{}] {}", file, line, msg);
+    fmt::print("ABORT [{}:{}] {}\n", file, line, msg);
+    fflush(stdout);
     abort();
 }
 
@@ -18,6 +19,7 @@ void OSReport_Warning(const char* fmt, ...) {
     va_start(args, fmt);
     fputs("WARNING: ", stdout);
     printf(fmt, args);
+    fputs("\n", stdout);
     va_end(args);
 }
 
@@ -26,6 +28,7 @@ void OSReport_Error(const char* fmt, ...) {
     va_start(args, fmt);
     fputs("ERROR: ", stdout);
     printf(fmt, args);
+    fputs("\n", stdout);
     va_end(args);
 }
 
@@ -34,6 +37,7 @@ void OSReport_FatalError(const char* fmt, ...) {
     va_start(args, fmt);
     fputs("FATAL: ", stdout);
     printf(fmt, args);
+    fputs("\n", stdout);
     va_end(args);
 
     abort();
@@ -73,8 +77,7 @@ void OSResetSystem(int reset, u32 resetCode, BOOL forceMenu) {
 }
 
 u32 OSGetResetCode() {
-    UNIMPLEMENTED();
-    return 0;
+    return OS_RESET_RESTART;
 }
 
 void OSInitStopwatch(OSStopwatch* sw, char* name) {
@@ -110,8 +113,7 @@ OSTime OSCalendarTimeToTicks(OSCalendarTime* td) {
 }
 
 void OSLockMutex(OSMutex* mutex) {
-    UNIMPLEMENTED();
-
+    SOFT_UNIMPLEMENTED();
 }
 
 void OSInitMutex(OSMutex* mutex) {
@@ -119,8 +121,7 @@ void OSInitMutex(OSMutex* mutex) {
 }
 
 void OSUnlockMutex(OSMutex* mutex) {
-    UNIMPLEMENTED();
-
+    SOFT_UNIMPLEMENTED();
 }
 
 BOOL OSTryLockMutex(OSMutex* mutex) {
@@ -212,72 +213,6 @@ BOOL OSRestoreInterrupts(BOOL level) {
     UNIMPLEMENTED();
     return 0;
 }
-void* OSGetArenaHi(void) {
-    UNIMPLEMENTED();
-    return nullptr;
-}
-void* OSGetArenaLo(void) {
-    UNIMPLEMENTED();
-    return nullptr;
-}
-void OSSetArenaHi(void* newHi) {
-    UNIMPLEMENTED();
-}
-void OSSetArenaLo(void* newLo) {
-    UNIMPLEMENTED();
-}
-void* OSAllocFromArenaLo(u32 size, u32 align) {
-    UNIMPLEMENTED();
-    return nullptr;
-}
-void* OSAllocFromArenaHi(u32 size, u32 align) {
-    UNIMPLEMENTED();
-    return nullptr;
-}
-
-void* OSAllocFromHeap(int heap, u32 size) {
-    UNIMPLEMENTED();
-    return 0;
-}
-void* OSAllocFixed(void* rstart, void* rend) {
-    UNIMPLEMENTED();
-    return 0;
-}
-void OSFreeToHeap(int heap, void* ptr) {
-    UNIMPLEMENTED();
-}
-int OSSetCurrentHeap(int heap) {
-    UNIMPLEMENTED();
-    return 0;
-}
-void* OSInitAlloc(void* arenaStart, void* arenaEnd, int maxHeaps) {
-    UNIMPLEMENTED();
-    return 0;
-}
-int OSCreateHeap(void* start, void* end) {
-    UNIMPLEMENTED();
-    return 0;
-}
-void OSDestroyHeap(int heap) {
-    UNIMPLEMENTED();
-}
-void OSAddToHeap(int heap, void* start, void* end) {
-    UNIMPLEMENTED();
-}
-s32 OSCheckHeap(int heap) {
-    UNIMPLEMENTED();
-    return 0;
-}
-u32 OSReferentSize(void* ptr) {
-    UNIMPLEMENTED();
-    return 0;
-}
-void OSDumpHeap(int heap) {
-    UNIMPLEMENTED();
-}
-void OSVisitAllocated(void (*visitor)(void*, u32)) {
-    UNIMPLEMENTED();
-}
 
 u32 OSGetSoundMode(void) {
     UNIMPLEMENTED();
@@ -307,7 +242,7 @@ u32 OSGetProgressiveMode(void) {
     UNIMPLEMENTED();
 }
 void OSSetProgressiveMode(u32 on) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 u32 OSGetEuRgb60Mode(void) {
     UNIMPLEMENTED();
@@ -323,12 +258,11 @@ void OSSetWirelessID(s32 chan, u16 id) {
 }
 
 u32 OSGetConsoleType(void) {
-    UNIMPLEMENTED();
-    return 0;
+    return OS_CONSOLE_PC_EMULATOR;
 }
 
 void OSInit(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 
 void OSRegisterVersion(const char* id) {
@@ -376,7 +310,8 @@ void OSYieldThread(void) {
     UNIMPLEMENTED();
 }
 int OSCreateThread(OSThread* thread, void* (*func)(void*), void* param, void* stack, u32 stackSize, OSPriority priority, u16 attr) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return 1;
 }
 void OSExitThread(void* val) {
     UNIMPLEMENTED();

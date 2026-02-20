@@ -243,7 +243,7 @@ u32 OSUncachedToPhysical(void* ucaddr);
 void* OSCachedToUncached(void* caddr);
 void* OSUncachedToCached(void* ucaddr);
 
-#if !DEBUG
+#if !TPPC && !DEBUG
 #define OSPhysicalToCached(paddr)    ((void*) ((u32)(OS_BASE_CACHED   + (u32)(paddr))))
 #define OSPhysicalToUncached(paddr)  ((void*) ((u32)(OS_BASE_UNCACHED + (u32)(paddr))))
 #define OSCachedToPhysical(caddr)    ((u32)   ((u32)(caddr)  - OS_BASE_CACHED))

@@ -3,8 +3,10 @@ project(Tppc)
 
 find_package(SDL3 CONFIG REQUIRED)
 find_package(fmt CONFIG REQUIRED)
+find_package(mimalloc CONFIG REQUIRED)
 
-add_executable(Tppc)
+add_executable(Tppc
+        tppc/OSAlloc_Mimalloc.cpp)
 
 target_sources(
     Tppc
@@ -26,6 +28,7 @@ include(decompiled.cmake)
 # Normal gamedev libs
 target_link_libraries(Tppc PRIVATE SDL3::SDL3)
 target_link_libraries(Tppc PRIVATE fmt::fmt)
+target_link_libraries(Tppc PRIVATE $<IF:$<TARGET_EXISTS:mimalloc-static>,mimalloc-static,mimalloc>)
 
 add_subdirectory(tppc/os/)
 add_subdirectory(tppc/gx/)

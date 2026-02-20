@@ -3,7 +3,12 @@ add_library(tppc_os
         vi.cpp
         pad.cpp
         card.cpp
-        mwcc_intrinsics.cpp)
+        mwcc_intrinsics.cpp
+        OSMemory_Windows.cpp
+        OSArena.cpp
+        OSMemory.cpp
+        OSBootInfo.cpp
+)
 
 target_include_directories(tppc_os SYSTEM PRIVATE ../../include/)
 

@@ -2,7 +2,7 @@
 
 // DVD
 void DVDInit(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 int DVDReadAbsAsyncPrio(DVDCommandBlock* block, void* addr, s32 length, s32 offset, DVDCBCallback callback, s32 prio) {
     UNIMPLEMENTED();

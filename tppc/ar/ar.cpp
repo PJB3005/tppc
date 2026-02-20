@@ -21,7 +21,8 @@ BOOL ARCheckInit(void) {
     UNIMPLEMENTED();
 }
 u32 ARInit(u32* stack_index_addr, u32 num_entries) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return 0;
 }
 void ARReset(void) {
     UNIMPLEMENTED();
@@ -33,7 +34,8 @@ u32 ARGetBaseAddress(void) {
     UNIMPLEMENTED();
 }
 u32 ARGetSize(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return 0;
 }
 u32 ARGetInternalSize(void) {
     UNIMPLEMENTED();
@@ -43,10 +45,10 @@ void ARClear(u32 flag) {
 }
 
 void ARQInit(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void ARQReset(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void ARQPostRequest(ARQRequest* request, u32 owner, u32 type, u32 priority, u32 source, u32 dest, u32 length, ARQCallback callback) {
     UNIMPLEMENTED();
