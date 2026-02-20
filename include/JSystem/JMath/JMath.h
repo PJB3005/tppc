@@ -1,9 +1,10 @@
 #ifndef JMATH_H
 #define JMATH_H
 
+#include <cmath>
+#include <cstring>
 #include <dolphin/mtx.h>
 #include <dolphin/os.h>
-#include <cmath>
 
 void JMAMTXApplyScale(const Mtx, Mtx, f32, f32, f32);
 void JMAEulerToQuat(s16 param_0, s16 param_1, s16 param_2, Quaternion* param_3);
@@ -147,7 +148,7 @@ inline void gekko_ps_copy6(__REGISTER void* dst, __REGISTER const void* src) {
         psq_st src2, 16(dst), 0, 0
     };
 #else
-    OSUNIMPLEMENTED();
+    memcpy(dst, src, sizeof(f32) * 3);
 #endif
 }
 
@@ -174,7 +175,7 @@ inline void gekko_ps_copy12(__REGISTER void* dst, __REGISTER const void* src) {
         psq_st src5, 40(dst), 0, 0
     };
 #else
-    OSUNIMPLEMENTED();
+    memcpy(dst, src, sizeof(f32) * 6);
 #endif
 }
 
@@ -207,7 +208,7 @@ inline void gekko_ps_copy16(__REGISTER void* dst, __REGISTER const void* src) {
         psq_st src7, 56(dst), 0, 0
     };
 #else
-    OSUNIMPLEMENTED();
+    memcpy(dst, src, sizeof(f32) * 8);
 #endif
 }
 
