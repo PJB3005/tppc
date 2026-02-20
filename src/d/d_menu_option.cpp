@@ -92,13 +92,13 @@ dMenu_Option_c::~dMenu_Option_c() {}
 static const u32 dMo_soundMode[3] = {0, 1, 2};
 
 void dMenu_Option_c::_create() {
-    static const u64 text_a_tag[5] = {'atext1_1', 'atext1_2', 'atext1_3', 'atext1_4', 'atext1_5'};
-    static const u64 text_b_tag[5] = {'btext1_1', 'btext1_2', 'btext1_3', 'btext1_4', 'btext1_5'};
-    static const u64 l_tagName012[2] = {'w_no_n', 'w_yes_n'};
-    static const u64 l_tagName013[2] = {'w_no_t', 'w_yes_t'};
-    static const u64 l_tagName9[2] = {'w_no_m', 'w_yes_m'};
-    static const u64 l_tagName10[2] = {'w_no_g', 'w_yes_g'};
-    static const u64 l_tagName11[2] = {'w_no_gr', 'w_yes_gr'};
+    static const u64 text_a_tag[5] = {TAG("atext1_1"), TAG("atext1_2"), TAG("atext1_3"), TAG("atext1_4"), TAG("atext1_5")};
+    static const u64 text_b_tag[5] = {TAG("btext1_1"), TAG("btext1_2"), TAG("btext1_3"), TAG("btext1_4"), TAG("btext1_5")};
+    static const u64 l_tagName012[2] = {TAG("w_no_n"), TAG("w_yes_n")};
+    static const u64 l_tagName013[2] = {TAG("w_no_t"), TAG("w_yes_t")};
+    static const u64 l_tagName9[2] = {TAG("w_no_m"), TAG("w_yes_m")};
+    static const u64 l_tagName10[2] = {TAG("w_no_g"), TAG("w_yes_g")};
+    static const u64 l_tagName11[2] = {TAG("w_no_gr"), TAG("w_yes_gr")};
     static const u8 l_msgNum2[2] = {8, 7};
 
     mpFont = mDoExt_getMesgFont();
@@ -116,14 +116,14 @@ void dMenu_Option_c::_create() {
     bool fg = mpScreen->setPriority("zelda_option_select_menu.blo", 0x20000, mpArchive);
     JUT_ASSERT(210, fg != false);
 
-    mpScreen->search('base_a_n')->hide();
-    mpScreen->search('y_set_p4')->hide();
-    mpScreen->search('y_set_p3')->hide();
-    mpScreen->search('y_set_p2')->hide();
-    mpScreen->search('y_set_p1')->hide();
-    mpScreen->search('y_set_p0')->hide();
-    field_0x254[0] = (J2DTextBox*)mpScreen->search('cont_ts');
-    field_0x254[1] = (J2DTextBox*)mpScreen->search('cont_t');
+    mpScreen->search(TAG("base_a_n"))->hide();
+    mpScreen->search(TAG("y_set_p4"))->hide();
+    mpScreen->search(TAG("y_set_p3"))->hide();
+    mpScreen->search(TAG("y_set_p2"))->hide();
+    mpScreen->search(TAG("y_set_p1"))->hide();
+    mpScreen->search(TAG("y_set_p0"))->hide();
+    field_0x254[0] = (J2DTextBox*)mpScreen->search(TAG("cont_ts"));
+    field_0x254[1] = (J2DTextBox*)mpScreen->search(TAG("cont_t"));
     for (int i = 0; i < 2; i++) {
         field_0x254[i]->setFont(mDoExt_getMesgFont());
         field_0x254[i]->setString(0x20, "");
@@ -132,8 +132,8 @@ void dMenu_Option_c::_create() {
     JUT_ASSERT(246, mpBackScreen != NULL);
     fg = mpBackScreen->setPriority("zelda_option_base.blo", 0x20000, mpArchive);
     JUT_ASSERT(251, fg != false);
-    mpBackScreen->search('wi_btn_n')->hide();
-    field_0x27c = mpBackScreen->search('let_area');
+    mpBackScreen->search(TAG("wi_btn_n"))->hide();
+    field_0x27c = mpBackScreen->search(TAG("let_area"));
 
     mpClipScreen = new J2DScreen();
     JUT_ASSERT(265, mpClipScreen != NULL);
@@ -147,7 +147,7 @@ void dMenu_Option_c::_create() {
     fg = mpShadowScreen->setPriority("zelda_option_menu_shadow.blo", 0x20000, mpArchive);
     JUT_ASSERT(278, fg != false);
     dPaneClass_showNullPane(mpShadowScreen);
-    mpShadowScreen->search('mw_n_5')->hide();
+    mpShadowScreen->search(TAG("mw_n_5"))->hide();
 
     mpTVScreen = new J2DScreen();
     JUT_ASSERT(287, mpTVScreen != NULL);
@@ -155,12 +155,12 @@ void dMenu_Option_c::_create() {
     JUT_ASSERT(291, fg != false);
     dPaneClass_showNullPane(mpTVScreen);
 
-    mpTVButtonAB = new CPaneMgr(mpTVScreen, 'g_abtn_n', 0, NULL);
+    mpTVButtonAB = new CPaneMgr(mpTVScreen, TAG("g_abtn_n"), 0, NULL);
     JUT_ASSERT(295, mpTVButtonAB != NULL);
     
-    mpTVButtonText = new CPaneMgr(mpTVScreen, 'a_text_n', 0, NULL);
+    mpTVButtonText = new CPaneMgr(mpTVScreen, TAG("a_text_n"), 0, NULL);
     JUT_ASSERT(298, mpTVButtonText != NULL);
-    mpTVScreen->search('g_abtn_n')->hide();
+    mpTVScreen->search(TAG("g_abtn_n"))->hide();
 
     mpScreenIcon = new J2DScreen();
     JUT_ASSERT(325, mpScreenIcon != NULL);
@@ -181,7 +181,7 @@ void dMenu_Option_c::_create() {
     }
     setAButtonString(0x40C);
     setBButtonString(0x3F9);
-    ResTIMG* timg = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource('TIMG', "tt_block8x8.bti");
+    ResTIMG* timg = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource(TAG("TIMG"), "tt_block8x8.bti");
     mpBlackTex = new J2DPicture(timg);
     JUT_ASSERT(402, mpBlackTex != NULL);
     mpBlackTex->setBlackWhite(JUtility::TColor(0, 0, 0, 0), JUtility::TColor(0, 0, 0, 0xff));
@@ -1289,141 +1289,141 @@ void dMenu_Option_c::menuHide(int index) {
 
 void dMenu_Option_c::screenSet() {
     static const u64 tag_frame[6] = {
-        'flame_00', 'flame_01', 'flame_02', 'flame_03', 'flame_04', 'flame_05',
+        TAG("flame_00"), TAG("flame_01"), TAG("flame_02"), TAG("flame_03"), TAG("flame_04"), TAG("flame_05"),
     };
 #if VERSION == VERSION_GCN_JPN
     static const u64 tag_menu0[6] = {
-        'menu_t0', 'menu_t1', 'menu_t2', 'menu_t3', 'menu_t4', 'menu_t5',
+        TAG("menu_t0"), TAG("menu_t1"), TAG("menu_t2"), TAG("menu_t3"), TAG("menu_t4"), TAG("menu_t5"),
     };
 #else
     static const u64 tag_menu0[6] = {
-        'fenu_t0', 'fenu_t1', 'fenu_t2', 'fenu_t3', 'fenu_t4', 'fenu_t5',
+        TAG("fenu_t0"), TAG("fenu_t1"), TAG("fenu_t2"), TAG("fenu_t3"), TAG("fenu_t4"), TAG("fenu_t5"),
     };
 #endif
     static const u64 let_n[6] = {
-        'let_00_n', 'let_01_n', 'let_02_n', 'let_03_n', 'let_04_n', 'let_05_n',
+        TAG("let_00_n"), TAG("let_01_n"), TAG("let_02_n"), TAG("let_03_n"), TAG("let_04_n"), TAG("let_05_n"),
     };
     static const u64 let2_n[6] = {
-        'let_00_n', 'let_01_n', 'let_02_n', 'let_03_n', 'let_04_n',
+        TAG("let_00_n"), TAG("let_01_n"), TAG("let_02_n"), TAG("let_03_n"), TAG("let_04_n"),
     };
     static const u64 menu_n[6] = {
-        'menu_n0', 'menu_n1', 'menu_n2', 'menu_n3', 'menu_n4', 'menu_n5',
+        TAG("menu_n0"), TAG("menu_n1"), TAG("menu_n2"), TAG("menu_n3"), TAG("menu_n4"), TAG("menu_n5"),
     };
     static const u64 menu2_n[6] = {
-        'mw_n_0', 'mw_n_1', 'mw_n_2', 'mw_n_3', 'mw_n_4',
+        TAG("mw_n_0"), TAG("mw_n_1"), TAG("mw_n_2"), TAG("mw_n_3"), TAG("mw_n_4"),
     };
     static const u64 al0_n[6] = {
-        's_grr_00', 's_grr_01', 's_grr_02', 's_grr_03', 's_grr_04', 's_grr_05',
+        TAG("s_grr_00"), TAG("s_grr_01"), TAG("s_grr_02"), TAG("s_grr_03"), TAG("s_grr_04"), TAG("s_grr_05"),
     };
     static const u64 al1_n[6] = {
-        'c_grr_00', 'c_grr_01', 'c_grr_02', 'c_grr_03', 'c_grr_04', 'c_grr_05',
+        TAG("c_grr_00"), TAG("c_grr_01"), TAG("c_grr_02"), TAG("c_grr_03"), TAG("c_grr_04"), TAG("c_grr_05"),
     };
     static const u64 al2_n[6] = {
-        's_grl_00', 's_grl_01', 's_grl_02', 's_grl_03', 's_grl_04', 's_grl_05',
+        TAG("s_grl_00"), TAG("s_grl_01"), TAG("s_grl_02"), TAG("s_grl_03"), TAG("s_grl_04"), TAG("s_grl_05"),
     };
     static const u64 al3_n[6] = {
-        'c_grl_00', 'c_grl_01', 'c_grl_02', 'c_grl_03', 'c_grl_04', 'c_grl_05',
+        TAG("c_grl_00"), TAG("c_grl_01"), TAG("c_grl_02"), TAG("c_grl_03"), TAG("c_grl_04"), TAG("c_grl_05"),
     };
     static const u64 haihail_n[5] = {
-        'y_set_l0', 'y_set_l1', 'y_set_l2', 'y_set_l3', 'y_set_l4',
+        TAG("y_set_l0"), TAG("y_set_l1"), TAG("y_set_l2"), TAG("y_set_l3"), TAG("y_set_l4"),
     };
     static const u64 haihair_n[5] = {
-        'y_set_r0', 'y_set_r1', 'y_set_r2', 'y_set_r3', 'y_set_r4',
+        TAG("y_set_r0"), TAG("y_set_r1"), TAG("y_set_r2"), TAG("y_set_r3"), TAG("y_set_r4"),
     };
     static const u64 menu3_n[6] = {
-        'menuapn0', 'menuapn1', 'menuapn2', 'menuapn3', 'menuapn4',
+        TAG("menuapn0"), TAG("menuapn1"), TAG("menuapn2"), TAG("menuapn3"), TAG("menuapn4"),
     };
     static const u64 tv_btnA[5] = {
-        'cont_at1', 'cont_at2', 'cont_at3', 'cont_at4', 'cont_at',
+        TAG("cont_at1"), TAG("cont_at2"), TAG("cont_at3"), TAG("cont_at4"), TAG("cont_at"),
     };
     static const u64 ftv_btnA[5] = {
-        'font_a1', 'font_at2', 'font_at3', 'font_at4', 'font_at',
+        TAG("font_a1"), TAG("font_at2"), TAG("font_at3"), TAG("font_at4"), TAG("font_at"),
     };
 #if VERSION == VERSION_GCN_JPN
-    static const u64 fenu_t0[2] = {'fenu_t0s', 'fenu_t0'};
-    static const u64 menu_t0[2] = {'menu_t0s', 'menu_t0'};
-    static const u64 fenu_t1[2] = {'fenu_t1s', 'fenu_t1'};
-    static const u64 menu_t1[2] = {'menu_t1s', 'menu_t1'};
-    static const u64 fenu_t2[2] = {'fenu_t2s', 'fenu_t2'};
-    static const u64 menu_t2[2] = {'menu_t2s', 'menu_t2'};
-    static const u64 fenu_t3[2] = {'fenu_t3s', 'fenu_t3'};
-    static const u64 menu_t3[2] = {'menu_t3s', 'menu_t3'};
-    static const u64 fenu_t4[2] = {'fenu_t4s', 'fenu_t4'};
-    static const u64 menu_t4[2] = {'menu_t4s', 'menu_t4'};
-    static const u64 fenu_t5[2] = {'fenu_t5s', 'fenu_t5'};
-    static const u64 menu_t5[2] = {'menu_t5s', 'menu_t5'};
+    static const u64 fenu_t0[2] = {TAG("fenu_t0s"), TAG("fenu_t0")};
+    static const u64 menu_t0[2] = {TAG("menu_t0s"), TAG("menu_t0")};
+    static const u64 fenu_t1[2] = {TAG("fenu_t1s"), TAG("fenu_t1")};
+    static const u64 menu_t1[2] = {TAG("menu_t1s"), TAG("menu_t1")};
+    static const u64 fenu_t2[2] = {TAG("fenu_t2s"), TAG("fenu_t2")};
+    static const u64 menu_t2[2] = {TAG("menu_t2s"), TAG("menu_t2")};
+    static const u64 fenu_t3[2] = {TAG("fenu_t3s"), TAG("fenu_t3")};
+    static const u64 menu_t3[2] = {TAG("menu_t3s"), TAG("menu_t3")};
+    static const u64 fenu_t4[2] = {TAG("fenu_t4s"), TAG("fenu_t4")};
+    static const u64 menu_t4[2] = {TAG("menu_t4s"), TAG("menu_t4")};
+    static const u64 fenu_t5[2] = {TAG("fenu_t5s"), TAG("fenu_t5")};
+    static const u64 menu_t5[2] = {TAG("menu_t5s"), TAG("menu_t5")};
 #else
-    static const u64 fenu_t0[2] = {'fenu_t0s', 'fenu_t0'};
-    static const u64 menu_t0[2] = {'menu_t0s', 'menu_t0'};
-    static const u64 fenu_t2[2] = {'fenu_t1s', 'fenu_t1'};
-    static const u64 menu_t2[2] = {'menu_t1s', 'menu_t1'};
-    static const u64 fenu_t3[2] = {'fenu_t2s', 'fenu_t2'};
-    static const u64 menu_t3[2] = {'menu_t2s', 'menu_t2'};
-    static const u64 fenu_t4[2] = {'fenu_t3s', 'fenu_t3'};
-    static const u64 menu_t4[2] = {'menu_t3s', 'menu_t3'};
-    static const u64 fenu_t1[2] = {'fenu_t4s', 'fenu_t4'};
-    static const u64 menu_t1[2] = {'menu_t4s', 'menu_t4'};
-    static const u64 fenu_t5[2] = {'fenu_t5s', 'fenu_t5'};
-    static const u64 menu_t5[2] = {'menu_t5s', 'menu_t5'};
+    static const u64 fenu_t0[2] = {TAG("fenu_t0s"), TAG("fenu_t0")};
+    static const u64 menu_t0[2] = {TAG("menu_t0s"), TAG("menu_t0")};
+    static const u64 fenu_t2[2] = {TAG("fenu_t1s"), TAG("fenu_t1")};
+    static const u64 menu_t2[2] = {TAG("menu_t1s"), TAG("menu_t1")};
+    static const u64 fenu_t3[2] = {TAG("fenu_t2s"), TAG("fenu_t2")};
+    static const u64 menu_t3[2] = {TAG("menu_t2s"), TAG("menu_t2")};
+    static const u64 fenu_t4[2] = {TAG("fenu_t3s"), TAG("fenu_t3")};
+    static const u64 menu_t4[2] = {TAG("menu_t3s"), TAG("menu_t3")};
+    static const u64 fenu_t1[2] = {TAG("fenu_t4s"), TAG("fenu_t4")};
+    static const u64 menu_t1[2] = {TAG("menu_t4s"), TAG("menu_t4")};
+    static const u64 fenu_t5[2] = {TAG("fenu_t5s"), TAG("fenu_t5")};
+    static const u64 menu_t5[2] = {TAG("menu_t5s"), TAG("menu_t5")};
 #endif
     static const u64 menut_0[6] = {
-        'menut0as', 'menut0a', 'menut0a2', 'menut0a1', 'menut0a4', 'menut0a3',
+        TAG("menut0as"), TAG("menut0a"), TAG("menut0a2"), TAG("menut0a1"), TAG("menut0a4"), TAG("menut0a3"),
     };
     static const u64 fenut_0[6] = {
-        'menut010', 'menut0a9', 'menut0a8', 'menut0a7', 'menut0a6', 'menut0a5',
+        TAG("menut010"), TAG("menut0a9"), TAG("menut0a8"), TAG("menut0a7"), TAG("menut0a6"), TAG("menut0a5"),
     };
     static const u64 menut_1[6] = {
-        'menut1as', 'menut1a', 'menut1a2', 'menut1a1', 'menut1a4', 'menut1a3',
+        TAG("menut1as"), TAG("menut1a"), TAG("menut1a2"), TAG("menut1a1"), TAG("menut1a4"), TAG("menut1a3"),
     };
     static const u64 fenut_1[6] = {
-        'menut110', 'menut1a9', 'menut1a8', 'menut1a7', 'menut1a6', 'menut1a5',
+        TAG("menut110"), TAG("menut1a9"), TAG("menut1a8"), TAG("menut1a7"), TAG("menut1a6"), TAG("menut1a5"),
     };
     static const u64 menut_2[6] = {
-        'menut2as', 'menut2a', 'menut2a2', 'menut2a1', 'menut2a4', 'menut2a3',
+        TAG("menut2as"), TAG("menut2a"), TAG("menut2a2"), TAG("menut2a1"), TAG("menut2a4"), TAG("menut2a3"),
     };
     static const u64 fenut_2[6] = {
-        'menut210', 'menut2a9', 'menut2a8', 'menut2a7', 'menut2a6', 'menut2a5',
+        TAG("menut210"), TAG("menut2a9"), TAG("menut2a8"), TAG("menut2a7"), TAG("menut2a6"), TAG("menut2a5"),
     };
     static const u64 menut_3[6] = {
-        'menut3a5', 'menut3a6', 'menut3a7', 'menut3a8', 'menut3a9', 'menut310',
+        TAG("menut3a5"), TAG("menut3a6"), TAG("menut3a7"), TAG("menut3a8"), TAG("menut3a9"), TAG("menut310"),
     };
     static const u64 fenut_3[6] = {
-        'menut315', 'menut314', 'menut313', 'menut312', 'menut311', 'menut001',
+        TAG("menut315"), TAG("menut314"), TAG("menut313"), TAG("menut312"), TAG("menut311"), TAG("menut001"),
     };
     static const u64 menut_4[6] = {
-        'menut3as', 'menut3a', 'menut3a2', 'menut3a1', 'menut3a4', 'menut3a3',
+        TAG("menut3as"), TAG("menut3a"), TAG("menut3a2"), TAG("menut3a1"), TAG("menut3a4"), TAG("menut3a3"),
     };
     static const u64 fenut_4[6] = {
-        'menut321', 'menut320', 'menut319', 'menut318', 'menut317', 'menut316',
+        TAG("menut321"), TAG("menut320"), TAG("menut319"), TAG("menut318"), TAG("menut317"), TAG("menut316"),
     };
 #if VERSION == VERSION_GCN_JPN
     static const u64 tx[6] = {
-        'wps_text', 'w_p_text', 'g_ps_tx3', 'g_p_tex3', 'wps_tex1', 'w_p_tex1',
+        TAG("wps_text"), TAG("w_p_text"), TAG("g_ps_tx3"), TAG("g_p_tex3"), TAG("wps_tex1"), TAG("w_p_tex1"),
     };
 #else
     static const u64 tx[6] = {
-        'w_p_tex5', 'w_p_tex6', 'w_p_tex3', 'w_p_tex4', 'fps_tex1', 'f_p_tex1',
+        TAG("w_p_tex5"), TAG("w_p_tex6"), TAG("w_p_tex3"), TAG("w_p_tex4"), TAG("fps_tex1"), TAG("f_p_tex1"),
     };
 #endif
     static const u64 op_tx[4] = {
-        'w_text_n', 'w_btn_n', 'w_k_t_n', 'w_abtn_n',
+        TAG("w_text_n"), TAG("w_btn_n"), TAG("w_k_t_n"), TAG("w_abtn_n"),
     };
     static const u64 z_tx[3] = {
-        'z_gc_n', 0, 0,
+        TAG("z_gc_n"), 0, 0,
     };
 #if VERSION == VERSION_GCN_JPN
     static const u64 txTV[10] = {
-        'menu_t6s', 'menu_t6',  'menu_t9s', 'menu_t9',  'menut10s',
-        'menu_t10', 'menu_t7s', 'menu_t7',  'menu_t8s', 'menu_t8',
+        TAG("menu_t6s"), TAG("menu_t6"),  TAG("menu_t9s"), TAG("menu_t9"),  TAG("menut10s"),
+        TAG("menu_t10"), TAG("menu_t7s"), TAG("menu_t7"),  TAG("menu_t8s"), TAG("menu_t8"),
     };
 #else
     static const u64 txTV[10] = {
-        'menu_t61', 'menu_t2',  'menu_t91', 'menu_t1',  'menut101',
-        'menu_t01', 'menu_t71', 'menu_t3',  'menu_t81', 'menu_t4',
+        TAG("menu_t61"), TAG("menu_t2"),  TAG("menu_t91"), TAG("menu_t1"),  TAG("menut101"),
+        TAG("menu_t01"), TAG("menu_t71"), TAG("menu_t3"),  TAG("menu_t81"), TAG("menu_t4"),
     };
 #endif
 
-    mpTitle = new CPaneMgr(mpBackScreen, 'title_n', 0, NULL);
+    mpTitle = new CPaneMgr(mpBackScreen, TAG("title_n"), 0, NULL);
     Vec pos = mpTitle->getGlobalVtxCenter(mpTitle->mPane, false, 0);
     mpWarning->mPosY = pos.y + g_drawHIO.mOptionScreen.mBackgroundPosY;
     for (int i = 0; i < 6; i++) {
@@ -1445,11 +1445,11 @@ void dMenu_Option_c::screenSet() {
     mpDrawCursor->setScale(0.0f);
     mpDrawCursor->setParam(1.01f, 0.85f, 0.02f, 0.5f, 0.5f);
     mpDrawCursor->offPlayAnime(0);
-    mpParent[0] = new CPaneMgr(mpScreen, 'n_all', 2, NULL);
-    mpParent[1] = new CPaneMgr(mpClipScreen, 'n_all', 2, NULL);
-    mpParent[2] = new CPaneMgr(mpShadowScreen, 'nall', 2, NULL);
-    mpParent[3] = new CPaneMgr(mpTVScreen, 'n_all', 2, NULL);
-    mpParent[4] = new CPaneMgr(mpBackScreen, 'n_all', 2, NULL);
+    mpParent[0] = new CPaneMgr(mpScreen, TAG("n_all"), 2, NULL);
+    mpParent[1] = new CPaneMgr(mpClipScreen, TAG("n_all"), 2, NULL);
+    mpParent[2] = new CPaneMgr(mpShadowScreen, TAG("nall"), 2, NULL);
+    mpParent[3] = new CPaneMgr(mpTVScreen, TAG("n_all"), 2, NULL);
+    mpParent[4] = new CPaneMgr(mpBackScreen, TAG("n_all"), 2, NULL);
     for (int i = 0; i < 6; i++) {
         mpMenuNull[i] = new CPaneMgr(mpScreen, let_n[i], 0, NULL);
         mpMenuPane[i] = new CPaneMgr(mpScreen, menu_n[i], 0, NULL);
@@ -1496,19 +1496,19 @@ void dMenu_Option_c::screenSet() {
         }
     }
 #if VERSION == VERSION_GCN_JPN
-    field_0x270[0] = (J2DTextBox*)mpBackScreen->search('t_t00');
-    field_0x270[1] = (J2DTextBox*)mpBackScreen->search('t_t01');
-    mpBackScreen->search('f_t00')->hide();
-    mpBackScreen->search('t_t01')->hide();
-    field_0x270[2] = (J2DTextBox*)mpTVScreen->search('t_t00');
-    mpTVScreen->search('f_t00')->hide();
+    field_0x270[0] = (J2DTextBox*)mpBackScreen->search(TAG("t_t00"));
+    field_0x270[1] = (J2DTextBox*)mpBackScreen->search(TAG("t_t01"));
+    mpBackScreen->search(TAG("f_t00"))->hide();
+    mpBackScreen->search(TAG("t_t01"))->hide();
+    field_0x270[2] = (J2DTextBox*)mpTVScreen->search(TAG("t_t00"));
+    mpTVScreen->search(TAG("f_t00"))->hide();
 #else
-    field_0x270[0] = (J2DTextBox*)mpBackScreen->search('f_t00');
-    field_0x270[1] = (J2DTextBox*)mpBackScreen->search('t_t01');
-    mpBackScreen->search('t_t00')->hide();
-    mpBackScreen->search('t_t01')->hide();
-    field_0x270[2] = (J2DTextBox*)mpTVScreen->search('f_t00');
-    mpTVScreen->search('t_t00')->hide();
+    field_0x270[0] = (J2DTextBox*)mpBackScreen->search(TAG("f_t00"));
+    field_0x270[1] = (J2DTextBox*)mpBackScreen->search(TAG("t_t01"));
+    mpBackScreen->search(TAG("t_t00"))->hide();
+    mpBackScreen->search(TAG("t_t01"))->hide();
+    field_0x270[2] = (J2DTextBox*)mpTVScreen->search(TAG("f_t00"));
+    mpTVScreen->search(TAG("t_t00"))->hide();
 #endif
     for (int i = 0; i < 3; i++) {
         field_0x270[i]->setFont(mDoExt_getRubyFont());
@@ -1697,11 +1697,11 @@ void dMenu_Option_c::screenSet() {
     field_0x3b4 = 0.0f;
     menuVisible();
 #if VERSION == VERSION_GCN_JPN
-    mpBackScreen->search('jpn_n')->show();
-    mpBackScreen->search('foregn_n')->hide();
+    mpBackScreen->search(TAG("jpn_n"))->show();
+    mpBackScreen->search(TAG("foregn_n"))->hide();
 #else
-    mpBackScreen->search('jpn_n')->hide();
-    mpBackScreen->search('foregn_n')->show();
+    mpBackScreen->search(TAG("jpn_n"))->hide();
+    mpBackScreen->search(TAG("foregn_n"))->show();
 #endif
     for (int i = 0; i < 6; i++) {
         J2DTextBox* backScreen = (J2DTextBox*)mpBackScreen->search(tx[i]);
@@ -1715,7 +1715,7 @@ void dMenu_Option_c::screenSet() {
             mpString->getString(0x556, backScreen, NULL, NULL, NULL, 0);
         }
     }
-    mpBackScreen->search('wi_btn_n')->hide();
+    mpBackScreen->search(TAG("wi_btn_n"))->hide();
     for (int i = 0; i < 4; i++) {
         field_0x1c0[i] = 0;
     }
@@ -2075,14 +2075,14 @@ void dMenu_Option_c::changeTVCheck() {
 
 static void dummy() {
 #if VERSION == VERSION_GCN_JPN
-    static const u64 txTVhide[5] = {'fmenu_6n', 'fmenu_9n', 'fmenu_10', 'fmenu_7n', 'fmenu_8n'};
+    static const u64 txTVhide[5] = {TAG("fmenu_6n"), TAG("fmenu_9n"), TAG("fmenu_10"), TAG("fmenu_7n"), TAG("fmenu_8n")};
 #else
-    static const u64 txTVhide[5] = {'menu_6n', 'menu_9n', 'menu_10n', 'menu_7n', 'menu_8n'};
+    static const u64 txTVhide[5] = {TAG("menu_6n"), TAG("menu_9n"), TAG("menu_10n"), TAG("menu_7n"), TAG("menu_8n")};
 #endif
 }
 
 void dMenu_Option_c::setAButtonString(u16 i_stringID) {
-    static const u64 text_a_tag[5] = {'atext1_1', 'atext1_2', 'atext1_3', 'atext1_4', 'atext1_5'};
+    static const u64 text_a_tag[5] = {TAG("atext1_1"), TAG("atext1_2"), TAG("atext1_3"), TAG("atext1_4"), TAG("atext1_5")};
     u32 stringId = i_stringID;
     if (stringId != field_0x3dc) {
         field_0x3dc = i_stringID;
@@ -2101,7 +2101,7 @@ void dMenu_Option_c::setAButtonString(u16 i_stringID) {
 }
 
 void dMenu_Option_c::setBButtonString(u16 i_stringID) {
-    static const u64 text_b_tag[5] = {'btext1_1', 'btext1_2', 'btext1_3', 'btext1_4', 'btext1_5'};
+    static const u64 text_b_tag[5] = {TAG("btext1_1"), TAG("btext1_2"), TAG("btext1_3"), TAG("btext1_4"), TAG("btext1_5")};
     u32 stringId = i_stringID;
     if (stringId != field_0x3de) {
         field_0x3de = i_stringID;

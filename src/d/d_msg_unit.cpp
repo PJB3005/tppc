@@ -322,13 +322,15 @@ void dMsgUnit_c::setTag(int i_type, int i_value, char* o_buffer, bool param_4) {
 #if DEBUG
                 uVar5 = entriesStr->str + vals[0];
 #else
-                uVar5 = pStrAttributeBlock->entries->str + vals[0];
+                OSUNIMPLEMENTED(); // TODO TPPC: FIX VLA
+                //uVar5 = pStrAttributeBlock->entries->str + vals[0];
 #endif
             } else {
 #if DEBUG
                 uVar5 = entriesStr->str + vals[1];
 #else
-                uVar5 = pStrAttributeBlock->entries->str + vals[1];
+                OSUNIMPLEMENTED(); // TODO TPPC: FIX VLA
+                // uVar5 = pStrAttributeBlock->entries->str + vals[1];
 #endif
             }
 

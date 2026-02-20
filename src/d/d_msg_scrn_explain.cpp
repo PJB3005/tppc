@@ -81,18 +81,18 @@ dMsgScrnExplain_c::dMsgScrnExplain_c(STControl* i_stick, u8 param_1, bool i_isUs
         JUT_ASSERT(119, fg != false);
         dPaneClass_showNullPane(mpTxScreen);
 
-        mpTm_c[0] = new CPaneMgr(mpTxScreen, 'mg_3line', 0, NULL);
+        mpTm_c[0] = new CPaneMgr(mpTxScreen, TAG("mg_3line"), 0, NULL);
         JUT_ASSERT(124, mpTm_c[0] != NULL);
 
-        mpTm_c[1] = new CPaneMgr(mpTxScreen, 't3_s', 0, NULL);
+        mpTm_c[1] = new CPaneMgr(mpTxScreen, TAG("t3_s"), 0, NULL);
         JUT_ASSERT(127, mpTm_c[1] != NULL);
 
         mpTmr_c[0] = NULL;
         mpTmr_c[1] = NULL;
 
-        mpTxScreen->search('n_3line')->show();
-        mpTxScreen->search('n_3fline')->hide();
-        mpTxScreen->search('n_e4line')->hide();
+        mpTxScreen->search(TAG("n_3line"))->show();
+        mpTxScreen->search(TAG("n_3fline"))->hide();
+        mpTxScreen->search(TAG("n_e4line"))->hide();
 
 #if VERSION == VERSION_GCN_JPN
         field_0x50 = 0.0f;
@@ -106,47 +106,47 @@ dMsgScrnExplain_c::dMsgScrnExplain_c(STControl* i_stick, u8 param_1, bool i_isUs
         JUT_ASSERT(153, fg != false);
         dPaneClass_showNullPane(mpTxScreen);
 
-        mpScreen->search('n_all')->scale(g_MsgObject_HIO_c.mBoxTalkScaleX,
+        mpScreen->search(TAG("n_all"))->scale(g_MsgObject_HIO_c.mBoxTalkScaleX,
                                          g_MsgObject_HIO_c.mBoxTalkScaleY);
 #if VERSION == VERSION_GCN_JPN
         field_0x50 = 0.0f;
 
         if (dComIfGs_getOptRuby() == 0) {
-            mpTm_c[0] = new CPaneMgr(mpTxScreen, 'mg_3flin', 0, NULL);
-            mpTm_c[1] = new CPaneMgr(mpTxScreen, 't3f_s', 0, NULL);
+            mpTm_c[0] = new CPaneMgr(mpTxScreen, TAG("mg_3flin"), 0, NULL);
+            mpTm_c[1] = new CPaneMgr(mpTxScreen, TAG("t3f_s"), 0, NULL);
 
-            mpTmr_c[0] = new CPaneMgr(mpTxScreen, 'mg_3f', 0, NULL);
-            mpTmr_c[1] = new CPaneMgr(mpTxScreen, 'mg_3f_s', 0, NULL);
+            mpTmr_c[0] = new CPaneMgr(mpTxScreen, TAG("mg_3f"), 0, NULL);
+            mpTmr_c[1] = new CPaneMgr(mpTxScreen, TAG("mg_3f_s"), 0, NULL);
 
-            mpTxScreen->search('n_3line')->hide();
-            mpTxScreen->search('n_3fline')->show();
-            mpTxScreen->search('n_e4line')->hide();
+            mpTxScreen->search(TAG("n_3line"))->hide();
+            mpTxScreen->search(TAG("n_3fline"))->show();
+            mpTxScreen->search(TAG("n_e4line"))->hide();
         } else {
-            mpTm_c[0] = new CPaneMgr(mpTxScreen, 'mg_3line', 0, NULL);
-            mpTm_c[1] = new CPaneMgr(mpTxScreen, 't3_s', 0, NULL);
+            mpTm_c[0] = new CPaneMgr(mpTxScreen, TAG("mg_3line"), 0, NULL);
+            mpTm_c[1] = new CPaneMgr(mpTxScreen, TAG("t3_s"), 0, NULL);
 
             mpTmr_c[0] = NULL;
             mpTmr_c[1] = NULL;
 
-            mpTxScreen->search('n_3line')->show();
-            mpTxScreen->search('n_3fline')->hide();
-            mpTxScreen->search('n_e4line')->hide();
+            mpTxScreen->search(TAG("n_3line"))->show();
+            mpTxScreen->search(TAG("n_3fline"))->hide();
+            mpTxScreen->search(TAG("n_e4line"))->hide();
         }
 #else
         field_0x50 = -10.0f;
 
-        mpTm_c[0] = new CPaneMgr(mpTxScreen, 'mg_e4lin', 0, NULL);
+        mpTm_c[0] = new CPaneMgr(mpTxScreen, TAG("mg_e4lin"), 0, NULL);
         JUT_ASSERT(162, mpTm_c[0] != NULL);
 
-        mpTm_c[1] = new CPaneMgr(mpTxScreen, 't4_s', 0, NULL);
+        mpTm_c[1] = new CPaneMgr(mpTxScreen, TAG("t4_s"), 0, NULL);
         JUT_ASSERT(165, mpTm_c[1] != NULL);
 
         mpTmr_c[0] = NULL;
         mpTmr_c[1] = NULL;
 
-        mpTxScreen->search('n_3line')->hide();
-        mpTxScreen->search('n_3fline')->hide();
-        mpTxScreen->search('n_e4line')->show();
+        mpTxScreen->search(TAG("n_3line"))->hide();
+        mpTxScreen->search(TAG("n_3fline"))->hide();
+        mpTxScreen->search(TAG("n_e4line"))->show();
 #endif
 
         if (param_1 == 2 || param_1 == 4) {
@@ -177,27 +177,27 @@ dMsgScrnExplain_c::dMsgScrnExplain_c(STControl* i_stick, u8 param_1, bool i_isUs
         }
     }
 
-    mpScreen->search('mg_null')->move(
-        g_MsgObject_HIO_c.mTextPosX + mpScreen->search('mg_null')->getBounds().i.x,
-        g_MsgObject_HIO_c.mTextPosY + mpScreen->search('mg_null')->getBounds().i.y);
+    mpScreen->search(TAG("mg_null"))->move(
+        g_MsgObject_HIO_c.mTextPosX + mpScreen->search(TAG("mg_null"))->getBounds().i.x,
+        g_MsgObject_HIO_c.mTextPosY + mpScreen->search(TAG("mg_null"))->getBounds().i.y);
 
-    mpArw_c = new CPaneMgr(mpScreen, 'set_ya_n', 0, NULL);
+    mpArw_c = new CPaneMgr(mpScreen, TAG("set_ya_n"), 0, NULL);
     JUT_ASSERT(241, mpArw_c != NULL);
 
-    mpMg_c[0] = new CPaneMgr(mpScreen, 'mg_null', 0, NULL);
+    mpMg_c[0] = new CPaneMgr(mpScreen, TAG("mg_null"), 0, NULL);
     JUT_ASSERT(244, mpMg_c[0] != NULL);
 
-    mpMg_c[1] = new CPaneMgr(mpTxScreen, 'mg_null', 0, NULL);
+    mpMg_c[1] = new CPaneMgr(mpTxScreen, TAG("mg_null"), 0, NULL);
     JUT_ASSERT(247, mpMg_c[1] != NULL);
 
-    mpRoot_c[0] = new CPaneMgr(mpScreen, 'ROOT', 2, NULL);
+    mpRoot_c[0] = new CPaneMgr(mpScreen, TAG("ROOT"), 2, NULL);
     JUT_ASSERT(250, mpRoot_c[0] != NULL);
 
-    mpRoot_c[1] = new CPaneMgr(mpTxScreen, 'ROOT', 2, NULL);
+    mpRoot_c[1] = new CPaneMgr(mpTxScreen, TAG("ROOT"), 2, NULL);
     JUT_ASSERT(253, mpRoot_c[1] != NULL);
 
     if (i_isUseBackTex == true) {
-        ResTIMG* texResource = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource('TIMG', "tt_block8x8.bti");
+        ResTIMG* texResource = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource(TAG("TIMG"), "tt_block8x8.bti");
         mpBackTex = new J2DPicture(texResource);
         JUT_ASSERT(259, mpBackTex != NULL);
         mpBackTex->setBlackWhite(JUtility::TColor(0, 0, 0, 0),
@@ -295,7 +295,7 @@ void dMsgScrnExplain_c::move() {
         (this->*init_process[mStatus])();
     }
 
-    mpScreen->search('n_all')->scale(g_MsgObject_HIO_c.mBoxTalkScaleX,
+    mpScreen->search(TAG("n_all"))->scale(g_MsgObject_HIO_c.mBoxTalkScaleX,
                                      g_MsgObject_HIO_c.mBoxTalkScaleY);
 }
 

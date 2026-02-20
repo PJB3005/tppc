@@ -102,10 +102,10 @@ void JASDriver::setOutputRate(JASOutputRate param_0) {
 }
 
 const JASDriver::MixFunc JASDriver::sMixFuncs[4] = {
-    mixMonoTrack,
-    mixMonoTrackWide,
-    mixExtraTrack,
-    mixInterleaveTrack,
+    JASDriver::mixMonoTrack,
+    JASDriver::mixMonoTrackWide,
+    JASDriver::mixExtraTrack,
+    JASDriver::mixInterleaveTrack,
 };
 
 u32 JASDriver::sSubFrameCounter;

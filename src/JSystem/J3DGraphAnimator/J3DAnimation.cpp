@@ -554,6 +554,8 @@ inline f32 J3DHermiteInterpolation(__REGISTER f32 pp1, __REGISTER s16 const* pp2
     }
     // clang-format on
     return fout;
+#else
+    OSUNIMPLEMENTED();
 #endif
 }
 

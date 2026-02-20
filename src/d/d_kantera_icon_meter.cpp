@@ -31,9 +31,9 @@ void dKantera_icon_c::initiate() {
     dPaneClass_showNullPane(scrn);
     mpKanteraIcon->setScreen(scrn);
 
-    mpParent = new CPaneMgr(scrn, 'kan_m_n', 2, NULL);
+    mpParent = new CPaneMgr(scrn, TAG("kan_m_n"), 2, NULL);
 
-    mpGauge = new CPaneMgr(scrn, 'yellow_m', 0, NULL);
+    mpGauge = new CPaneMgr(scrn, TAG("yellow_m"), 0, NULL);
 }
 
 void dKantera_icon_c::setAlphaRate(f32 alphaRate) {

@@ -8,7 +8,7 @@
 
 dMsgScrnBoss_c::dMsgScrnBoss_c() {
     static u64 t_tag[7] = {
-        'sfontb0', 'sfontb1', 'sfontb2', 'sfontl0', 'sfontl1', 'sfontl2', 'sfont00',
+        TAG("sfontb0"), TAG("sfontb1"), TAG("sfontb2"), TAG("sfontl0"), TAG("sfontl1"), TAG("sfontl2"), TAG("sfont00"),
     };
 
     init();
@@ -17,15 +17,15 @@ dMsgScrnBoss_c::dMsgScrnBoss_c() {
     mpScreen->setPriority("zelda_boss_name.blo", 0x20000, dComIfGp_getMsgArchive(4));
     dPaneClass_showNullPane(mpScreen);
 
-    mpPmP_c = new CPaneMgr(mpScreen, 'n_all', 2, NULL);
+    mpPmP_c = new CPaneMgr(mpScreen, TAG("n_all"), 2, NULL);
     mpPmP_c->scale(g_MsgObject_HIO_c.mBossNameScaleX, g_MsgObject_HIO_c.mBossNameScaleY);
 
-    mpFontParent = new CPaneMgr(mpScreen, 's_font_n', 0, NULL);
+    mpFontParent = new CPaneMgr(mpScreen, TAG("s_font_n"), 0, NULL);
     mpFontParent->scale(g_MsgObject_HIO_c.mBossNameCharSizeX, g_MsgObject_HIO_c.mBossNameCharSizeY);
     mpFontParent->paneTrans(g_MsgObject_HIO_c.mBossNameCharPosX,
                             g_MsgObject_HIO_c.mBossNameCharPosY);
 
-    mpBaseParent = new CPaneMgr(mpScreen, 'base_n', 2, NULL);
+    mpBaseParent = new CPaneMgr(mpScreen, TAG("base_n"), 2, NULL);
     mpBaseParent->scale(g_MsgObject_HIO_c.mBossNameBaseSizeX, g_MsgObject_HIO_c.mBossNameBaseSizeY);
     mpBaseParent->paneTrans(g_MsgObject_HIO_c.mBossNameBasePosX,
                             g_MsgObject_HIO_c.mBossNameBasePosY);

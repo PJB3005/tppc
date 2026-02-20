@@ -146,38 +146,38 @@ void dMenu_DmapBg_c::mapScreenInit() {
     }
     
     #if (PLATFORM_WII || PLATFORM_SHIELD)
-    mpBlack = new CPaneMgrAlpha(mMapScreen[0], 'm_black', 2, NULL);
+    mpBlack = new CPaneMgrAlpha(mMapScreen[0], TAG("m_black"), 2, NULL);
     JUT_ASSERT(699, mpBlack != NULL);
     mpBlack->setAlphaRate(0.0f);
     #else
     mpBlack = NULL;
     #endif
     
-    mMapScreen[0]->search('map_icon')->hide();
-    mMapScreen[0]->search('map_aria')->hide();
-    mMapScreen[0]->search('n_all')->hide();
-    mMapScreen[1]->search('n_all')->hide();
-    mMapScreen[0]->search('m_black')->hide();
-    mMapScreen[1]->search('bs_00_0')->hide();
-    mMapScreen[1]->search('bs_00_1')->hide();
-    mMapScreen[1]->search('gold00_0')->hide();
-    mMapScreen[1]->search('gold00_1')->hide();
-    mMapScreen[1]->search('m_black')->hide();
-    mMapScreen[1]->search('center_n')->hide();
-    mMapScreen[1]->search('map_ai_n')->setBasePosition(J2DBasePosition_0);
-    mMapScreen[0]->search('center_n')->setBasePosition(J2DBasePosition_4);
+    mMapScreen[0]->search(TAG("map_icon"))->hide();
+    mMapScreen[0]->search(TAG("map_aria"))->hide();
+    mMapScreen[0]->search(TAG("n_all"))->hide();
+    mMapScreen[1]->search(TAG("n_all"))->hide();
+    mMapScreen[0]->search(TAG("m_black"))->hide();
+    mMapScreen[1]->search(TAG("bs_00_0"))->hide();
+    mMapScreen[1]->search(TAG("bs_00_1"))->hide();
+    mMapScreen[1]->search(TAG("gold00_0"))->hide();
+    mMapScreen[1]->search(TAG("gold00_1"))->hide();
+    mMapScreen[1]->search(TAG("m_black"))->hide();
+    mMapScreen[1]->search(TAG("center_n"))->hide();
+    mMapScreen[1]->search(TAG("map_ai_n"))->setBasePosition(J2DBasePosition_0);
+    mMapScreen[0]->search(TAG("center_n"))->setBasePosition(J2DBasePosition_4);
 
     OSInitFastCast();
     {
         Mtx m;
         CPaneMgr pane;
-        Vec vtx = pane.getGlobalVtx(mMapScreen[1]->search('map_icon'), &m, 0, false, 0);
+        Vec vtx = pane.getGlobalVtx(mMapScreen[1]->search(TAG("map_icon")), &m, 0, false, 0);
         field_0xdc0 = vtx.x;
         field_0xdc4 = vtx.y;
     }
 
     for (int i = 0; i < 2; i++) {
-        mpMapRoot[i] = new CPaneMgrAlphaMorf(mMapScreen[i], 'ROOT', 2, NULL);
+        mpMapRoot[i] = new CPaneMgrAlphaMorf(mMapScreen[i], TAG("ROOT"), 2, NULL);
         JUT_ASSERT(751, mpMapRoot[i] != NULL);
     }
 
@@ -192,7 +192,7 @@ void dMenu_DmapBg_c::mapScreenInit() {
     mMapScreen[0]->animation();
     setGoldAnimation(true);
 
-    mMapPane = (J2DPicture*)mMapScreen[1]->search('map_aria');
+    mMapPane = (J2DPicture*)mMapScreen[1]->search(TAG("map_aria"));
     mMapPane->setCornerColor(JUtility::TColor(0xFF, 0xFF, 0xFF, 0xFF));
     mMapPane->setWhite(JUtility::TColor(0xFF, 0xFF, 0xFF, 0xFF));
 
@@ -203,7 +203,7 @@ void dMenu_DmapBg_c::mapScreenInit() {
     mMapWidth = vtx3.x - vtx0.x;
     mMapHeight = vtx3.y - vtx0.y;
 
-    J2DPicture* map_icon_pic = (J2DPicture*)mMapScreen[1]->search('map_icon');
+    J2DPicture* map_icon_pic = (J2DPicture*)mMapScreen[1]->search(TAG("map_icon"));
     map_icon_pic->setBasePosition(J2DBasePosition_4);
     map_icon_pic->setCornerColor(JUtility::TColor(0xFF, 0xFF, 0xFF, 0xFF));
     map_icon_pic->setAlpha(0);
@@ -211,7 +211,7 @@ void dMenu_DmapBg_c::mapScreenInit() {
     initiate(dComIfGp_getDmapResArchive());
 
     for (int i = 0; i < 2; i++) {
-        mpMapSpace[i] = new CPaneMgr(mMapScreen[i], 'mapspace', 0, NULL);
+        mpMapSpace[i] = new CPaneMgr(mMapScreen[i], TAG("mapspace"), 0, NULL);
         JUT_ASSERT(817, mpMapSpace[i] != NULL);
 
         mpMapSpace[i]->paneTrans(0.0f, -15.0f);
@@ -281,15 +281,15 @@ bool dMenu_DmapBg_c::iconScaleAnm() {
 }
 
 void dMenu_DmapBg_c::buttonIconScreenInit() {
-    static u64 const cont_at[5] = {'cont_at', 'cont_at1', 'cont_at2', 'cont_at3', 'cont_at4'};
-    static u64 const cont_bt[5] = {'cont_bt', 'cont_bt1', 'cont_bt2', 'cont_bt3', 'cont_bt4'};
-    static u64 const font_at[5] = {'font_at', 'font_at1', 'font_at2', 'font_at3', 'font_at4'};
-    static u64 const font_bt[5] = {'font_bt', 'font_bt1', 'font_bt2', 'font_bt3', 'font_bt4'};
+    static u64 const cont_at[5] = {TAG("cont_at"), TAG("cont_at1"), TAG("cont_at2"), TAG("cont_at3"), TAG("cont_at4")};
+    static u64 const cont_bt[5] = {TAG("cont_bt"), TAG("cont_bt1"), TAG("cont_bt2"), TAG("cont_bt3"), TAG("cont_bt4")};
+    static u64 const font_at[5] = {TAG("font_at"), TAG("font_at1"), TAG("font_at2"), TAG("font_at3"), TAG("font_at4")};
+    static u64 const font_bt[5] = {TAG("font_bt"), TAG("font_bt1"), TAG("font_bt2"), TAG("font_bt3"), TAG("font_bt4")};
     static u64 const c_tag[2] = {
         #if VERSION == VERSION_GCN_JPN
-        'c_text_s', 'c_text'
+        TAG("c_text_s"), TAG("c_text")
         #else
-        'f_text_s', 'f_text'
+        TAG("f_text_s"), TAG("f_text")
         #endif
     };
 
@@ -308,17 +308,17 @@ void dMenu_DmapBg_c::buttonIconScreenInit() {
     JUT_ASSERT(930, fg != false);
     dPaneClass_showNullPane(mDecorateScreen);
 
-    mpDecorateRoot = new CPaneMgrAlphaMorf(mDecorateScreen, 'ROOT', 2, NULL);
+    mpDecorateRoot = new CPaneMgrAlphaMorf(mDecorateScreen, TAG("ROOT"), 2, NULL);
     JUT_ASSERT(934, mpDecorateRoot != NULL);
     #else
     mDecorateScreen = NULL;
     mpDecorateRoot = NULL;
-    mButtonScreen->search('w_spot')->hide();
-    mButtonScreen->search('spot00')->hide();
-    mButtonScreen->search('spot01')->hide();
+    mButtonScreen->search(TAG("w_spot"))->hide();
+    mButtonScreen->search(TAG("spot00"))->hide();
+    mButtonScreen->search(TAG("spot01"))->hide();
     #endif
 
-    mpButtonRoot = new CPaneMgrAlphaMorf(mButtonScreen, 'ROOT', 2, NULL);
+    mpButtonRoot = new CPaneMgrAlphaMorf(mButtonScreen, TAG("ROOT"), 2, NULL);
     JUT_ASSERT(952, mpButtonRoot != NULL);
 
     for (int i = 0; i < 2; i++) {
@@ -326,7 +326,7 @@ void dMenu_DmapBg_c::buttonIconScreenInit() {
         mpButtonText[i] = NULL;
     }
 
-    mpCButton = new CPaneMgrAlpha(mButtonScreen, 'c_btn', 2, NULL);
+    mpCButton = new CPaneMgrAlpha(mButtonScreen, TAG("c_btn"), 2, NULL);
     JUT_ASSERT(978, mpCButton != NULL);
     mpJButton = NULL;
 
@@ -348,7 +348,7 @@ void dMenu_DmapBg_c::buttonIconScreenInit() {
         #endif
     }
 
-    field_0xcf4 = new CPaneMgr(mButtonScreen, 'c_n', 2, NULL);
+    field_0xcf4 = new CPaneMgr(mButtonScreen, TAG("c_n"), 2, NULL);
     field_0xcf8 = NULL;
 
     J2DTextBox* textBox;
@@ -372,9 +372,9 @@ void dMenu_DmapBg_c::buttonIconScreenInit() {
 void dMenu_DmapBg_c::setAButtonString(u32 i_msgNo) {
     static u64 const cont_at[5] = {
         #if VERSION == VERSION_GCN_JPN
-        'cont_at', 'cont_at1', 'cont_at2', 'cont_at3', 'cont_at4'
+        TAG("cont_at"), TAG("cont_at1"), TAG("cont_at2"), TAG("cont_at3"), TAG("cont_at4")
         #else
-        'font_at', 'font_at1', 'font_at2', 'font_at3', 'font_at4'
+        TAG("font_at"), TAG("font_at1"), TAG("font_at2"), TAG("font_at3"), TAG("font_at4")
         #endif
     };
     for (int i = 0; i < 5; i++) {
@@ -389,9 +389,9 @@ void dMenu_DmapBg_c::setAButtonString(u32 i_msgNo) {
 void dMenu_DmapBg_c::setBButtonString(u32 i_msgNo) {
     static u64 const cont_bt[5] = {
         #if VERSION == VERSION_GCN_JPN
-        'cont_bt', 'cont_bt1', 'cont_bt2', 'cont_bt3', 'cont_bt4'
+        TAG("cont_bt"), TAG("cont_bt1"), TAG("cont_bt2"), TAG("cont_bt3"), TAG("cont_bt4")
         #else
-        'font_bt', 'font_bt1', 'font_bt2', 'font_bt3', 'font_bt4'
+        TAG("font_bt"), TAG("font_bt1"), TAG("font_bt2"), TAG("font_bt3"), TAG("font_bt4")
         #endif
     };
     for (int i = 0; i < 5; i++) {
@@ -412,9 +412,9 @@ dMenu_Dmap_c* dMenu_Dmap_c::myclass;
 void dMenu_DmapBg_c::setCButtonString(u32 i_msgNo) {
     static u64 const c_tag[2] = {
         #if VERSION == VERSION_GCN_JPN
-        'c_text_s', 'c_text'
+        TAG("c_text_s"), TAG("c_text")
         #else
-        'f_text_s', 'f_text'
+        TAG("f_text_s"), TAG("f_text")
         #endif
     };
     int i;
@@ -478,12 +478,12 @@ void dMenu_DmapBg_c::baseScreenInit() {
     JUT_ASSERT(1362, fg != false);
     dPaneClass_showNullPane(mFloorScreen);
 
-    mBaseScreen->search('w_btn_n')->hide();
+    mBaseScreen->search(TAG("w_btn_n"))->hide();
 
-    mpBaseRoot = new CPaneMgrAlphaMorf(mBaseScreen, 'ROOT', 2, NULL);
+    mpBaseRoot = new CPaneMgrAlphaMorf(mBaseScreen, TAG("ROOT"), 2, NULL);
     JUT_ASSERT(1396, mpBaseRoot != NULL);
 
-    mpFloorRoot = new CPaneMgrAlphaMorf(mFloorScreen, 'ROOT', 2, NULL);
+    mpFloorRoot = new CPaneMgrAlphaMorf(mFloorScreen, TAG("ROOT"), 2, NULL);
     JUT_ASSERT(1399, mpFloorRoot != NULL);
 
     mpDrawCursor = new dSelect_cursor_c(2, 1.0f, NULL);
@@ -493,11 +493,11 @@ void dMenu_DmapBg_c::baseScreenInit() {
     mpDrawCursor->setParam(0.95f, 0.9f, 0.1f, 0.6f, 0.5f);
 
     #if VERSION == VERSION_GCN_JPN
-    J2DTextBox* uVar9 = (J2DTextBox*)mBaseScreen->search('t_t00');
-    mBaseScreen->search('f_t_00')->hide();
+    J2DTextBox* uVar9 = (J2DTextBox*)mBaseScreen->search(TAG("t_t00"));
+    mBaseScreen->search(TAG("f_t_00"))->hide();
     #else
-    J2DTextBox* uVar9 = (J2DTextBox*)mBaseScreen->search('f_t_00');
-    mBaseScreen->search('t_t00')->hide();
+    J2DTextBox* uVar9 = (J2DTextBox*)mBaseScreen->search(TAG("f_t_00"));
+    mBaseScreen->search(TAG("t_t00"))->hide();
     #endif
     uVar9->setFont(mDoExt_getSubFont());
     uVar9->setString(32, "");
@@ -523,11 +523,11 @@ void dMenu_DmapBg_c::setFloorMessage() {
     };
 
     #if VERSION == VERSION_GCN_JPN
-    #define FLOOR_TAG(A, B) ('ffoor0_0' | (A<<16) | (B))
-    #define FFOOR_TAG(A, B) ('floor0_0' | (A<<16) | (B))
+    #define FLOOR_TAG(A, B) (TAG("ffoor0_0") | (A<<16) | (B))
+    #define FFOOR_TAG(A, B) (TAG("floor0_0") | (A<<16) | (B))
     #else
-    #define FLOOR_TAG(A, B) ('floor0_0' | (A<<16) | (B))
-    #define FFOOR_TAG(A, B) ('ffoor0_0' | (A<<16) | (B))
+    #define FLOOR_TAG(A, B) (TAG("floor0_0") | (A<<16) | (B))
+    #define FFOOR_TAG(A, B) (TAG("ffoor0_0") | (A<<16) | (B))
     #endif
 
     floor_textbox_1[0] = (J2DTextBox*)mFloorScreen->search(FFOOR_TAG(7, 1));
@@ -794,8 +794,8 @@ void dMenu_DmapBg_c::setAllAlphaRate(f32 i_rate, bool param_2) {
 }
 
 void dMenu_DmapBg_c::setGoldAnimation(bool param_1) {
-    J2DPane* gold0 = mMapScreen[0]->search('gold00_0');
-    J2DPane* gold1 = mMapScreen[0]->search('gold00_1');
+    J2DPane* gold0 = mMapScreen[0]->search(TAG("gold00_0"));
+    J2DPane* gold1 = mMapScreen[0]->search(TAG("gold00_1"));
 
     if (param_1) {
         gold0->setAnimation(field_0xd28[0]);
@@ -808,13 +808,13 @@ void dMenu_DmapBg_c::setGoldAnimation(bool param_1) {
 
 void dMenu_DmapBg_c::setGoldFrameAlphaRate(f32 i_rate) {
     if (0.0f == i_rate) {
-        mMapScreen[0]->search('gold00_0')->hide();
-        mMapScreen[0]->search('gold00_1')->hide();
+        mMapScreen[0]->search(TAG("gold00_0"))->hide();
+        mMapScreen[0]->search(TAG("gold00_1"))->hide();
     } else {
-        mMapScreen[0]->search('gold00_0')->show();
-        mMapScreen[0]->search('gold00_1')->show();
-        mMapScreen[0]->search('gold00_0')->setAlpha(i_rate * 255.0f);
-        mMapScreen[0]->search('gold00_1')->setAlpha(i_rate * 255.0f);
+        mMapScreen[0]->search(TAG("gold00_0"))->show();
+        mMapScreen[0]->search(TAG("gold00_1"))->show();
+        mMapScreen[0]->search(TAG("gold00_0"))->setAlpha(i_rate * 255.0f);
+        mMapScreen[0]->search(TAG("gold00_1"))->setAlpha(i_rate * 255.0f);
     }
 }
 
@@ -874,7 +874,7 @@ void dMenu_DmapBg_c::draw() {
     mMapScreen[0]->draw(field_0xd94, field_0xd98, grafContext);
 
     if (mpBackTexture != NULL) {
-        J2DPane* center_pane = mMapScreen[0]->search('center_n');
+        J2DPane* center_pane = mMapScreen[0]->search(TAG("center_n"));
         CPaneMgr pane;
         Mtx mtx;
         Vec local_200 = pane.getGlobalVtx(center_pane, &mtx, 0, false, 0);
@@ -903,7 +903,7 @@ void dMenu_DmapBg_c::draw() {
 
     mMapScreen[1]->draw(field_0xd94, field_0xd98, grafContext);
 
-    J2DPane* center_pane = mMapScreen[1]->search('center_n');
+    J2DPane* center_pane = mMapScreen[1]->search(TAG("center_n"));
     CPaneMgr pane;
     Mtx local_110;
     Vec local_218 = pane.getGlobalVtx(center_pane, &local_110, 0, false, 0);
@@ -1060,18 +1060,18 @@ dMenu_Dmap_c::dMenu_Dmap_c(JKRExpHeap* param_1, STControl* param_2, CSTControl* 
 }
 
 void dMenu_Dmap_c::screenInit() {
-    static u64 const floor_tag[8] = {'floor7_n', 'floor0_n', 'floor1_n', 'floor2_n',
-                                     'floor3_n', 'floor4_n', 'floor5_n', 'floor6_n'};
-    static u64 const icon_tag[8] = {'ico_set7', 'ico_set0', 'ico_set1', 'ico_set2',
-                                    'ico_set3', 'ico_set4', 'ico_set5', 'ico_set6'};
-    static u64 const boss_tag[8] = {'ic_st_b7', 'ic_st_b0', 'ic_st_b1', 'ic_st_b2',
-                                    'ic_st_b3', 'ic_st_b4', 'ic_st_b5', 'ic_st_b6'};
-    static u64 const stay_tag[2] = {'rink_nul', 'boss_nul'};
-    static u64 const waku_tag[3] = {'gray_map', 'gray_con', 'gray_key'};
-    static u64 const key_tag[3] = {'key_00', 'key_01', 'key_02'};
-    static u64 const item_tag[3] = {'map000', 'con000', 'i_key_n'};
+    static u64 const floor_tag[8] = {TAG("floor7_n"), TAG("floor0_n"), TAG("floor1_n"), TAG("floor2_n"),
+                                     TAG("floor3_n"), TAG("floor4_n"), TAG("floor5_n"), TAG("floor6_n")};
+    static u64 const icon_tag[8] = {TAG("ico_set7"), TAG("ico_set0"), TAG("ico_set1"), TAG("ico_set2"),
+                                    TAG("ico_set3"), TAG("ico_set4"), TAG("ico_set5"), TAG("ico_set6")};
+    static u64 const boss_tag[8] = {TAG("ic_st_b7"), TAG("ic_st_b0"), TAG("ic_st_b1"), TAG("ic_st_b2"),
+                                    TAG("ic_st_b3"), TAG("ic_st_b4"), TAG("ic_st_b5"), TAG("ic_st_b6")};
+    static u64 const stay_tag[2] = {TAG("rink_nul"), TAG("boss_nul")};
+    static u64 const waku_tag[3] = {TAG("gray_map"), TAG("gray_con"), TAG("gray_key")};
+    static u64 const key_tag[3] = {TAG("key_00"), TAG("key_01"), TAG("key_02")};
+    static u64 const item_tag[3] = {TAG("map000"), TAG("con000"), TAG("i_key_n")};
 
-    field_0x10 = new CPaneMgr(mpDrawBg->mBaseScreen, 'floo_s_n', 0, NULL);
+    field_0x10 = new CPaneMgr(mpDrawBg->mBaseScreen, TAG("floo_s_n"), 0, NULL);
 
     for (int i = 0; i < 8; i++) {
         field_0x114[i] = 0.0f;
@@ -1091,14 +1091,14 @@ void dMenu_Dmap_c::screenInit() {
         field_0x14c[i] = mStayIcon[i]->getGlobalVtxCenter(false, 0);
 
         if (i == 0) {
-            mpDrawBg->mFloorScreen->search('wolf')->move((f32)mpDrawBg->mFloorScreen->search('rink')->getBounds().i.x, (f32)mpDrawBg->mFloorScreen->search('rink')->getBounds().i.y);
+            mpDrawBg->mFloorScreen->search(TAG("wolf"))->move((f32)mpDrawBg->mFloorScreen->search(TAG("rink"))->getBounds().i.x, (f32)mpDrawBg->mFloorScreen->search(TAG("rink"))->getBounds().i.y);
 
             if (daPy_py_c::checkNowWolf()) {
-                mpDrawBg->mFloorScreen->search('wolf')->show();
-                mpDrawBg->mFloorScreen->search('rink')->hide();
+                mpDrawBg->mFloorScreen->search(TAG("wolf"))->show();
+                mpDrawBg->mFloorScreen->search(TAG("rink"))->hide();
             } else {
-                mpDrawBg->mFloorScreen->search('wolf')->hide();
-                mpDrawBg->mFloorScreen->search('rink')->show();
+                mpDrawBg->mFloorScreen->search(TAG("wolf"))->hide();
+                mpDrawBg->mFloorScreen->search(TAG("rink"))->show();
             }
         }
     }
@@ -1118,7 +1118,7 @@ void dMenu_Dmap_c::screenInit() {
     f32 var_f29;
     f32 var_f28 = 7.0f;
 
-    var_f29 = mpDrawBg->mFloorScreen->search('s_n_all')->getHeight();
+    var_f29 = mpDrawBg->mFloorScreen->search(TAG("s_n_all"))->getHeight();
     f32 var_f30 = mSelFloor[0]->getPanePtr()->getHeight();
 
     f32 var_f27 = mFloorAll - mBottomFloor + 1;
@@ -1137,19 +1137,19 @@ void dMenu_Dmap_c::screenInit() {
     iconMoveCalc();
     Vec local_b0 = mSelFloor[getDefaultCurFloorPos()]->getGlobalVtxCenter(false, 0);
     mpDrawBg->mpDrawCursor->setPos(local_b0.x + field_0x104, local_b0.y, mSelFloor[getDefaultCurFloorPos()]->getPanePtr(), true);
-    field_0x94 = new CPaneMgr(mpDrawBg->mBaseScreen, 'item_s_n', 0, NULL);
-    field_0x7c[0] = new CPaneMgr(mpDrawBg->mBaseScreen, 'map_n', 3, NULL);
-    field_0x7c[1] = new CPaneMgr(mpDrawBg->mBaseScreen, 'con_n', 3, NULL);
-    field_0x7c[2] = new CPaneMgr(mpDrawBg->mBaseScreen, 'key_n', 3, NULL);
-    field_0x88[0] = new CPaneMgr(mpDrawBg->mBaseScreen, 'map000', 3, NULL);
-    field_0x88[1] = new CPaneMgr(mpDrawBg->mBaseScreen, 'con000', 3, NULL);
+    field_0x94 = new CPaneMgr(mpDrawBg->mBaseScreen, TAG("item_s_n"), 0, NULL);
+    field_0x7c[0] = new CPaneMgr(mpDrawBg->mBaseScreen, TAG("map_n"), 3, NULL);
+    field_0x7c[1] = new CPaneMgr(mpDrawBg->mBaseScreen, TAG("con_n"), 3, NULL);
+    field_0x7c[2] = new CPaneMgr(mpDrawBg->mBaseScreen, TAG("key_n"), 3, NULL);
+    field_0x88[0] = new CPaneMgr(mpDrawBg->mBaseScreen, TAG("map000"), 3, NULL);
+    field_0x88[1] = new CPaneMgr(mpDrawBg->mBaseScreen, TAG("con000"), 3, NULL);
     
     if (dStage_stagInfo_GetSaveTbl(dComIfGp_getStageStagInfo()) == dStage_SaveTbl_LV2) {
-        field_0x88[2] = new CPaneMgr(mpDrawBg->mBaseScreen, 'i_key_n', 3, NULL);
+        field_0x88[2] = new CPaneMgr(mpDrawBg->mBaseScreen, TAG("i_key_n"), 3, NULL);
     } else if (dStage_stagInfo_GetSaveTbl(dComIfGp_getStageStagInfo()) == dStage_SaveTbl_LV5) {
-        field_0x88[2] = new CPaneMgr(mpDrawBg->mBaseScreen, 'lv5_k_n', 3, NULL);
+        field_0x88[2] = new CPaneMgr(mpDrawBg->mBaseScreen, TAG("lv5_k_n"), 3, NULL);
     } else {
-        field_0x88[2] = new CPaneMgr(mpDrawBg->mBaseScreen, 'nor_k_n', 3, NULL);
+        field_0x88[2] = new CPaneMgr(mpDrawBg->mBaseScreen, TAG("nor_k_n"), 3, NULL);
     }
 
     for (int i = 0; i < 3; i++) {
@@ -1157,8 +1157,8 @@ void dMenu_Dmap_c::screenInit() {
     }
 
     if (dStage_stagInfo_GetSaveTbl(dComIfGp_getStageStagInfo()) == dStage_SaveTbl_LV2) {
-        mpDrawBg->mBaseScreen->search('lv5_k_n')->hide();
-        mpDrawBg->mBaseScreen->search('nor_k_n')->hide();
+        mpDrawBg->mBaseScreen->search(TAG("lv5_k_n"))->hide();
+        mpDrawBg->mBaseScreen->search(TAG("nor_k_n"))->hide();
 
         u8 key_num = 0;
         if (checkItemGet(fpcNm_ITEM_L2_KEY_PIECES1, 1)) {
@@ -1186,19 +1186,19 @@ void dMenu_Dmap_c::screenInit() {
         }
 
         if (key_num == 0 || dMeter2Info_isTempBit(0)) {
-            mpDrawBg->mBaseScreen->search('key_n_n')->hide();
+            mpDrawBg->mBaseScreen->search(TAG("key_n_n"))->hide();
         } else {
-            ResTIMG* tex = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource('TIMG', dMeter2Info_getNumberTextureName(key_num));
-            ((J2DPicture*)mpDrawBg->mBaseScreen->search('c_n_2_s'))->changeTexture(tex, 0);
-            ((J2DPicture*)mpDrawBg->mBaseScreen->search('c_n_2'))->changeTexture(tex, 0);
-            tex = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource('TIMG', dMeter2Info_getNumberTextureName(3));
-            ((J2DPicture*)mpDrawBg->mBaseScreen->search('c_n_1_s'))->changeTexture(tex, 0);
-            ((J2DPicture*)mpDrawBg->mBaseScreen->search('c_n_1'))->changeTexture(tex, 0);
+            ResTIMG* tex = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource(TAG("TIMG"), dMeter2Info_getNumberTextureName(key_num));
+            ((J2DPicture*)mpDrawBg->mBaseScreen->search(TAG("c_n_2_s")))->changeTexture(tex, 0);
+            ((J2DPicture*)mpDrawBg->mBaseScreen->search(TAG("c_n_2")))->changeTexture(tex, 0);
+            tex = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource(TAG("TIMG"), dMeter2Info_getNumberTextureName(3));
+            ((J2DPicture*)mpDrawBg->mBaseScreen->search(TAG("c_n_1_s")))->changeTexture(tex, 0);
+            ((J2DPicture*)mpDrawBg->mBaseScreen->search(TAG("c_n_1")))->changeTexture(tex, 0);
         }
     } else if (dStage_stagInfo_GetSaveTbl(dComIfGp_getStageStagInfo()) == dStage_SaveTbl_LV5) {
-        mpDrawBg->mBaseScreen->search('i_key_n')->hide();
-        mpDrawBg->mBaseScreen->search('nor_k_n')->hide();
-        mpDrawBg->mBaseScreen->search('key_n_n')->hide();
+        mpDrawBg->mBaseScreen->search(TAG("i_key_n"))->hide();
+        mpDrawBg->mBaseScreen->search(TAG("nor_k_n"))->hide();
+        mpDrawBg->mBaseScreen->search(TAG("key_n_n"))->hide();
 
         u8 itemNo = fpcNm_ITEM_NONE;
         field_0x174[2] = 0;
@@ -1229,14 +1229,14 @@ void dMenu_Dmap_c::screenInit() {
         case fpcNm_ITEM_TOMATO_PUREE:
         case fpcNm_ITEM_TASTE:
             dMeter2Info_readItemTexture(itemNo, mItemTexBuf,
-                                        (J2DPicture*)mpDrawBg->mBaseScreen->search('lv5_boss'), NULL, NULL, NULL, NULL,
+                                        (J2DPicture*)mpDrawBg->mBaseScreen->search(TAG("lv5_boss")), NULL, NULL, NULL, NULL,
                                         NULL, NULL, -1);
             break;
         }
     } else {
-        mpDrawBg->mBaseScreen->search('i_key_n')->hide();
-        mpDrawBg->mBaseScreen->search('lv5_k_n')->hide();
-        mpDrawBg->mBaseScreen->search('key_n_n')->hide();
+        mpDrawBg->mBaseScreen->search(TAG("i_key_n"))->hide();
+        mpDrawBg->mBaseScreen->search(TAG("lv5_k_n"))->hide();
+        mpDrawBg->mBaseScreen->search(TAG("key_n_n"))->hide();
         field_0x174[2] = (u8)dComIfGs_isDungeonItemBossKey() ? fpcNm_ITEM_BOSS_KEY : 0;
     }
 
@@ -1257,9 +1257,9 @@ void dMenu_Dmap_c::screenInit() {
             mpDrawBg->mBaseScreen->search(waku_tag[i])->hide();
 
             if (i == 2) {
-                mpDrawBg->mBaseScreen->search('lv5_k_n')->hide();
-                mpDrawBg->mBaseScreen->search('nor_k_n')->hide();
-                mpDrawBg->mBaseScreen->search('key_n_n')->hide();
+                mpDrawBg->mBaseScreen->search(TAG("lv5_k_n"))->hide();
+                mpDrawBg->mBaseScreen->search(TAG("nor_k_n"))->hide();
+                mpDrawBg->mBaseScreen->search(TAG("key_n_n"))->hide();
             }
         }
     }
@@ -1269,7 +1269,7 @@ void dMenu_Dmap_c::screenInit() {
     }
 
     field_0x94->hide();
-    field_0x98 = new CPaneMgr(mpDrawBg->mBaseScreen, 'so_s_n', 0, NULL);
+    field_0x98 = new CPaneMgr(mpDrawBg->mBaseScreen, TAG("so_s_n"), 0, NULL);
     field_0x98->hide();
 }
 
@@ -2024,8 +2024,8 @@ void dMenu_Dmap_c::_draw() {
                 sp14[1] = -(field_0x138 + 100.0f * (sp20 * mMapCtrl->getPixelPerCm()));
 
                 Vec spC;
-                spC.x = mpDrawBg->mMapScreen[0]->search('center_n')->getGlbBounds().i.x + (mpDrawBg->mMapScreen[0]->search('center_n')->getWidth() / 2);
-                spC.y = mpDrawBg->mMapScreen[0]->search('center_n')->getGlbBounds().i.y + (mpDrawBg->mMapScreen[0]->search('center_n')->getHeight() / 2);
+                spC.x = mpDrawBg->mMapScreen[0]->search(TAG("center_n"))->getGlbBounds().i.x + (mpDrawBg->mMapScreen[0]->search(TAG("center_n"))->getWidth() / 2);
+                spC.y = mpDrawBg->mMapScreen[0]->search(TAG("center_n"))->getGlbBounds().i.y + (mpDrawBg->mMapScreen[0]->search(TAG("center_n"))->getHeight() / 2);
                 
                 CPaneMgr sp70;
                 //!@bug It's unclear what this is supposed to be, but a stack pointer being converted to a bool is probably not intended.

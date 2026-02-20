@@ -527,6 +527,8 @@ inline f32 J2DHermiteInterpolation(__REGISTER f32 pp1, __REGISTER s16* pp2, __RE
     }
     // clang-format on
     return fout;
+#else
+    OSUNIMPLEMENTED();
 #endif
 }
 

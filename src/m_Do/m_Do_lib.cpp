@@ -138,6 +138,7 @@ void mDoLib_2Dto3D(f32 i_x, f32 i_y, f32 i_z, Vec* o_dst) {
 }
 #endif
 
+#ifndef TPPC
 static void dummy() {
     std::tan(0.0f);
     J3DAlphaComp* alphaComp = NULL;
@@ -149,3 +150,4 @@ static void dummy() {
     mat->getTevKColor(0);
     mDoLib_clipper::clip(j3dSys.getViewMtx(), (Vec){}, 0.0f);
 }
+#endif

@@ -13,7 +13,7 @@
 
 dMsgScrnStaff_c::dMsgScrnStaff_c(u8 unused) {
     static u64 t_tag[6] = {
-        'right_s', 'right', 'center_s', 'center', 'left_s', 'left',
+        TAG("right_s"), TAG("right"), TAG("center_s"), TAG("center"), TAG("left_s"), TAG("left"),
     };
 
     init();
@@ -25,9 +25,9 @@ dMsgScrnStaff_c::dMsgScrnStaff_c(u8 unused) {
     mpScreen->setPriority("zelda_staff_roll.blo", 0x20000, dComIfGp_getMsgArchive(6));
     dPaneClass_showNullPane(mpScreen);
 
-    mpPmP_c = new CPaneMgr(mpScreen, 'ROOT', 2, NULL);
-    mpScreen->search('left_n')->hide();
-    mpScreen->search('right_n')->hide();
+    mpPmP_c = new CPaneMgr(mpScreen, TAG("ROOT"), 2, NULL);
+    mpScreen->search(TAG("left_n"))->hide();
+    mpScreen->search(TAG("right_n"))->hide();
 
     for (int i = 0; i < 6; i++) {
         mpTm_c[i] = new CPaneMgr(mpScreen, t_tag[i], NULL, NULL);

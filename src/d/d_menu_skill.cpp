@@ -360,57 +360,57 @@ void dMenu_Skill_c::read_close_move() {
 
 void dMenu_Skill_c::screenSetMenu() {
     static const u64 tag_sub0[7] = {
-        'menu_t0s', 'menu_t1s', 'menu_t2s', 'menu_t3s', 'menu_t4s', 'menu_t5s', 'menu_t51',
+        TAG("menu_t0s"), TAG("menu_t1s"), TAG("menu_t2s"), TAG("menu_t3s"), TAG("menu_t4s"), TAG("menu_t5s"), TAG("menu_t51"),
     };
 
     static const u64 tag_sub1[7] = {
-        'menu_t0', 'menu_t1', 'menu_t2', 'menu_t3', 'menu_t4', 'menu_t5', 'menu_t6',
+        TAG("menu_t0"), TAG("menu_t1"), TAG("menu_t2"), TAG("menu_t3"), TAG("menu_t4"), TAG("menu_t5"), TAG("menu_t6"),
     };
 
     static const u64 tag_name0[7] = {
-        'menu_t6s', 'menu_f7s', 'menu_f8s', 'menu_t9s', 'menu_10s', 'menu_11s', 'menu_112',
+        TAG("menu_t6s"), TAG("menu_f7s"), TAG("menu_f8s"), TAG("menu_t9s"), TAG("menu_10s"), TAG("menu_11s"), TAG("menu_112"),
     };
 
     static const u64 tag_name1[7] = {
-        'menu_f6', 'menu_f7', 'menu_t8', 'menu_t9', 'menu_t10', 'menu_t11', 'menu_t01',
+        TAG("menu_f6"), TAG("menu_f7"), TAG("menu_t8"), TAG("menu_t9"), TAG("menu_t10"), TAG("menu_t11"), TAG("menu_t01"),
     };
 
     static const u64 ftag_sub0[7] = {
-        'fenu_t0s', 'fenu_t1s', 'fenu_t2s', 'fenu_t3s', 'fenu_t4s', 'fenu_t5s', 'fenu_t6s',
+        TAG("fenu_t0s"), TAG("fenu_t1s"), TAG("fenu_t2s"), TAG("fenu_t3s"), TAG("fenu_t4s"), TAG("fenu_t5s"), TAG("fenu_t6s"),
     };
 
     static const u64 ftag_sub1[7] = {
-        'fenu_t0', 'fenu_t1', 'fenu_t2', 'fenu_t3', 'fenu_t4', 'fenu_t5', 'fenu_t6',
+        TAG("fenu_t0"), TAG("fenu_t1"), TAG("fenu_t2"), TAG("fenu_t3"), TAG("fenu_t4"), TAG("fenu_t5"), TAG("fenu_t6"),
     };
 
     static const u64 ftag_name0[7] = {
-        'fenu_t7s', 'fenu_t8s', 'fenu_t9s', 'fenu_10s', 'fenu_11s', 'fenu_12s', 'fenu_13s',
+        TAG("fenu_t7s"), TAG("fenu_t8s"), TAG("fenu_t9s"), TAG("fenu_10s"), TAG("fenu_11s"), TAG("fenu_12s"), TAG("fenu_13s"),
     };
 
     static const u64 ftag_name1[7] = {
-        'fenu_t7', 'fenu_t8', 'fenu_t9', 'fenu_10', 'fenu_11', 'fenu_12', 'fenu_13',
+        TAG("fenu_t7"), TAG("fenu_t8"), TAG("fenu_t9"), TAG("fenu_10"), TAG("fenu_11"), TAG("fenu_12"), TAG("fenu_13"),
     };
 
     static const u64 tag_letter[7] = {
-        'let_00_n', 'let_01_n', 'let_02_n', 'let_03_n', 'let_04_n', 'let_05_n', 'let_06_n',
+        TAG("let_00_n"), TAG("let_01_n"), TAG("let_02_n"), TAG("let_03_n"), TAG("let_04_n"), TAG("let_05_n"), TAG("let_06_n"),
     };
 
     static const u64 tag_frame[7] = {
-        'flame_00', 'flame_01', 'flame_02', 'flame_03', 'flame_04', 'flame_05', 'flame_06',
+        TAG("flame_00"), TAG("flame_01"), TAG("flame_02"), TAG("flame_03"), TAG("flame_04"), TAG("flame_05"), TAG("flame_06"),
     };
 
     static const u64 tag_maki[7] = {
-        'maki_0n', 'maki_1n', 'maki_2n', 'maki_3n', 'maki_4n', 'maki_5n', 'maki_6n',
+        TAG("maki_0n"), TAG("maki_1n"), TAG("maki_2n"), TAG("maki_3n"), TAG("maki_4n"), TAG("maki_5n"), TAG("maki_6n"),
     };
 
     static const u64 tag_makic[7] = {
-        'maki_0', 'maki_1', 'maki_2', 'maki_3', 'maki_4', 'maki_5', 'maki_6',
+        TAG("maki_0"), TAG("maki_1"), TAG("maki_2"), TAG("maki_3"), TAG("maki_4"), TAG("maki_5"), TAG("maki_6"),
     };
 
     mpMenuScreen = new J2DScreen();
     mpMenuScreen->setPriority("zelda_ougi_window.blo", 0x20000, mpArchive);
     dPaneClass_showNullPane(mpMenuScreen);
-    mpParent = new CPaneMgr(mpMenuScreen, 'n_all', 2, NULL);
+    mpParent = new CPaneMgr(mpMenuScreen, TAG("n_all"), 2, NULL);
     mpParent->setAlphaRate(0.0f);
     for (int i = 0; i < 7; i++) {
 #if VERSION == VERSION_GCN_JPN
@@ -469,11 +469,11 @@ void dMenu_Skill_c::screenSetMenu() {
         }
     }
 #if VERSION == VERSION_GCN_JPN
-    J2DTextBox* textBox = (J2DTextBox*)mpMenuScreen->search('t_t00');
-    mpMenuScreen->search('f_t00')->hide();
+    J2DTextBox* textBox = (J2DTextBox*)mpMenuScreen->search(TAG("t_t00"));
+    mpMenuScreen->search(TAG("f_t00"))->hide();
 #else
-    J2DTextBox* textBox = (J2DTextBox*)mpMenuScreen->search('f_t00');
-    mpMenuScreen->search('t_t00')->hide();
+    J2DTextBox* textBox = (J2DTextBox*)mpMenuScreen->search(TAG("f_t00"));
+    mpMenuScreen->search(TAG("t_t00"))->hide();
 #endif
     textBox->setFont(mDoExt_getSubFont());
     textBox->setString(0x200, "");
@@ -482,29 +482,29 @@ void dMenu_Skill_c::screenSetMenu() {
 
 void dMenu_Skill_c::screenSetLetter() {
     static const u64 name_tag[4] = {
-        'item_n04',
-        'item_n05',
-        'item_n06',
-        'item_n07',
+        TAG("item_n04"),
+        TAG("item_n05"),
+        TAG("item_n06"),
+        TAG("item_n07"),
     };
     static const u64 fame_tag[4] = {
-        'f_item_1',
-        'f_item_2',
-        'f_item_3',
-        'f_item_4',
+        TAG("f_item_1"),
+        TAG("f_item_2"),
+        TAG("f_item_3"),
+        TAG("f_item_4"),
     };
 
     mpLetterScreen = new J2DScreen();
     mpLetterScreen->setPriority("zelda_ougi_info.blo", 0x20000, mpArchive);
     dPaneClass_showNullPane(mpLetterScreen);
 #if VERSION == VERSION_GCN_JPN
-    mpTextPane = new CPaneMgr(mpLetterScreen, 'mg_3line', 0, NULL);
-    mpLetterScreen->search('n_e4line')->hide();
+    mpTextPane = new CPaneMgr(mpLetterScreen, TAG("mg_3line"), 0, NULL);
+    mpLetterScreen->search(TAG("n_e4line"))->hide();
 #else
-    mpTextPane = new CPaneMgr(mpLetterScreen, 'mg_e4lin', 0, NULL);
-    mpLetterScreen->search('n_3line')->hide();
+    mpTextPane = new CPaneMgr(mpLetterScreen, TAG("mg_e4lin"), 0, NULL);
+    mpLetterScreen->search(TAG("n_3line"))->hide();
 #endif
-    mpExpName = new CPaneMgr(mpLetterScreen, 'label_n', 0, NULL);
+    mpExpName = new CPaneMgr(mpLetterScreen, TAG("label_n"), 0, NULL);
     J2DTextBox* paneFont = (J2DTextBox*)mpTextPane->getPanePtr();
     paneFont->setFont(mDoExt_getMesgFont());
     J2DTextBox* paneString = (J2DTextBox*)mpTextPane->getPanePtr();
@@ -520,9 +520,9 @@ void dMenu_Skill_c::screenSetLetter() {
         mpNameString[i]->setFont(mDoExt_getMesgFont());
         mpNameString[i]->setString(0x40, "");
     }
-    mpTextParent = new CPaneMgr(mpLetterScreen, 'n_all', 2, NULL);
+    mpTextParent = new CPaneMgr(mpLetterScreen, TAG("n_all"), 2, NULL);
     mpTextParent->setAlphaRate(0.0f);
-    ResTIMG* timg = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource('TIMG', "tt_block8x8.bti");
+    ResTIMG* timg = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource(TAG("TIMG"), "tt_block8x8.bti");
     mpBlackTex = new J2DPicture(timg);
     mpBlackTex->setBlackWhite(JUtility::TColor(0, 0, 0, 0), JUtility::TColor(0, 0, 0, 0xff));
     mpBlackTex->setAlpha(0);
@@ -530,10 +530,10 @@ void dMenu_Skill_c::screenSetLetter() {
 
 void dMenu_Skill_c::screenSetDoIcon() {
     static const u64 text_a_tag[5] = {
-        'atext1_1', 'atext1_2', 'atext1_3', 'atext1_4', 'atext1_5',
+        TAG("atext1_1"), TAG("atext1_2"), TAG("atext1_3"), TAG("atext1_4"), TAG("atext1_5"),
     };
     static const u64 text_b_tag[5] = {
-        'btext1_1', 'btext1_2', 'btext1_3', 'btext1_4', 'btext1_5',
+        TAG("btext1_1"), TAG("btext1_2"), TAG("btext1_3"), TAG("btext1_4"), TAG("btext1_5"),
     };
     mpIconScreen = new J2DScreen();
     mpIconScreen->setPriority("zelda_collect_soubi_do_icon_parts.blo", 0x20000, mpArchive);

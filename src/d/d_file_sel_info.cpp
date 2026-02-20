@@ -35,24 +35,24 @@ void dFile_info_c::screenSet() {
 
     mFileInfo.Scr->setPriority("zelda_file_select_info_text.blo", 0x1100000, mArchive);
     mFileInfo.mFont = mDoExt_getMesgFont();
-    mFileInfo.Scr->search('w_cp_ef1')->hide();
-    mFileInfo.field_0x10 = mFileInfo.Scr->search('w_dat_i1');
-    mDatBase = new CPaneMgrAlpha(mFileInfo.Scr, 'w_dat_i1', 2, NULL);
-    mNoDatBase = new CPaneMgrAlpha(mFileInfo.Scr, 'w_nda_i1', 2, NULL);
+    mFileInfo.Scr->search(TAG("w_cp_ef1"))->hide();
+    mFileInfo.field_0x10 = mFileInfo.Scr->search(TAG("w_dat_i1"));
+    mDatBase = new CPaneMgrAlpha(mFileInfo.Scr, TAG("w_dat_i1"), 2, NULL);
+    mNoDatBase = new CPaneMgrAlpha(mFileInfo.Scr, TAG("w_nda_i1"), 2, NULL);
 
     J2DTextBox* info_text[4];
     
 
     #if (VERSION == VERSION_GCN_JPN) || (VERSION == VERSION_WII_JPN)
-    info_text[0] = (J2DTextBox*)mFileInfo.Scr->search('w_s_t_01');
-    info_text[1] = (J2DTextBox*)mFileInfo.Scr->search('w_p_t_01');
-    mFileInfo.Scr->search('f_s_t_02')->hide();
-    mFileInfo.Scr->search('f_p_t_02')->hide();
+    info_text[0] = (J2DTextBox*)mFileInfo.Scr->search(TAG("w_s_t_01"));
+    info_text[1] = (J2DTextBox*)mFileInfo.Scr->search(TAG("w_p_t_01"));
+    mFileInfo.Scr->search(TAG("f_s_t_02"))->hide();
+    mFileInfo.Scr->search(TAG("f_p_t_02"))->hide();
     #else
-    info_text[0] = (J2DTextBox*)mFileInfo.Scr->search('f_s_t_02');
-    info_text[1] = (J2DTextBox*)mFileInfo.Scr->search('f_p_t_02');
-    mFileInfo.Scr->search('w_s_t_01')->hide();
-    mFileInfo.Scr->search('w_p_t_01')->hide();
+    info_text[0] = (J2DTextBox*)mFileInfo.Scr->search(TAG("f_s_t_02"));
+    info_text[1] = (J2DTextBox*)mFileInfo.Scr->search(TAG("f_p_t_02"));
+    mFileInfo.Scr->search(TAG("w_s_t_01"))->hide();
+    mFileInfo.Scr->search(TAG("w_p_t_01"))->hide();
     #endif
 
     for (int i = 0; i < 2; i++) {
@@ -63,19 +63,19 @@ void dFile_info_c::screenSet() {
     dMeter2Info_getString(0x3D1, info_text[1]->getStringPtr(), NULL);  // Total play time
 
     #if (VERSION == VERSION_GCN_JPN) || (VERSION == VERSION_WII_JPN)
-    info_text[0] = (J2DTextBox*)mFileInfo.Scr->search('w_name01');
-    info_text[1] = (J2DTextBox*)mFileInfo.Scr->search('w_new_1');
-    mFileInfo.Scr->search('f_name01')->hide();
-    mFileInfo.Scr->search('f_new_1')->hide();
+    info_text[0] = (J2DTextBox*)mFileInfo.Scr->search(TAG("w_name01"));
+    info_text[1] = (J2DTextBox*)mFileInfo.Scr->search(TAG("w_new_1"));
+    mFileInfo.Scr->search(TAG("f_name01"))->hide();
+    mFileInfo.Scr->search(TAG("f_new_1"))->hide();
     #else
-    info_text[0] = (J2DTextBox*)mFileInfo.Scr->search('f_name01');
-    info_text[1] = (J2DTextBox*)mFileInfo.Scr->search('f_new_1');
-    mFileInfo.Scr->search('w_name01')->hide();
-    mFileInfo.Scr->search('w_new_1')->hide();
+    info_text[0] = (J2DTextBox*)mFileInfo.Scr->search(TAG("f_name01"));
+    info_text[1] = (J2DTextBox*)mFileInfo.Scr->search(TAG("f_new_1"));
+    mFileInfo.Scr->search(TAG("w_name01"))->hide();
+    mFileInfo.Scr->search(TAG("w_new_1"))->hide();
     #endif
 
-    info_text[2] = (J2DTextBox*)mFileInfo.Scr->search('w_time01');
-    info_text[3] = (J2DTextBox*)mFileInfo.Scr->search('w_ptim01');
+    info_text[2] = (J2DTextBox*)mFileInfo.Scr->search(TAG("w_time01"));
+    info_text[3] = (J2DTextBox*)mFileInfo.Scr->search(TAG("w_ptim01"));
 
     for (int i = 0; i < 4; i++) {
         info_text[i]->setFont(mFileInfo.mFont);
@@ -121,9 +121,9 @@ int dFile_info_c::setSaveData(dSv_save_c* i_savedata, BOOL i_validChksum, u8 i_d
 
 void dFile_info_c::setHeartCnt(dSv_save_c* i_savedata) {
     static u64 l_htag[] = {
-        'hear_20', 'hear_21', 'hear_22', 'hear_23', 'hear_24', 'hear_25', 'hear_26',
-        'hear_27', 'hear_28', 'hear_29', 'hear_30', 'hear_31', 'hear_32', 'hear_33',
-        'hear_34', 'hear_35', 'hear_36', 'hear_37', 'hear_38', 'hear_39',
+        TAG("hear_20"), TAG("hear_21"), TAG("hear_22"), TAG("hear_23"), TAG("hear_24"), TAG("hear_25"), TAG("hear_26"),
+        TAG("hear_27"), TAG("hear_28"), TAG("hear_29"), TAG("hear_30"), TAG("hear_31"), TAG("hear_32"), TAG("hear_33"),
+        TAG("hear_34"), TAG("hear_35"), TAG("hear_36"), TAG("hear_37"), TAG("hear_38"), TAG("hear_39"),
     };
 
     static const char* amariheartTex[] = {
@@ -217,7 +217,7 @@ void dDlst_FileInfo_c::draw() {
         MTXScale(m, mBasePane->getWidth() / field_0x10->getWidth(),
                  mBasePane->getHeight() / field_0x10->getHeight(), 1.0f);
         MTXConcat(glb_mtx, m, glb_mtx);
-        Scr->search('Nm_02')->setMtx(glb_mtx);
+        Scr->search(TAG("Nm_02"))->setMtx(glb_mtx);
     }
 
     Scr->draw(0.0f, 0.0f, graf_ctx);

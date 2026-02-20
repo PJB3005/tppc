@@ -219,68 +219,68 @@ void dMenu_Fishing_c::wait_move() {
 
 void dMenu_Fishing_c::screenSetBase() {
     static const u64 fish_n[6] = {
-        'fish_n_6', 'fish_n_5', 'fish_n_3', 'fish_n_1', 'fish_n_2', 'fish_n_4',
+        TAG("fish_n_6"), TAG("fish_n_5"), TAG("fish_n_3"), TAG("fish_n_1"), TAG("fish_n_2"), TAG("fish_n_4"),
     };
 
     static const u64 fish_p0[6] = {
-        'fi_pa_6n', 'fi_pa_5n', 'fi_pa_3n', 'fi_pa_1n', 'fi_pa_2n', 'fi_pa_4n',
+        TAG("fi_pa_6n"), TAG("fi_pa_5n"), TAG("fi_pa_3n"), TAG("fi_pa_1n"), TAG("fi_pa_2n"), TAG("fi_pa_4n"),
     };
 
     static const u64 fish_p1[6] = {
-        'fi_na_6n', 'fi_na_5n', 'fi_na_3n', 'fi_na_1n', 'fi_na_2n', 'fi_na_4n',
+        TAG("fi_na_6n"), TAG("fi_na_5n"), TAG("fi_na_3n"), TAG("fi_na_1n"), TAG("fi_na_2n"), TAG("fi_na_4n"),
     };
 
-    static const u64 fish_p2[6] = {'fi_li_6n', 'fi_li_5n', 'fi_li_3n',
-                                   'fi_li_1n', 'fi_li_2n', 'fi_li_4n'};
+    static const u64 fish_p2[6] = {TAG("fi_li_6n"), TAG("fi_li_5n"), TAG("fi_li_3n"),
+                                   TAG("fi_li_1n"), TAG("fi_li_2n"), TAG("fi_li_4n")};
 
     static const u64 fish_p3[6] = {
-        'b_box_6n', 'b_box_5n', 'b_box_3n', 'b_box_1n', 'b_box_2n', 'b_box_4n',
+        TAG("b_box_6n"), TAG("b_box_5n"), TAG("b_box_3n"), TAG("b_box_1n"), TAG("b_box_2n"), TAG("b_box_4n"),
     };
 
     static const u64 fish_p4[6] = {
-        'r_box_6n', 'r_box_5n', 'r_box_3n', 'r_box_1n', 'r_box_2n', 'r_box_4n',
+        TAG("r_box_6n"), TAG("r_box_5n"), TAG("r_box_3n"), TAG("r_box_1n"), TAG("r_box_2n"), TAG("r_box_4n"),
     };
 
     static const u64 fish_p5[6] = {
-        'info_6_n', 'info_5_n', 'info_3_n', 'info_1_n', 'info_2_n', 'info_4_n',
+        TAG("info_6_n"), TAG("info_5_n"), TAG("info_3_n"), TAG("info_1_n"), TAG("info_2_n"), TAG("info_4_n"),
     };
 
     static const u64 size_1[6] = {
-        'size_t_6', 'size_t_5', 'size_t_3', 'size_t_1', 'size_t_2', 'size_t_4',
+        TAG("size_t_6"), TAG("size_t_5"), TAG("size_t_3"), TAG("size_t_1"), TAG("size_t_2"), TAG("size_t_4"),
     };
 
     static const u64 size_unit_1[6] = {
-        'cm_t_6', 'cm_t_5', 'cm_t_3', 'cm_t_1', 'cm_t_2', 'cm_t_4',
+        TAG("cm_t_6"), TAG("cm_t_5"), TAG("cm_t_3"), TAG("cm_t_1"), TAG("cm_t_2"), TAG("cm_t_4"),
     };
 
     static const u64 count_1[6] = {
-        'count_t6', 'count_t5', 'count_t3', 'count_t1', 'count_t2', 'count_t4',
+        TAG("count_t6"), TAG("count_t5"), TAG("count_t3"), TAG("count_t1"), TAG("count_t2"), TAG("count_t4"),
     };
 
     static const u64 count_unit_1[6] = {
-        'cou_t_6', 'cou_t_5', 'cou_t_3', 'cou_t_1', 'cou_t_2', 'cou_t_4',
+        TAG("cou_t_6"), TAG("cou_t_5"), TAG("cou_t_3"), TAG("cou_t_1"), TAG("cou_t_2"), TAG("cou_t_4"),
     };
 
     static const u64 name_0[6] = {
-        'name_6', 'name_5', 'name_3', 'name_1', 'name_2', 'name_4',
+        TAG("name_6"), TAG("name_5"), TAG("name_3"), TAG("name_1"), TAG("name_2"), TAG("name_4"),
     };
 
     static const u64 fname_0[6] = {
-        'f_name_6', 'f_name_5', 'f_name_3', 'f_name_1', 'f_name_2', 'f_name_4',
+        TAG("f_name_6"), TAG("f_name_5"), TAG("f_name_3"), TAG("f_name_1"), TAG("f_name_2"), TAG("f_name_4"),
     };
 
     static const u32 name_id[6] = {
         0x59E, 0x59D, 0x59B, 0x599, 0x59A, 0x59C,
     };
 
-    ResTIMG* TIMG = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource('TIMG', "tt_block8x8.bti");
+    ResTIMG* TIMG = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource(TAG("TIMG"), "tt_block8x8.bti");
     mpBlackTex = new J2DPicture(TIMG);
 
     mpBlackTex->setBlackWhite(JUtility::TColor(0, 0, 0, 0), JUtility::TColor(0, 0, 0, 0xFF));
     mpScreen = new J2DScreen();
     mpScreen->setPriority("zelda_fish_window.blo", 0x20000, mpArchive);
     dPaneClass_showNullPane(mpScreen);
-    mpParent = new CPaneMgr(mpScreen, 'n_all', 2, NULL);
+    mpParent = new CPaneMgr(mpScreen, TAG("n_all"), 2, NULL);
     mpParent->setAlphaRate(0.0f);
     for (int i = 0; i < MAX_FINDABLE_FISHES; i++) {
         mpFishParent[i] = new CPaneMgr(mpScreen, fish_n[i], 0, NULL);
@@ -291,15 +291,15 @@ void dMenu_Fishing_c::screenSetBase() {
         mpFishParts[4][i] = new CPaneMgr(mpScreen, fish_p4[i], 0, NULL);
         mpFishParts[5][i] = new CPaneMgr(mpScreen, fish_p5[i], 0, NULL);
     }
-    mpFishInfoParent[0] = new CPaneMgr(mpScreen, 'info_blu', 0, NULL);
-    mpFishInfoParent[1] = new CPaneMgr(mpScreen, 'info_red', 0, NULL);
+    mpFishInfoParent[0] = new CPaneMgr(mpScreen, TAG("info_blu"), 0, NULL);
+    mpFishInfoParent[1] = new CPaneMgr(mpScreen, TAG("info_red"), 0, NULL);
 
     #if (VERSION == VERSION_GCN_JPN) || (VERSION == VERSION_WII_JPN)
-    J2DTextBox* textBox = (J2DTextBox*)mpScreen->search('t_t00');
-    mpScreen->search('f_t00')->hide();
+    J2DTextBox* textBox = (J2DTextBox*)mpScreen->search(TAG("t_t00"));
+    mpScreen->search(TAG("f_t00"))->hide();
     #else
-    J2DTextBox* textBox = (J2DTextBox*)mpScreen->search('f_t00');
-    mpScreen->search('t_t00')->hide();
+    J2DTextBox* textBox = (J2DTextBox*)mpScreen->search(TAG("f_t00"));
+    mpScreen->search(TAG("t_t00"))->hide();
     #endif
 
     textBox->setFont(mDoExt_getSubFont());
@@ -328,8 +328,8 @@ void dMenu_Fishing_c::screenSetBase() {
         mpFishNameString[i]->setString(0x20, "");
         dMeter2Info_getStringKanji(name_id[i], mpFishNameString[i]->getStringPtr(), NULL);
     }
-    mpInfoLargestString = (J2DTextBox*)mpScreen->search('inf_size');
-    mpInfoNumCaughtString = (J2DTextBox*)mpScreen->search('inf_cou');
+    mpInfoLargestString = (J2DTextBox*)mpScreen->search(TAG("inf_size"));
+    mpInfoNumCaughtString = (J2DTextBox*)mpScreen->search(TAG("inf_cou"));
     mpInfoLargestString->setFont(mDoExt_getMesgFont());
     mpInfoNumCaughtString->setFont(mDoExt_getMesgFont());
     mpInfoLargestString->setString(0x20, "");
@@ -339,8 +339,8 @@ void dMenu_Fishing_c::screenSetBase() {
 }
 
 void dMenu_Fishing_c::screenSetDoIcon() {
-    static const u64 text_a_tag[5] = {'atext1_1', 'atext1_2', 'atext1_3', 'atext1_4', 'atext1_5'};
-    static const u64 text_b_tag[5] = {'btext1_1', 'btext1_2', 'btext1_3', 'btext1_4', 'btext1_5'};
+    static const u64 text_a_tag[5] = {TAG("atext1_1"), TAG("atext1_2"), TAG("atext1_3"), TAG("atext1_4"), TAG("atext1_5")};
+    static const u64 text_b_tag[5] = {TAG("btext1_1"), TAG("btext1_2"), TAG("btext1_3"), TAG("btext1_4"), TAG("btext1_5")};
 
     mpIconScreen = new J2DScreen();
     mpIconScreen->setPriority("zelda_collect_soubi_do_icon_parts.blo", 0x20000, mpArchive);

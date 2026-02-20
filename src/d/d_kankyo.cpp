@@ -8869,6 +8869,7 @@ void dKy_setLight_nowroom_actor(dKy_tevstr_c* tevstr_p) {
                     light->mColor.b *= light_ratio;
                 }
             } else {
+#if DEBUG
                 if (view_mtx != NULL) {
                     sp3C.x = g_env_light.dungeonlight[i].mPosition.x;
                     sp3C.y = g_env_light.dungeonlight[i].mPosition.y;
@@ -8909,6 +8910,7 @@ void dKy_setLight_nowroom_actor(dKy_tevstr_c* tevstr_p) {
                     light->mColor.g = 0;
                     light->mColor.b = 0;
                 }
+#endif
             }
         }
 

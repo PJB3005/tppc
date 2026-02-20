@@ -9,7 +9,9 @@
 
 #ifndef __MWERKS__
 #include <limits>
+#ifndef FLT_EPSILON
 #define FLT_EPSILON std::numeric_limits<float>::epsilon()
+#endif
 #endif
 
 cXyz cXyz::operator+(const Vec& vec) const {
@@ -82,7 +84,9 @@ cXyz cXyz::normZC() const {
             outVec.x = 0.0f;
             outVec.y = 0.0f;
             outVec.z = 1.0f;
+#ifndef TPPC
             outVec = (Vec){0,0,1};
+#endif
         }
     }
 

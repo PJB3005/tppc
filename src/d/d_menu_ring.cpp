@@ -48,34 +48,34 @@ static procFunc stick_proc[] = {
 dMenu_Ring_c::dMenu_Ring_c(JKRExpHeap* i_heap, STControl* i_stick, CSTControl* i_cStick,
                            u8 i_ringOrigin) {
     static const u64 xy_text[5] = {
-        'yx_text', 'yx_te_s1', 'yx_te_s2', 'yx_te_s3', 'yx_te_s4',
+        TAG("yx_text"), TAG("yx_te_s1"), TAG("yx_te_s2"), TAG("yx_te_s3"), TAG("yx_te_s4"),
     };
     static const u64 fxy_text[5] = {
-        'fyx_tex', 'fyx_te_1', 'fyx_te_2', 'fyx_te_3', 'fyx_te_4',
+        TAG("fyx_tex"), TAG("fyx_te_1"), TAG("fyx_te_2"), TAG("fyx_te_3"), TAG("fyx_te_4"),
     };
     static const u64 c_text[5] = {
-        'c_text', 'c_te_s1', 'c_te_s2', 'c_te_s3', 'c_te_s4',
+        TAG("c_text"), TAG("c_te_s1"), TAG("c_te_s2"), TAG("c_te_s3"), TAG("c_te_s4"),
     };
     static const u64 fc_text[5] = {
-        'fc_text', 'fc_te_s1', 'fc_te_s2', 'fc_te_s3', 'fc_te_s4',
+        TAG("fc_text"), TAG("fc_te_s1"), TAG("fc_te_s2"), TAG("fc_te_s3"), TAG("fc_te_s4"),
     };
     static const u64 c_text1[5] = {
-        'c_text1', 'c_texs1', 'c_texs2', 'c_texs3', 'c_texs4',
+        TAG("c_text1"), TAG("c_texs1"), TAG("c_texs2"), TAG("c_texs3"), TAG("c_texs4"),
     };
     static const u64 fc_text1[5] = {
-        'fc_text1', 'fc_texs1', 'fc_texs2', 'fc_texs3', 'fc_texs4',
+        TAG("fc_text1"), TAG("fc_texs1"), TAG("fc_texs2"), TAG("fc_texs3"), TAG("fc_texs4"),
     };
     static const u64 t_on[5] = {
-        'gr_t_on', 'g_tof_s5', 'g_tof_s6', 'g_tof_s7', 'g_tof_s8',
+        TAG("gr_t_on"), TAG("g_tof_s5"), TAG("g_tof_s6"), TAG("g_tof_s7"), TAG("g_tof_s8"),
     };
     static const u64 ft_on[5] = {
-        'fr_t_on', 'f_tof_s5', 'f_tof_s6', 'f_tof_s7', 'f_tof_s8',
+        TAG("fr_t_on"), TAG("f_tof_s5"), TAG("f_tof_s6"), TAG("f_tof_s7"), TAG("f_tof_s8"),
     };
     static const u64 t_off[5] = {
-        'gr_t_of', 'g_tof_s1', 'g_tof_s2', 'g_tof_s3', 'g_tof_s4',
+        TAG("gr_t_of"), TAG("g_tof_s1"), TAG("g_tof_s2"), TAG("g_tof_s3"), TAG("g_tof_s4"),
     };
     static const u64 ft_off[5] = {
-        'fr_t_of', 'f_tof_s1', 'f_tof_s2', 'f_tof_s3', 'f_tof_s4',
+        TAG("fr_t_of"), TAG("f_tof_s1"), TAG("f_tof_s2"), TAG("f_tof_s3"), TAG("f_tof_s4"),
     };
 
     mpHeap = i_heap;
@@ -254,7 +254,7 @@ dMenu_Ring_c::dMenu_Ring_c(JKRExpHeap* i_heap, STControl* i_stick, CSTControl* i
         field_0x558[i] = 0.0f;
     }
     ResTIMG* timg = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource(
-        'TIMG', dMeter2Info_getNumberTextureName(0));
+        TAG("TIMG"), dMeter2Info_getNumberTextureName(0));
     for (int i = 0; i < 3; i++) {
         mpItemNumTex[i] = new J2DPicture(timg);
     }
@@ -264,13 +264,13 @@ dMenu_Ring_c::dMenu_Ring_c(JKRExpHeap* i_heap, STControl* i_stick, CSTControl* i
                            "SCRN/zelda_item_select_icon_message_ver2.blo", 0x20000,
                            dComIfGp_getRingResArchive());
     dPaneClass_showNullPane(mpScreen);
-    mpMessageParent = new CPaneMgrAlpha(mpScreen, 'n_all', 2, NULL);
-    mpTextParent[0] = new CPaneMgr(mpScreen, 'r_n', 0, NULL);
-    mpTextParent[1] = new CPaneMgr(mpScreen, 'c_n', 2, NULL);
+    mpMessageParent = new CPaneMgrAlpha(mpScreen, TAG("n_all"), 2, NULL);
+    mpTextParent[0] = new CPaneMgr(mpScreen, TAG("r_n"), 0, NULL);
+    mpTextParent[1] = new CPaneMgr(mpScreen, TAG("c_n"), 2, NULL);
     mpTextParent[1]->setAlphaRate(1.0f);
     mpTextParent[2] = NULL;
-    mpTextParent[3] = new CPaneMgr(mpScreen, 'c_sen_n', 2, NULL);
-    mpTextParent[4] = new CPaneMgr(mpScreen, 'gr_n', 2, NULL);
+    mpTextParent[3] = new CPaneMgr(mpScreen, TAG("c_sen_n"), 2, NULL);
+    mpTextParent[4] = new CPaneMgr(mpScreen, TAG("gr_n"), 2, NULL);
     mpTextParent[4]->hide();
     for (int i = 5; i < 10; i++) {
         mpTextParent[i] = NULL;
@@ -301,20 +301,20 @@ dMenu_Ring_c::dMenu_Ring_c(JKRExpHeap* i_heap, STControl* i_stick, CSTControl* i
             mItemSlotParam2[i] = (mpItemBuf[i][0]->height / 48.0f * (texScale / 100.0f));
         }
     }
-    mpScreen->search('r_btn_n')->hide();
+    mpScreen->search(TAG("r_btn_n"))->hide();
     if (mPlayerIsWolf) {
-        mpScreen->search('yx_te_s1')->hide();
-        mpScreen->search('yx_te_s2')->hide();
-        mpScreen->search('yx_te_s3')->hide();
-        mpScreen->search('yx_te_s4')->hide();
-        mpScreen->search('yx_text')->hide();
-        mpScreen->search('fyx_te_1')->hide();
-        mpScreen->search('fyx_te_2')->hide();
-        mpScreen->search('fyx_te_3')->hide();
-        mpScreen->search('fyx_te_4')->hide();
-        mpScreen->search('fyx_tex')->hide();
-        mpScreen->search('x_btn_n')->hide();
-        mpScreen->search('y_btn_n')->hide();
+        mpScreen->search(TAG("yx_te_s1"))->hide();
+        mpScreen->search(TAG("yx_te_s2"))->hide();
+        mpScreen->search(TAG("yx_te_s3"))->hide();
+        mpScreen->search(TAG("yx_te_s4"))->hide();
+        mpScreen->search(TAG("yx_text"))->hide();
+        mpScreen->search(TAG("fyx_te_1"))->hide();
+        mpScreen->search(TAG("fyx_te_2"))->hide();
+        mpScreen->search(TAG("fyx_te_3"))->hide();
+        mpScreen->search(TAG("fyx_te_4"))->hide();
+        mpScreen->search(TAG("fyx_tex"))->hide();
+        mpScreen->search(TAG("x_btn_n"))->hide();
+        mpScreen->search(TAG("y_btn_n"))->hide();
     }
     mpString = new dMsgString_c();
     for (i = 0; i < 5; i++) {
@@ -378,7 +378,7 @@ dMenu_Ring_c::dMenu_Ring_c(JKRExpHeap* i_heap, STControl* i_stick, CSTControl* i
         mpString->getString(0x4D3, mpBowArrowComboString[i], NULL, NULL, NULL, 0);
     }
     mpHeap->getTotalFreeSize();
-    timg = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource('TIMG', "tt_block8x8.bti");
+    timg = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource(TAG("TIMG"), "tt_block8x8.bti");
     mpBlackTex = new J2DPicture(timg);
     mpBlackTex->setBlackWhite(JUtility::TColor(0, 0, 0, 0), JUtility::TColor(0, 0, 0, 0xff));
     mpBlackTex->setAlpha(0);
@@ -387,38 +387,38 @@ dMenu_Ring_c::dMenu_Ring_c(JKRExpHeap* i_heap, STControl* i_stick, CSTControl* i
                            "SCRN/zelda_item_select_icon3_spot.blo", 0x20000,
                            dComIfGp_getRingResArchive());
     dPaneClass_showNullPane(mpSpotScreen);
-    mpSpotParent = new CPaneMgrAlpha(mpSpotScreen, 'n_all', 2, NULL);
+    mpSpotParent = new CPaneMgrAlpha(mpSpotScreen, TAG("n_all"), 2, NULL);
     mpCenterScreen = new J2DScreen();
     dPaneClass_setPriority(&mpResData[2], mpHeap, mpCenterScreen,
                            "SCRN/zelda_item_select_icon3_center_parts.blo", 0x20000,
                            dComIfGp_getRingResArchive());
     dPaneClass_showNullPane(mpCenterScreen);
-    mpCenterParent = new CPaneMgrAlpha(mpCenterScreen, 'center_n', 2, NULL);
-    mpNameParent = new CPaneMgr(mpCenterScreen, 'label_n', 1, NULL);
-    mpCircle = new CPaneMgr(mpCenterScreen, 'circle_n', 2, NULL);
+    mpCenterParent = new CPaneMgrAlpha(mpCenterScreen, TAG("center_n"), 2, NULL);
+    mpNameParent = new CPaneMgr(mpCenterScreen, TAG("label_n"), 1, NULL);
+    mpCircle = new CPaneMgr(mpCenterScreen, TAG("circle_n"), 2, NULL);
     J2DTextBox* textBox[4];
 #if VERSION == VERSION_GCN_JPN
-    textBox[0] = (J2DTextBox*)mpCenterScreen->search('item_n04');
-    textBox[1] = (J2DTextBox*)mpCenterScreen->search('item_n05');
-    textBox[2] = (J2DTextBox*)mpCenterScreen->search('item_n06');
-    textBox[3] = (J2DTextBox*)mpCenterScreen->search('item_n07');
-    J2DPane* pane = mpCenterScreen->search('fitem_n1');
+    textBox[0] = (J2DTextBox*)mpCenterScreen->search(TAG("item_n04"));
+    textBox[1] = (J2DTextBox*)mpCenterScreen->search(TAG("item_n05"));
+    textBox[2] = (J2DTextBox*)mpCenterScreen->search(TAG("item_n06"));
+    textBox[3] = (J2DTextBox*)mpCenterScreen->search(TAG("item_n07"));
+    J2DPane* pane = mpCenterScreen->search(TAG("fitem_n1"));
     pane->mVisible = false;
-    pane = mpCenterScreen->search('fitem_n2');
+    pane = mpCenterScreen->search(TAG("fitem_n2"));
     pane->mVisible = false;
-    pane = mpCenterScreen->search('fitem_n3');
+    pane = mpCenterScreen->search(TAG("fitem_n3"));
     pane->mVisible = false;
-    pane = mpCenterScreen->search('fitem_n4');
+    pane = mpCenterScreen->search(TAG("fitem_n4"));
     pane->mVisible = false;
 #else
-    textBox[0] = (J2DTextBox*)mpCenterScreen->search('fitem_n1');
-    textBox[1] = (J2DTextBox*)mpCenterScreen->search('fitem_n2');
-    textBox[2] = (J2DTextBox*)mpCenterScreen->search('fitem_n3');
-    textBox[3] = (J2DTextBox*)mpCenterScreen->search('fitem_n4');
-    mpCenterScreen->search('item_n04');
-    mpCenterScreen->search('item_n05');
-    mpCenterScreen->search('item_n06');
-    mpCenterScreen->search('item_n07');
+    textBox[0] = (J2DTextBox*)mpCenterScreen->search(TAG("fitem_n1"));
+    textBox[1] = (J2DTextBox*)mpCenterScreen->search(TAG("fitem_n2"));
+    textBox[2] = (J2DTextBox*)mpCenterScreen->search(TAG("fitem_n3"));
+    textBox[3] = (J2DTextBox*)mpCenterScreen->search(TAG("fitem_n4"));
+    mpCenterScreen->search(TAG("item_n04"));
+    mpCenterScreen->search(TAG("item_n05"));
+    mpCenterScreen->search(TAG("item_n06"));
+    mpCenterScreen->search(TAG("item_n07"));
 #endif
     for (int i = 0; i < 4; i++) {
         textBox[i]->setFont(mDoExt_getMesgFont());
@@ -614,7 +614,7 @@ void dMenu_Ring_c::_draw() {
         if (mStatus != STATUS_EXPLAIN && mPikariFlashingSpeed > 0.0f) {
             Vec pos;
             CPaneMgr paneMgr;
-            pos = paneMgr.getGlobalVtxCenter(mpScreen->search('gr_btn'), true, 0);
+            pos = paneMgr.getGlobalVtxCenter(mpScreen->search(TAG("gr_btn")), true, 0);
             dMeter2Info_getMeterClass()->getMeterDrawPtr()->drawPikari(
                 pos.x, pos.y, &mPikariFlashingSpeed, g_ringHIO.mPikariScale, g_ringHIO.mPikariFrontOuter,
                 g_ringHIO.mPikariFrontInner, g_ringHIO.mPikariBackOuter, g_ringHIO.mPikariBackInner,
@@ -1102,15 +1102,15 @@ void dMenu_Ring_c::setScale() {
 void dMenu_Ring_c::setNameString(u32 i_stringID) {
     J2DTextBox* textBox[4];
 #if VERSION == VERSION_GCN_JPN
-    textBox[0] = (J2DTextBox*)mpCenterScreen->search('item_n04');
-    textBox[1] = (J2DTextBox*)mpCenterScreen->search('item_n05');
-    textBox[2] = (J2DTextBox*)mpCenterScreen->search('item_n06');
-    textBox[3] = (J2DTextBox*)mpCenterScreen->search('item_n07');
+    textBox[0] = (J2DTextBox*)mpCenterScreen->search(TAG("item_n04"));
+    textBox[1] = (J2DTextBox*)mpCenterScreen->search(TAG("item_n05"));
+    textBox[2] = (J2DTextBox*)mpCenterScreen->search(TAG("item_n06"));
+    textBox[3] = (J2DTextBox*)mpCenterScreen->search(TAG("item_n07"));
 #else
-    textBox[0] = (J2DTextBox*)mpCenterScreen->search('fitem_n1');
-    textBox[1] = (J2DTextBox*)mpCenterScreen->search('fitem_n2');
-    textBox[2] = (J2DTextBox*)mpCenterScreen->search('fitem_n3');
-    textBox[3] = (J2DTextBox*)mpCenterScreen->search('fitem_n4');
+    textBox[0] = (J2DTextBox*)mpCenterScreen->search(TAG("fitem_n1"));
+    textBox[1] = (J2DTextBox*)mpCenterScreen->search(TAG("fitem_n2"));
+    textBox[2] = (J2DTextBox*)mpCenterScreen->search(TAG("fitem_n3"));
+    textBox[3] = (J2DTextBox*)mpCenterScreen->search(TAG("fitem_n4"));
 #endif
     if (mNameStringID != i_stringID) {
         for (int i = 0; i < 4; i++) {
@@ -1806,23 +1806,23 @@ void dMenu_Ring_c::drawNumber(int i_itemNum, int i_itemMaxNum, f32 i_posX, f32 i
         // If player has less than 100 arrows, only display 
         // the first two digits and hide the last one
         ResTIMG* texture = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource(
-            'TIMG', dMeter2Info_getNumberTextureName(i_itemNum / 10));
+            TAG("TIMG"), dMeter2Info_getNumberTextureName(i_itemNum / 10));
         mpItemNumTex[0]->changeTexture(texture, 0);
         texture = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource(
-            'TIMG', dMeter2Info_getNumberTextureName(i_itemNum % 10));
+            TAG("TIMG"), dMeter2Info_getNumberTextureName(i_itemNum % 10));
         mpItemNumTex[1]->changeTexture(texture, 0);
         mpItemNumTex[2]->hide(); // This function hides the last digit
     } else {
         // Player has 100 arrows, display all three digits
         ResTIMG* texture = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource(
-            'TIMG', dMeter2Info_getNumberTextureName(i_itemNum / 100));
+            TAG("TIMG"), dMeter2Info_getNumberTextureName(i_itemNum / 100));
         mpItemNumTex[0]->changeTexture(texture, 0);
         i_itemNum = (u8)(i_itemNum % 100);
         texture = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource(
-            'TIMG', dMeter2Info_getNumberTextureName(i_itemNum / 10));
+            TAG("TIMG"), dMeter2Info_getNumberTextureName(i_itemNum / 10));
         mpItemNumTex[1]->changeTexture(texture, 0);
         texture = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource(
-            'TIMG', dMeter2Info_getNumberTextureName(i_itemNum % 10));
+            TAG("TIMG"), dMeter2Info_getNumberTextureName(i_itemNum % 10));
         mpItemNumTex[2]->changeTexture(texture, 0);
         mpItemNumTex[2]->show(); // This function shows the last digit
     }

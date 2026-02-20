@@ -90,9 +90,9 @@ void COutFont_c::createPane() {
 
     for (int i = 0; i < 70; i++) {
         if (i == 41) {
-            img = (ResTIMG*)dComIfGp_getItemIconArchive()->getResource('TIMG', getBtiName(i));
+            img = (ResTIMG*)dComIfGp_getItemIconArchive()->getResource(TAG("TIMG"), getBtiName(i));
         } else {
-            img = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource('TIMG', getBtiName(i));
+            img = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource(TAG("TIMG"), getBtiName(i));
         }
 
         mpPane[i] = new J2DPicture(img);
@@ -133,7 +133,7 @@ void COutFont_c::createPane() {
         case 0x11:
         case 0x12:
         case 0x13:
-            img = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource('TIMG', "font_07_02.bti");
+            img = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource(TAG("TIMG"), "font_07_02.bti");
             mpPane[i]->append(img, 1.0f);
             mpPane[i]->setBlendRatio(1.0f, 0.0f);
             mpPane[i]->setBlackWhite(JUtility::TColor(0, 0, 0, 0),
@@ -219,7 +219,7 @@ void COutFont_c::createPane() {
                                      JUtility::TColor(255, 255, 255, 255));
             break;
         case 0x30:
-            img = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource('TIMG', "font_20.bti");
+            img = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource(TAG("TIMG"), "font_20.bti");
             mpPane[i]->append(img, 1.0f);
             mpPane[i]->setBlendRatio(1.0f, 0.0f);
             mpPane[i]->setBlackWhite(JUtility::TColor(0, 0, 0, 0),
@@ -231,7 +231,7 @@ void COutFont_c::createPane() {
         case 0x42:
         case 0x43:
         case 0x44:
-            img = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource('TIMG', "font_21.bti");
+            img = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource(TAG("TIMG"), "font_21.bti");
             mpPane[i]->append(img, 1.0f);
             mpPane[i]->setBlendRatio(1.0f, 0.0f);
             mpPane[i]->setBlackWhite(JUtility::TColor(0, 0, 0, 0),
@@ -250,21 +250,21 @@ void COutFont_c::createPane() {
                                      JUtility::TColor(255, 255, 255, 255));
             break;
         case 0x3b:
-            img = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource('TIMG', "font_30.bti");
+            img = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource(TAG("TIMG"), "font_30.bti");
             mpPane[i]->append(img, 1.0f);
             mpPane[i]->setBlendRatio(1.0f, 0.0f);
             mpPane[i]->setBlackWhite(JUtility::TColor(0, 0, 0, 0),
                                      JUtility::TColor(255, 255, 255, 255));
             break;
         case 0x3c:
-            img = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource('TIMG', "font_31.bti");
+            img = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource(TAG("TIMG"), "font_31.bti");
             mpPane[i]->append(img, 1.0f);
             mpPane[i]->setBlendRatio(1.0f, 0.0f);
             mpPane[i]->setBlackWhite(JUtility::TColor(0, 0, 0, 0),
                                      JUtility::TColor(255, 255, 255, 255));
             break;
         case 0x3e:
-            img = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource('TIMG', "font_34.bti");
+            img = (ResTIMG*)dComIfGp_getMain2DArchive()->getResource(TAG("TIMG"), "font_34.bti");
             mpPane[i]->append(img, 1.0f);
             mpPane[i]->setBlendRatio(1.0f, 0.0f);
             mpPane[i]->setBlackWhite(JUtility::TColor(0, 0, 0, 0),

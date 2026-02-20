@@ -178,7 +178,7 @@ J2DMaterial* J2DMaterialFactory::create(J2DMaterial* param_0, int index, u32 par
 }
 
 JUtility::TColor J2DMaterialFactory::newMatColor(int param_0, int param_1) const {
-    JUtility::TColor local_20 = (GXColor){0xff,0xff,0xff,0xff};
+    JUtility::TColor local_20 = {0xff,0xff,0xff,0xff};
     J2DMaterialInitData* iVar2 = &field_0x4[field_0x8[param_0]];
     if (iVar2->field_0x8[param_1] != 0xffff) {
         return field_0x10[iVar2->field_0x8[param_1]];
@@ -276,7 +276,7 @@ J2DGXColorS10 J2DMaterialFactory::newTevColor(int param_0, int param_1) const {
 }
 
 JUtility::TColor J2DMaterialFactory::newTevKColor(int param_0, int param_1) const {
-    JUtility::TColor local_20 = (GXColor){0xFF, 0xFF, 0xFF, 0xFF};
+    JUtility::TColor local_20 = {0xFF, 0xFF, 0xFF, 0xFF};
     J2DMaterialInitData* iVar2 = &field_0x4[field_0x8[param_0]];
     if (iVar2->field_0x4a[param_1] != 0xffff) {
         return field_0x3c[iVar2->field_0x4a[param_1]];

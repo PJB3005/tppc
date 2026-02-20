@@ -2,6 +2,7 @@
 #define JMATH_H
 
 #include <dolphin/mtx.h>
+#include <dolphin/os.h>
 #include <cmath>
 
 void JMAMTXApplyScale(const Mtx, Mtx, f32, f32, f32);
@@ -14,18 +15,24 @@ void JMAVECScaleAdd(__REGISTER const Vec* vec1, __REGISTER const Vec* vec2, __RE
 inline int JMAAbs(int value) {
 #ifdef __MWERKS__
     return __abs(value);
+#else
+    OSUNIMPLEMENTED();
 #endif
 }
 
 inline f32 JMAAbs(f32 x) {
 #ifdef __MWERKS__
     return __fabsf(x);
+#else
+    OSUNIMPLEMENTED();
 #endif
 }
 
 inline f32 JMAFastReciprocal(f32 value) {
 #ifdef __MWERKS__
     return __fres(value);
+#else
+    OSUNIMPLEMENTED();
 #endif
 }
 
@@ -40,6 +47,8 @@ inline float __frsqrtes(__REGISTER double f) {
 
     // clang-format on
     return out;
+#else
+    OSUNIMPLEMENTED();
 #endif
 }
 
@@ -54,6 +63,8 @@ inline f32 JMAFastSqrt(__REGISTER const f32 input) {
     } else {
         return input;
     }
+#else
+OSUNIMPLEMENTED();
 #endif
 }
 
@@ -87,6 +98,8 @@ inline f32 JMAHermiteInterpolation(__REGISTER f32 p1, __REGISTER f32 p2, __REGIS
     }
     // clang-format on
     return ff25;
+#else
+OSUNIMPLEMENTED();
 #endif
 }
 
@@ -115,6 +128,8 @@ inline void gekko_ps_copy3(__REGISTER void* dst, __REGISTER const void* src) {
         psq_st src0, 0(dst), 0, 0
         stfs src1, 8(dst)
     };
+#else
+    OSUNIMPLEMENTED();
 #endif
 }
 
@@ -131,6 +146,8 @@ inline void gekko_ps_copy6(__REGISTER void* dst, __REGISTER const void* src) {
         psq_st src1, 8(dst), 0, 0
         psq_st src2, 16(dst), 0, 0
     };
+#else
+    OSUNIMPLEMENTED();
 #endif
 }
 
@@ -156,6 +173,8 @@ inline void gekko_ps_copy12(__REGISTER void* dst, __REGISTER const void* src) {
         psq_st src4, 32(dst), 0, 0
         psq_st src5, 40(dst), 0, 0
     };
+#else
+    OSUNIMPLEMENTED();
 #endif
 }
 
@@ -187,6 +206,8 @@ inline void gekko_ps_copy16(__REGISTER void* dst, __REGISTER const void* src) {
         psq_st src6, 48(dst), 0, 0
         psq_st src7, 56(dst), 0, 0
     };
+#else
+    OSUNIMPLEMENTED();
 #endif
 }
 
@@ -248,6 +269,8 @@ namespace JMathInlineVEC {
             ps_sum0 res, res, x_y, x_y
         }
         return res;
+    #else
+    OSUNIMPLEMENTED();
     #endif
     }
 
@@ -268,7 +291,9 @@ namespace JMathInlineVEC {
             ps_sum0 res, otheryz, thisyz, thisyz
         };
         return res;
-    #endif
+    #else
+      OSUNIMPLEMENTED();
+#endif
     }
 };
 

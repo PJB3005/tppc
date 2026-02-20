@@ -7,7 +7,9 @@ namespace J3DUD {
     inline f32 JMAAbs(f32 x) {
     #ifdef __MWERKS__
         return __fabsf(x);
-    #endif
+    #else
+        return fabsf(x);
+#endif
     }
 }
 

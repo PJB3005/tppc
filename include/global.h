@@ -153,3 +153,14 @@ static const float INF = 2000000000.0f;
 #endif
 
 #endif
+
+// TPPC: TODO: endianness correct?
+#define TAG(val) ( \
+    ((u64)(sizeof(val) >= 1 ? (u8)val[0] : 0) << 0) | \
+    ((u64)(sizeof(val) >= 2 ? (u8)val[1] : 0) << 8) | \
+    ((u64)(sizeof(val) >= 3 ? (u8)val[2] : 0) << 16) | \
+    ((u64)(sizeof(val) >= 4 ? (u8)val[3] : 0) << 24) | \
+    ((u64)(sizeof(val) >= 5 ? (u8)val[4] : 0) << 32) | \
+    ((u64)(sizeof(val) >= 6 ? (u8)val[5] : 0) << 40) | \
+    ((u64)(sizeof(val) >= 7 ? (u8)val[6] : 0) << 48) | \
+    ((u64)(sizeof(val) >= 8 ? (u8)val[7] : 0) << 56))

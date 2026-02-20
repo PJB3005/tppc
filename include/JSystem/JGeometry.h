@@ -46,7 +46,9 @@ struct TUtil<f32> {
         f32 root = __frsqrte(x);
         root = 0.5f * root * (3.0f - x * (root * root));
         return root;
-        #endif
+        #else
+        OSUNIMPLEMENTED();
+#endif
     }
 
     static inline f32 sqrt(f32 x) {
@@ -58,7 +60,9 @@ struct TUtil<f32> {
         f32 root = __frsqrte(x);
         root = 0.5f * root * (3.0f - x * (root * root));
         return x * root;
-        #endif
+        #else
+        OSUNIMPLEMENTED();
+#endif
     }
 };
 

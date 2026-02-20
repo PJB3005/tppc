@@ -30,7 +30,8 @@ typedef struct inf1_section_t {
 } inf1_section_t;
 
 typedef struct str1_entry_t {
-    char str[0];
+    // TODO TPPC FIX VLA
+    // char str[0];
 } str1_entry_t;
 
 typedef struct str1_section_t {

@@ -196,6 +196,8 @@ DECL_WEAK void OSVReport(const char* msg, va_list list);
 DECL_WEAK void OSPanic [[noreturn]](const char* file, int line, const char* msg, ...);
 void OSFatal(GXColor fg, GXColor bg, const char* msg);
 
+#define OSUNIMPLEMENTED() OSPanic(__FILE__, __LINE__, "UNIMPLEMENTED: " __FUNCTION__);
+
 // do these belong here?
 DECL_WEAK void OSAttention(const char* msg, ...);
 DECL_WEAK void OSReport_Error(const char* fmt, ...);

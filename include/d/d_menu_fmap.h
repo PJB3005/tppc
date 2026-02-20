@@ -74,7 +74,7 @@ public:
         /* 0x0 */ char mStageName[8];
         /* 0x8 */ u16 mAreaName;
         /* 0xA */ u8 mCount;
-        /* 0xB */ u8 mRoomNos[0];
+        // /* 0xB */ u8 mRoomNos[0]; // TODO TPPC: FIX VLA
     };
 
     /* 0x0 */ u8 mCount;

@@ -1287,21 +1287,21 @@ void dName_c::_draw() {
 
 void dName_c::screenSet() {
     static u64 l_cur0TagName[8] = {
-        's_00', 's_01', 's_02', 's_03', 's_04', 's_05', 's_06', 's_07',
+        TAG("s_00"), TAG("s_01"), TAG("s_02"), TAG("s_03"), TAG("s_04"), TAG("s_05"), TAG("s_06"), TAG("s_07"),
     };
     static u64 l_cur1TagName[8] = {
-        's_0r', 's_01r', 's_02r', 's_03r', 's_04r', 's_05r', 's_06r', 's_07r',
+        TAG("s_0r"), TAG("s_01r"), TAG("s_02r"), TAG("s_03r"), TAG("s_04r"), TAG("s_05r"), TAG("s_06r"), TAG("s_07r"),
     };
 #if REGION_JPN
     static u64 l_menu_icon_tag[4] = {
-        'j_hira_n',
-        'j_kata_n',
-        'j_eigo_n',
-        'j_end_n',
+        TAG("j_hira_n"),
+        TAG("j_kata_n"),
+        TAG("j_eigo_n"),
+        TAG("j_end_n"),
     };
     static u64 l_menu_tag[5][3] = {
-        'm_hira_0',  'm_hira_1',  'm_hira_s',  'm_kata_0', 'm_kata_1', 'm_kata_s',
-        'm_eigo_0', 'm_eigo_1', 'm_eigo_s', 'j_end_0', 'j_end_1', 'j_end_s',
+        TAG("m_hira_0"),  TAG("m_hira_1"),  TAG("m_hira_s"),  TAG("m_kata_0"), TAG("m_kata_1"), TAG("m_kata_s"),
+        TAG("m_eigo_0"), TAG("m_eigo_1"), TAG("m_eigo_s"), TAG("j_end_0"), TAG("j_end_1"), TAG("j_end_s"),
     };
     static u32 l_menu_msg[4] = {
         0x386,
@@ -1311,14 +1311,14 @@ void dName_c::screenSet() {
     };
 #else
     static u64 l_menu_icon_tag[4] = {
-        'p_ABC_n',
-        'p_abc_n',
-        'j_eigo_n',
-        'p_end_n',
+        TAG("p_ABC_n"),
+        TAG("p_abc_n"),
+        TAG("j_eigo_n"),
+        TAG("p_end_n"),
     };
     static u64 l_menu_tag[5][3] = {
-        'p_ABC_0',  'p_ABC_1',  'p_ABC_2',  'p_abc_0', 'p_abc_1', 'p_abc_2',
-        'm_eigo_0', 'm_eigo_1', 'm_eigo_2', 'p_end_0', 'p_end_1', 'p_end_2',
+        TAG("p_ABC_0"),  TAG("p_ABC_1"),  TAG("p_ABC_2"),  TAG("p_abc_0"), TAG("p_abc_1"), TAG("p_abc_2"),
+        TAG("m_eigo_0"), TAG("m_eigo_1"), TAG("m_eigo_2"), TAG("p_end_0"), TAG("p_end_1"), TAG("p_end_2"),
     };
     static u32 l_menu_msg[4] = {
         0x38B,
@@ -1328,20 +1328,20 @@ void dName_c::screenSet() {
     };
 #endif
     static u64 l_tagName[65] = {
-        'm_00_0', 'm_00_1', 'm_00_2', 'm_00_3', 'm_00_4', 'm_01_0', 'm_01_1', 'm_01_2', 'm_01_3',
-        'm_01_4', 'm_02_0', 'm_02_1', 'm_02_2', 'm_02_3', 'm_02_4', 'm03_0',  'm03_1',  'm03_2',
-        'm03_3',  'm03_4',  'm_04_0', 'm_04_1', 'm_04_2', 'm_04_3', 'm_04_4', 'm_05_0', 'm_05_1',
-        'm_05_2', 'm_05_3', 'm_05_4', 'm_06_0', 'm_06_1', 'm_06_2', 'm_06_3', 'm_06_4', 'm_07_0',
-        'm_07_1', 'm_07_2', 'm_07_3', 'm_07_4', 'm_08_0', 'm_08_1', 'm_08_2', 'm_08_3', 'm_08_4',
-        'm_09_0', 'm_09_1', 'm_09_2', 'm_09_3', 'm_09_4', 'm_10_0', 'm_10_1', 'm_10_2', 'm_10_3',
-        'm_10_4', 'm_11_0', 'm_11_1', 'm_11_2', 'm_11_3', 'm_11_4', 'm12_0',  'm12_1',  'm12_2',
-        'm12_3',  'm12_4',
+        TAG("m_00_0"), TAG("m_00_1"), TAG("m_00_2"), TAG("m_00_3"), TAG("m_00_4"), TAG("m_01_0"), TAG("m_01_1"), TAG("m_01_2"), TAG("m_01_3"),
+        TAG("m_01_4"), TAG("m_02_0"), TAG("m_02_1"), TAG("m_02_2"), TAG("m_02_3"), TAG("m_02_4"), TAG("m03_0"),  TAG("m03_1"),  TAG("m03_2"),
+        TAG("m03_3"),  TAG("m03_4"),  TAG("m_04_0"), TAG("m_04_1"), TAG("m_04_2"), TAG("m_04_3"), TAG("m_04_4"), TAG("m_05_0"), TAG("m_05_1"),
+        TAG("m_05_2"), TAG("m_05_3"), TAG("m_05_4"), TAG("m_06_0"), TAG("m_06_1"), TAG("m_06_2"), TAG("m_06_3"), TAG("m_06_4"), TAG("m_07_0"),
+        TAG("m_07_1"), TAG("m_07_2"), TAG("m_07_3"), TAG("m_07_4"), TAG("m_08_0"), TAG("m_08_1"), TAG("m_08_2"), TAG("m_08_3"), TAG("m_08_4"),
+        TAG("m_09_0"), TAG("m_09_1"), TAG("m_09_2"), TAG("m_09_3"), TAG("m_09_4"), TAG("m_10_0"), TAG("m_10_1"), TAG("m_10_2"), TAG("m_10_3"),
+        TAG("m_10_4"), TAG("m_11_0"), TAG("m_11_1"), TAG("m_11_2"), TAG("m_11_3"), TAG("m_11_4"), TAG("m12_0"),  TAG("m12_1"),  TAG("m12_2"),
+        TAG("m12_3"),  TAG("m12_4"),
     };
     static u64 l_nameTagName[8] = {
-        'name_00', 'name_01', 'name_02', 'name_03', 'name_04', 'name_05', 'name_06', 'name_07',
+        TAG("name_00"), TAG("name_01"), TAG("name_02"), TAG("name_03"), TAG("name_04"), TAG("name_05"), TAG("name_06"), TAG("name_07"),
     };
     static u64 l_nameCurTagName[8] = {
-        's__n_00', 's__n_01', 's__n_02', 's__n_03', 's__n_04', 's__n_05', 's__n_06', 's__n_07',
+        TAG("s__n_00"), TAG("s__n_01"), TAG("s__n_02"), TAG("s__n_03"), TAG("s__n_04"), TAG("s__n_05"), TAG("s__n_06"), TAG("s__n_07"),
     };
 
     nameIn.NameInScr = new J2DScreen();
@@ -1350,7 +1350,7 @@ void dName_c::screenSet() {
     archive = dComIfGp_getNameResArchive();
     nameIn.NameInScr->setPriority("zelda_player_name.blo", 0x100000, archive);
     dPaneClass_showNullPane(nameIn.NameInScr);
-    nameIn.field_0x10 = nameIn.NameInScr->search('name_n');
+    nameIn.field_0x10 = nameIn.NameInScr->search(TAG("name_n"));
 
     void* bpk = JKRGetNameResource("zelda_player_name.bpk", archive);
     JUT_ASSERT(0, bpk != NULL);
@@ -1375,22 +1375,22 @@ void dName_c::screenSet() {
     }
 
     #if REGION_JPN
-    nameIn.NameInScr->search('pal_n')->hide();
-    mMenuPane = nameIn.NameInScr->search('jpn_n');
+    nameIn.NameInScr->search(TAG("pal_n"))->hide();
+    mMenuPane = nameIn.NameInScr->search(TAG("jpn_n"));
     mMenuPane->show();
 
-    nameIn.NameInScr->search('p_ABC_n')->scale(0.0f, 0.0f);
-    nameIn.NameInScr->search('p_abc_n')->scale(0.0f, 0.0f);
-    nameIn.NameInScr->search('p_end_n')->scale(0.0f, 0.0f);
+    nameIn.NameInScr->search(TAG("p_ABC_n"))->scale(0.0f, 0.0f);
+    nameIn.NameInScr->search(TAG("p_abc_n"))->scale(0.0f, 0.0f);
+    nameIn.NameInScr->search(TAG("p_end_n"))->scale(0.0f, 0.0f);
     #else
-    nameIn.NameInScr->search('jpn_n')->hide();
-    mMenuPane = nameIn.NameInScr->search('pal_n');
+    nameIn.NameInScr->search(TAG("jpn_n"))->hide();
+    mMenuPane = nameIn.NameInScr->search(TAG("pal_n"));
     mMenuPane->show();
 
-    nameIn.NameInScr->search('j_hira_n')->scale(0.0f, 0.0f);
-    nameIn.NameInScr->search('j_kata_n')->scale(0.0f, 0.0f);
-    nameIn.NameInScr->search('j_eigo_n')->scale(0.0f, 0.0f);
-    nameIn.NameInScr->search('j_end_n')->scale(0.0f, 0.0f);
+    nameIn.NameInScr->search(TAG("j_hira_n"))->scale(0.0f, 0.0f);
+    nameIn.NameInScr->search(TAG("j_kata_n"))->scale(0.0f, 0.0f);
+    nameIn.NameInScr->search(TAG("j_eigo_n"))->scale(0.0f, 0.0f);
+    nameIn.NameInScr->search(TAG("j_end_n"))->scale(0.0f, 0.0f);
     #endif
 
     J2DTextBox* menuPane[3];
@@ -1425,7 +1425,7 @@ void dName_c::screenSet() {
     mMenuIcon[0]->hide();
     mMenuIcon[1]->hide();
     #endif
-    mMojiPane = nameIn.NameInScr->search('moji_n');
+    mMojiPane = nameIn.NameInScr->search(TAG("moji_n"));
 
     for (u32 i = 0; i < 65; i++) {
         mMojiIcon[i] = new CPaneMgr(nameIn.NameInScr, l_tagName[i], 2, NULL);

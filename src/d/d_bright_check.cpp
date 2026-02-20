@@ -28,32 +28,32 @@ dBrightCheck_c::~dBrightCheck_c() {
 
 void dBrightCheck_c::screenSet() {
     static u64 const tv_btnA[] = {
-        'cont_at1', 'cont_at2', 'cont_at3', 'cont_at4', 'cont_at',
+        TAG("cont_at1"), TAG("cont_at2"), TAG("cont_at3"), TAG("cont_at4"), TAG("cont_at"),
     };
 
     static u64 const ftv_btnA[] = {
-        'font_a1', 'font_at2', 'font_at3', 'font_at4', 'font_at',
+        TAG("font_a1"), TAG("font_at2"), TAG("font_at3"), TAG("font_at4"), TAG("font_at"),
     };
 
     #if (VERSION == VERSION_GCN_JPN) || (VERSION == VERSION_WII_JPN)
     static u64 const txTV[] = {
-        'menu_t6s', 'menu_t6',  'menu_t9s', 'menu_t9',  'menut10s',
-        'menu_t10', 'menu_t7s', 'menu_t7',  'menu_t8s', 'menu_t8',
+        TAG("menu_t6s"), TAG("menu_t6"),  TAG("menu_t9s"), TAG("menu_t9"),  TAG("menut10s"),
+        TAG("menu_t10"), TAG("menu_t7s"), TAG("menu_t7"),  TAG("menu_t8s"), TAG("menu_t8"),
     };
     #else
     static u64 const txTV[] = {
-        'menu_t61', 'menu_t2',  'menu_t91', 'menu_t1',  'menut101',
-        'menu_t01', 'menu_t71', 'menu_t3',  'menu_t81', 'menu_t4',
+        TAG("menu_t61"), TAG("menu_t2"),  TAG("menu_t91"), TAG("menu_t1"),  TAG("menut101"),
+        TAG("menu_t01"), TAG("menu_t71"), TAG("menu_t3"),  TAG("menu_t81"), TAG("menu_t4"),
     };
     #endif
 
     #if (VERSION == VERSION_GCN_JPN) || (VERSION == VERSION_WII_JPN)
     static u64 const txTVhide[] = {
-        'fmenu_6n', 'fmenu_9n', 'fmenu_10', 'fmenu_7n', 'fmenu_8n',
+        TAG("fmenu_6n"), TAG("fmenu_9n"), TAG("fmenu_10"), TAG("fmenu_7n"), TAG("fmenu_8n"),
     };
     #else
     static u64 const txTVhide[] = {
-        'menu_6n', 'menu_9n', 'menu_10n', 'menu_7n', 'menu_8n',
+        TAG("menu_6n"), TAG("menu_9n"), TAG("menu_10n"), TAG("menu_7n"), TAG("menu_8n"),
     };
     #endif
 
@@ -61,16 +61,16 @@ void dBrightCheck_c::screenSet() {
     JUT_ASSERT(0, mBrightCheck.Scr != NULL);
     mBrightCheck.Scr->setPriority("zelda_option_check.blo", 0x1100000, mArchive);
 
-    mBrightCheck.Scr->search('g_abtn_n')->hide();
+    mBrightCheck.Scr->search(TAG("g_abtn_n"))->hide();
 
     #if (VERSION == VERSION_GCN_JPN) || (VERSION == VERSION_WII_JPN)
-    J2DTextBox* settings_text = (J2DTextBox*)mBrightCheck.Scr->search('t_t00');
-    mBrightCheck.Scr->search('t_t00')->show();
-    mBrightCheck.Scr->search('f_t00')->hide();
+    J2DTextBox* settings_text = (J2DTextBox*)mBrightCheck.Scr->search(TAG("t_t00"));
+    mBrightCheck.Scr->search(TAG("t_t00"))->show();
+    mBrightCheck.Scr->search(TAG("f_t00"))->hide();
     #else
-    J2DTextBox* settings_text = (J2DTextBox*)mBrightCheck.Scr->search('f_t00');
-    mBrightCheck.Scr->search('f_t00')->show();
-    mBrightCheck.Scr->search('t_t00')->hide();
+    J2DTextBox* settings_text = (J2DTextBox*)mBrightCheck.Scr->search(TAG("f_t00"));
+    mBrightCheck.Scr->search(TAG("f_t00"))->show();
+    mBrightCheck.Scr->search(TAG("t_t00"))->hide();
     #endif
 
     settings_text->setFont(mDoExt_getRubyFont());

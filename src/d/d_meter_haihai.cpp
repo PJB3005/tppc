@@ -30,7 +30,7 @@ int dMeterHaihai_c::_create() {
     JUT_ASSERT(0, fg != false);
     dPaneClass_showNullPane(mpHaihaiScreen);
 
-    mpParent = new CPaneMgr(mpHaihaiScreen, 'n_all', 2, NULL);
+    mpParent = new CPaneMgr(mpHaihaiScreen, TAG("n_all"), 2, NULL);
     JUT_ASSERT(0, mpParent != NULL);
 
     OSInitFastCast();
@@ -300,9 +300,9 @@ void dMeterHaihai_c::playBckAnime(J2DAnmTransformKey* i_bck) {
         }
 
         i_bck->setFrame(mBckFrame);
-        mpHaihaiScreen->search('n_anim')->setAnimation(i_bck);
-        mpHaihaiScreen->search('n_anim')->animationTransform();
-        mpHaihaiScreen->search('n_anim')->setAnimation((J2DAnmTransform*)NULL);
+        mpHaihaiScreen->search(TAG("n_anim"))->setAnimation(i_bck);
+        mpHaihaiScreen->search(TAG("n_anim"))->animationTransform();
+        mpHaihaiScreen->search(TAG("n_anim"))->setAnimation((J2DAnmTransform*)NULL);
     }
 }
 
@@ -323,8 +323,8 @@ void dMeterHaihai_c::playBtkAnime(J2DAnmTextureSRTKey* i_btk) {
         }
 
         i_btk->setFrame(mBtkFrame);
-        mpHaihaiScreen->search('yaji00')->setAnimation(i_btk);
-        mpHaihaiScreen->search('yaji01')->setAnimation(i_btk);
+        mpHaihaiScreen->search(TAG("yaji00"))->setAnimation(i_btk);
+        mpHaihaiScreen->search(TAG("yaji01"))->setAnimation(i_btk);
     }
 }
 
@@ -345,7 +345,7 @@ void dMeterHaihai_c::playBpkAnime(J2DAnmColor* i_bpk) {
         }
 
         i_bpk->setFrame(mBpkFrame);
-        mpHaihaiScreen->search('npc_l1')->setAnimation(i_bpk);
-        mpHaihaiScreen->search('yaji_l')->setAnimation(i_bpk);
+        mpHaihaiScreen->search(TAG("npc_l1"))->setAnimation(i_bpk);
+        mpHaihaiScreen->search(TAG("yaji_l"))->setAnimation(i_bpk);
     }
 }

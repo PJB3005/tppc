@@ -690,16 +690,17 @@ const GXColor* dMap_c::getColor(int i_no) {
 
 GXColor* renderingAmap_c::getLineColor(int param_0, int param_1) {
     static GXColor backColor = {0x04, 0x00, 0x00, 0x00};
+    static const GXColor borderColor0 = {0xB4, 0x00, 0x00, 0x00};
+    static const GXColor borderColor1 = {0xB8, 0x00, 0x00, 0x00};
+
     GXColor* color = &backColor;
 
     if (param_1 == 4) {
         switch (field_0x3c) {
         case 0:
-            static const GXColor borderColor0 = {0xB4, 0x00, 0x00, 0x00};
             *color = borderColor0;
             break;
         case 1:
-            static const GXColor borderColor1 = {0xB8, 0x00, 0x00, 0x00};
             *color = borderColor1;
             break;
         default:

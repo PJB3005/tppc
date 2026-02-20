@@ -1916,11 +1916,14 @@ u16 dMenu_Fmap_c::checkStRoomData() {
 
         if (!strcmp(mStageName[mStageCursor], data->mStageName)) {
             for (int j = 0; j < data->mCount; j++) {
+                OSUNIMPLEMENTED(); // TODO TPPC: FIX VLA
+                /*
                 if (mRoomCursor == data->mRoomNos[j]) {
                     mFlashRoomCount = data->mCount;
                     mFlashRooms = data->mRoomNos;
                     return data->mAreaName;
                 }
+                */
             }
         }
 

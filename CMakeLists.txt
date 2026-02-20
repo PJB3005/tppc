@@ -14,7 +14,11 @@ target_sources(
 add_compile_definitions(TPPC=1 TPPC_DEBUG=1)
 add_compile_definitions(VERSION=0) # VERSION_GCN_USA
 
-add_compile_options(-Wno-microsoft-string-literal-from-predefined -fno-rtti)
+if (MSVC)
+    add_compile_options(/GR-)
+else ()
+    add_compile_options(-Wno-microsoft-string-literal-from-predefined -fno-rtti)
+endif ()
 
 # Decompiled code
 include(decompiled.cmake)

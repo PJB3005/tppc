@@ -1102,7 +1102,7 @@ void mDoGph_gInf_c::bloom_c::create() {
         mPoint = 128;
         mBlureSize = 64;
         mBlureRatio = 128;
-        mBlendColor = (GXColor){255, 255, 255, 255};
+        mBlendColor = {255, 255, 255, 255};
     }
 }
 

@@ -26,6 +26,8 @@ inline f32 J3DCalcZValue(__REGISTER MtxP m, __REGISTER Vec v) {
     // clang-format on
 
     return out;
+#else
+    OSUNIMPLEMENTED();
 #endif
 }
 
