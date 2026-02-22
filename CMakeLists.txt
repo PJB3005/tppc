@@ -39,4 +39,6 @@ add_subdirectory(tppc/ar/)
 
 target_link_libraries(Tppc PRIVATE tppc_os tppc_gx tppc_ar)
 
+set_target_properties(Tppc tppc_os tppc_gx tppc_ar PROPERTIES CXX_STANDARD 20)
+
 target_include_directories(Tppc SYSTEM PRIVATE include/)
