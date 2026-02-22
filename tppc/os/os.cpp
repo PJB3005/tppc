@@ -19,7 +19,6 @@ void OSReport_Warning(const char* fmt, ...) {
     va_start(args, fmt);
     fputs("WARNING: ", stdout);
     vprintf(fmt, args);
-    fputs("\n", stdout);
     va_end(args);
 }
 
@@ -28,7 +27,6 @@ void OSReport_Error(const char* fmt, ...) {
     va_start(args, fmt);
     fputs("ERROR: ", stdout);
     vprintf(fmt, args);
-    fputs("\n", stdout);
     va_end(args);
 }
 
@@ -37,7 +35,6 @@ void OSReport_FatalError(const char* fmt, ...) {
     va_start(args, fmt);
     fputs("FATAL: ", stdout);
     vprintf(fmt, args);
-    fputs("\n", stdout);
     va_end(args);
 
     abort();

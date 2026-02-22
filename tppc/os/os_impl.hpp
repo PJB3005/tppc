@@ -3,8 +3,8 @@
 
 #include <dolphin/os.h>
 
-#define UNIMPLEMENTED() OSPanic(__FILE__, __LINE__, "UNIMPLEMENTED: " __FUNCTION__)
-#define SOFT_UNIMPLEMENTED() OSReport_Warning("UNIMPLEMENTED: " __FUNCTION__);
+#define UNIMPLEMENTED() OSPanic(__FILE__, __LINE__, "UNIMPLEMENTED: " __FUNCTION__ "\n")
+#define SOFT_UNIMPLEMENTED() OSReport_Warning("UNIMPLEMENTED: " __FUNCTION__ "\n");
 
 constexpr uintptr_t REAL_MEMORY_SIZE_MB = 64;
 constexpr uintptr_t REAL_MEMORY_SIZE = REAL_MEMORY_SIZE_MB * 1024 * 1024;
