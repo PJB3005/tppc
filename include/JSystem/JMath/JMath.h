@@ -233,7 +233,9 @@ namespace JMathInlineVEC {
             ps_add sumz, az, bz
             psq_st sumz, 8(ab), 1, 0
         }
-    #endif
+    #else
+        ::C_VECAdd(a, b, ab);
+#endif
     }
 
     inline void C_VECSubtract(__REGISTER const Vec* a, __REGISTER const Vec* b, __REGISTER Vec* ab) {
@@ -253,7 +255,9 @@ namespace JMathInlineVEC {
             ps_sub subz, az, bz
             psq_st subz, 8(ab), 1, 0
         }
-    #endif
+    #else
+        ::C_VECSubtract(a, b, ab);
+#endif
     }
 
     inline f32 C_VECSquareMag(__REGISTER const Vec* v) {
@@ -271,7 +275,7 @@ namespace JMathInlineVEC {
         }
         return res;
     #else
-    OSUNIMPLEMENTED();
+        return ::C_VECSquareMag(v);
     #endif
     }
 
@@ -293,7 +297,7 @@ namespace JMathInlineVEC {
         };
         return res;
     #else
-      OSUNIMPLEMENTED();
+      return ::C_VECDotProduct(a, b);
 #endif
     }
 };
