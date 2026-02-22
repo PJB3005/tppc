@@ -627,6 +627,7 @@ target_include_directories(JKernel SYSTEM PRIVATE include/dolphin/)
 target_include_directories(JKernel SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(JKernel SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE JKernel)
+target_compile_definitions(JKernel PRIVATE DEBUG=1)
 target_compile_definitions(JKernel PRIVATE TPPC_OS_REPORT=1)
 add_library(JSupport)
 target_sources(JSupport PRIVATE

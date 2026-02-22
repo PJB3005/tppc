@@ -65,6 +65,9 @@ def main():
             f.write(f"target_include_directories({lib_name} SYSTEM PRIVATE assets/GZ2E01/)\n")
             f.write(f"target_include_directories({lib_name} SYSTEM PRIVATE build_ack/include/)\n")
             f.write(f"target_link_libraries(Tppc PRIVATE {lib_name})\n")
+            if lib_name == "JKernel":
+                f.write(f"target_compile_definitions({lib_name} PRIVATE DEBUG=1)\n")
+
             if lib_name.startswith("J"):
                 f.write(f"target_compile_definitions({lib_name} PRIVATE TPPC_OS_REPORT=1)\n")
 
