@@ -206,7 +206,7 @@ void OSFatal(GXColor fg, GXColor bg, const char* msg);
 // do these belong here?
 DECL_WEAK void OSAttention(const char* msg, ...);
 DECL_WEAK void OSReport_Error(const char* fmt, ...);
-DECL_WEAK void OSReport_FatalError(const char* fmt, ...);
+DECL_WEAK void OSReport_FatalError [[noreturn]](const char* fmt, ...);
 DECL_WEAK void OSReport_System(const char* fmt, ...);
 DECL_WEAK void OSReport_Warning(const char* fmt, ...);
 DECL_WEAK void OSReportDisable(void);
