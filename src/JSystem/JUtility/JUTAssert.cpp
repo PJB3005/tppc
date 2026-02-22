@@ -111,6 +111,10 @@ void showAssert_f_va(u32 device, const char* file, int line, const char* msg, va
             VIFlush();
             OSEnableInterrupts();
 
+#if TPPC
+            OSPanic(__FILE__, __LINE__, "Error ocurred!!!");
+#endif
+
             u32 retrace_count = VIGetRetraceCount();
             while (retrace_count == VIGetRetraceCount()){
                 // nop
