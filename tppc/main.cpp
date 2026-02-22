@@ -3,6 +3,7 @@
 #include <fmt/base.h>
 
 #include "TPPC.hpp"
+#include "m_Do/m_Do_Reset.h"
 #include "os/os_impl.hpp"
 
 // Actual TP main.
@@ -26,6 +27,8 @@ int main(int argc, char* argv[]) {
 
     fmt::print("SDL version: {}\n", SDL_GetVersion());
 
+    mDoRst::setResetData(static_cast<mDoRstData*>(
+        OSAllocFromArenaLo(sizeof(mDoRstData), alignof(mDoRstData))));
     main01();
 
     return 0;
