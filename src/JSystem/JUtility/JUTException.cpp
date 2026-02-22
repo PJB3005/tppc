@@ -94,6 +94,10 @@ JUTException* JUTException::create(JUTDirectPrint* directPrint) {
 OSMessage JUTException::sMessageBuffer[1] = {0};
 
 void* JUTException::run() {
+#if TPPC
+    return nullptr;
+#endif
+
     u32 msr = PPCMfmsr();
     msr &= ~0x0900;
     PPCMtmsr(msr);
