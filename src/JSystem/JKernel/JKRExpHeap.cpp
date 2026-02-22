@@ -1101,7 +1101,7 @@ bool JKRExpHeap::state_compare(JKRHeap::TState const& r1, JKRHeap::TState const&
 }
 
 u32 JKRExpHeap::getHeapType() {
-    return 'EXPH';
+    return TAG("EXPH");
 }
 
 u8 JKRExpHeap::do_getCurrentGroupId() {

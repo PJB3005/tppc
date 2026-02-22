@@ -88,7 +88,7 @@ static void mDoExt_setJ3DData(Mtx mtx, const J3DTransformInfo* transformInfo, u1
 
 static BOOL isCurrentSolidHeap() {
     JKRHeap* heap = JKRGetCurrentHeap();
-    if (heap->getHeapType() != 'SLID') {
+    if (heap->getHeapType() != TAG("SLID")) {
         OS_REPORT_ERROR("ソリッドヒープちゃうがな！\n");
         return FALSE;
     }
@@ -979,7 +979,7 @@ u32 mDoExt_adjustSolidHeap(JKRSolidHeap* i_heap) {
     }
 
     JKRHeap* parentHeap = i_heap->getParent();
-    if (parentHeap == NULL || parentHeap->getHeapType() != 'EXPH') {
+    if (parentHeap == NULL || parentHeap->getHeapType() != TAG("EXPH")) {
         // "Can't adjust because parent heap isn't Exp %08x %08x\n"
         OSReport_Error("親ヒープがExpでないのでアジャストできません %08x %08x\n", i_heap,
                        parentHeap);

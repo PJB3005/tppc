@@ -338,7 +338,7 @@ static void myMemoryErrorRoutine(void* p_heap, u32 size, int alignment) {
     JKRHeap* heap = (JKRHeap*)p_heap;
 
     BOOL notSolidHeap = true;
-    if (heap->getHeapType() == 'SLID') {
+    if (heap->getHeapType() == TAG("SLID")) {
         notSolidHeap = false;
     }
 
@@ -374,7 +374,7 @@ static void myMemoryErrorRoutine(void* p_heap, u32 size, int alignment) {
         commandHeapErrors++;
     } else if (p_heap == archiveHeap) {
         archiveHeapErrors++;
-    } else if (heap->getHeapType() == 'SLID') {
+    } else if (heap->getHeapType() == TAG("SLID")) {
         solidHeapErrors++;
     } else {
         unknownHeapErrors++;

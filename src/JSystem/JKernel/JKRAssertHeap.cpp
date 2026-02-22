@@ -29,7 +29,7 @@ void JKRAssertHeap::do_destroy() {
 }
 
 u32 JKRAssertHeap::getHeapType() {
-    return 'ASTH';
+    return TAG("ASTH");
 }
 
 bool JKRAssertHeap::check() {

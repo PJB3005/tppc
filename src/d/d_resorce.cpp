@@ -593,7 +593,7 @@ int dRes_info_c::setRes() {
 
 static s32 myGetMemBlockSize(void* i_data) {
     JKRHeap* heap = JKRHeap::findFromRoot(i_data);
-    if (heap->getHeapType() == 'EXPH') {
+    if (heap->getHeapType() == TAG("EXPH")) {
         return JKRHeap::getSize(i_data, heap);
     }
     

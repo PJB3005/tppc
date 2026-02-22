@@ -271,7 +271,7 @@ bool JKRSolidHeap::state_compare(JKRHeap::TState const& r1, JKRHeap::TState cons
 }
 
 u32 JKRSolidHeap::getHeapType(void) {
-    return 'SLID';
+    return TAG("SLID");
 }
 
 s32 JKRSolidHeap::do_getFreeSize(void) {
