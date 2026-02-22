@@ -7,7 +7,9 @@ find_package(mimalloc CONFIG REQUIRED)
 
 add_executable(Tppc
         tppc/OSAlloc_Mimalloc.cpp
-        tests/tag_test.cpp)
+        tests/tag_test.cpp
+        tppc/TPPCWindows.cpp
+        tppc/TPPC.hpp)
 
 target_sources(
     Tppc
@@ -18,7 +20,7 @@ add_compile_definitions(TPPC=1 TPPC_DEBUG=1)
 add_compile_definitions(VERSION=0) # VERSION_GCN_USA
 
 if (MSVC)
-    add_compile_options(/GR-)
+    add_compile_options(/GR- /utf-8)
 else ()
     add_compile_options(-Wno-microsoft-string-literal-from-predefined -fno-rtti)
 endif ()
