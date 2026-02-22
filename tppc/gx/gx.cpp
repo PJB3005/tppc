@@ -1,6 +1,7 @@
 #include <dolphin/gx.h>
 
 #include "../os/os_impl.hpp"
+#include "global.h"
 
 void GXSetMisc(GXMiscToken token, u32 val) {
     UNIMPLEMENTED();
@@ -275,34 +276,122 @@ void GXSetNumTevStages(u8 nStages) {
     UNIMPLEMENTED();
 }
 
-u32 GXGetTexBufferSize(u16 width, u16 height, u32 format, u8 mipmap, u8 max_lod) {
-    UNIMPLEMENTED();
+static void __GXGetTexTileShift(GXTexFmt fmt, u32* rowTileS, u32* colTileS) {
+    switch (fmt) {
+    case GX_TF_I4:
+    case 0x8:
+    case GX_TF_CMPR:
+    case GX_CTF_R4:
+    case GX_CTF_Z4:
+        *rowTileS = 3;
+        *colTileS = 3;
+        break;
+    case GX_TF_I8:
+    case GX_TF_IA4:
+    case 0x9:
+    case GX_TF_Z8:
+    case GX_CTF_RA4:
+    case GX_TF_A8:
+    case GX_CTF_R8:
+    case GX_CTF_G8:
+    case GX_CTF_B8:
+    case GX_CTF_Z8M:
+    case GX_CTF_Z8L:
+        *rowTileS = 3;
+        *colTileS = 2;
+        break;
+    case GX_TF_IA8:
+    case GX_TF_RGB565:
+    case GX_TF_RGB5A3:
+    case GX_TF_RGBA8:
+    case 0xA:
+    case GX_TF_Z16:
+    case GX_TF_Z24X8:
+    case GX_CTF_RA8:
+    case GX_CTF_RG8:
+    case GX_CTF_GB8:
+    case GX_CTF_Z16L:
+        *rowTileS = 2;
+        *colTileS = 2;
+        break;
+    default:
+        *rowTileS = *colTileS = 0;
+        ASSERTMSGLINEV(444, 0, "%s: invalid texture format", "GX");
+        break;
+    }
 }
+
+u32 GXGetTexBufferSize(u16 width, u16 height, u32 format, GXBool mipmap, u8 max_lod) {
+    u32 tileShiftX;
+    u32 tileShiftY;
+    u32 tileBytes;
+    u32 bufferSize;
+    u32 nx;
+    u32 ny;
+    u32 level;
+
+    ASSERTMSGLINEV(460, width <= 1024, "%s: width too large", "GXGetTexBufferSize");
+    ASSERTMSGLINEV(461, height <= 1024, "%s: height too large", "GXGetTexBufferSize");
+
+    __GXGetTexTileShift(static_cast<GXTexFmt>(format), &tileShiftX, &tileShiftY);
+    if (format == GX_TF_RGBA8 || format == GX_TF_Z24X8) {
+        tileBytes = 64;
+    } else {
+        tileBytes = 32;
+    }
+
+    if (mipmap == GX_TRUE) {
+        nx = 1 << (31 - __cntlzw(width));
+        ASSERTMSGLINEV(479, width == nx, "%s: width must be a power of 2", "GXGetTexBufferSize");
+        ny = 1 << (31 - __cntlzw(height));
+        ASSERTMSGLINEV(482, height == ny, "%s: height must be a power of 2", "GXGetTexBufferSize");
+
+        bufferSize = 0;
+        for (level = 0; level < max_lod; level++) {
+            nx = (width + (1 << tileShiftX) - 1) >> tileShiftX;
+            ny = (height + (1 << tileShiftY) - 1) >> tileShiftY;
+            bufferSize += tileBytes * (nx * ny);
+            if (width == 1 && height == 1) {
+                break;
+            }
+            width = (width > 1) ? width >> 1 : 1;
+            height = (height > 1) ? height >> 1 : 1;
+        }
+    } else {
+        nx = (width + (1 << tileShiftX) - 1) >> tileShiftX;
+        ny = (height + (1 << tileShiftY) - 1) >> tileShiftY;
+        bufferSize = nx * ny * tileBytes;
+    }
+
+    return bufferSize;
+}
+
 void GXInitTexObj(GXTexObj* obj, void* image_ptr, u16 width, u16 height, GXTexFmt format, GXTexWrapMode wrap_s, GXTexWrapMode wrap_t, u8 mipmap) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitTexObjCI(GXTexObj* obj, void* image_ptr, u16 width, u16 height, GXCITexFmt format, GXTexWrapMode wrap_s, GXTexWrapMode wrap_t, u8 mipmap, u32 tlut_name) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitTexObjLOD(GXTexObj* obj, GXTexFilter min_filt, GXTexFilter mag_filt,
     f32 min_lod, f32 max_lod, f32 lod_bias, GXBool bias_clamp,
     GXBool do_edge_lod, GXAnisotropy max_aniso) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitTexObjData(GXTexObj* obj, void* image_ptr) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitTexObjWrapMode(GXTexObj* obj, GXTexWrapMode s, GXTexWrapMode t) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitTexObjTlut(GXTexObj* obj, u32 tlut_name) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitTexObjUserData(GXTexObj* obj, void* user_data) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void* GXGetTexObjUserData(const GXTexObj* obj) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return nullptr;
 }
 void GXLoadTexObjPreLoaded(GXTexObj* obj, GXTexRegion* region, GXTexMapID id) {
     UNIMPLEMENTED();
@@ -587,12 +676,76 @@ void GXClearBoundingBox(void) {
 void GXReadBoundingBox(u16* left, u16* top, u16* right, u16* bottom) {
     UNIMPLEMENTED();
 }
+
+static u32 __GXGetNumXfbLines(u32 efbHt, u32 iScale) {
+    u32 count;
+    u32 realHt;
+    u32 iScaleD;
+
+    count = (efbHt - 1) * 0x100;
+    realHt = (count / iScale) + 1;
+
+    iScaleD = iScale;
+
+    if (iScaleD > 0x80 && iScaleD < 0x100) {
+        while (iScaleD % 2 == 0) {
+            iScaleD /= 2;
+        }
+
+        if (efbHt % iScaleD == 0) {
+            realHt++;
+        }
+    }
+
+    if (realHt > 0x400) {
+        realHt = 0x400;
+    }
+
+    return realHt;
+}
+
 u16 GXGetNumXfbLines(u16 efbHeight, f32 yScale) {
-    UNIMPLEMENTED();
+    u32 iScale;
+    ASSERTMSGLINE(1486, yScale >= 1.0f, "GXGetNumXfbLines: Vertical scale must be >= 1.0");
+
+    iScale = (u32)(256.0f / yScale) & 0x1FF;
+    return __GXGetNumXfbLines(efbHeight, iScale);
 }
+
 f32 GXGetYScaleFactor(u16 efbHeight, u16 xfbHeight) {
-    UNIMPLEMENTED();
+    f32 fScale;
+    f32 yScale;
+    u32 iScale;
+    u32 tgtHt;
+    u32 realHt;
+
+    ASSERTMSGLINE(1510, xfbHeight <= 1024, "GXGetYScaleFactor: Display copy only supports up to 1024 lines.\n");
+    ASSERTMSGLINE(1512, efbHeight <= xfbHeight, "GXGetYScaleFactor: EFB height should not be greater than XFB height.\n");
+
+    tgtHt = xfbHeight;
+    yScale = (f32)xfbHeight / (f32)efbHeight;
+    iScale = (u32)(256.0f / yScale) & 0x1FF;
+    realHt = __GXGetNumXfbLines(efbHeight, iScale);
+
+    while (realHt > xfbHeight) {
+        tgtHt--;
+        yScale = (f32)tgtHt / (f32)efbHeight;
+        iScale = (u32)(256.0f / yScale) & 0x1FF;
+        realHt = __GXGetNumXfbLines(efbHeight, iScale);
+    }
+
+    fScale = yScale;
+    while (realHt < xfbHeight) {
+        fScale = yScale;
+        tgtHt++;
+        yScale = (f32)tgtHt / (f32)efbHeight;
+        iScale = (u32)(256.0f / yScale) & 0x1FF;
+        realHt = __GXGetNumXfbLines(efbHeight, iScale);
+    }
+
+    return fScale;
 }
+
 
 void GXBeginDisplayList(void* list, u32 size) {
     UNIMPLEMENTED();
