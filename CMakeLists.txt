@@ -6,7 +6,8 @@ find_package(fmt CONFIG REQUIRED)
 find_package(mimalloc CONFIG REQUIRED)
 
 add_executable(Tppc
-        tppc/OSAlloc_Mimalloc.cpp)
+        tppc/OSAlloc_Mimalloc.cpp
+        tests/tag_test.cpp)
 
 target_sources(
     Tppc

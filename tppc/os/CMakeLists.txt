@@ -8,6 +8,8 @@ add_library(tppc_os
         OSArena.cpp
         OSMemory.cpp
         OSBootInfo.cpp
+        OSThread.cpp
+        OSTime.cpp
 )
 
 target_include_directories(tppc_os SYSTEM PRIVATE ../../include/)

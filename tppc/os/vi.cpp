@@ -2,41 +2,45 @@
 
 #include "os_impl.hpp"
 
+static u32 RetraceCount;
+
 VIRetraceCallback VISetPreRetraceCallback(VIRetraceCallback cb) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return nullptr;
 }
 VIRetraceCallback VISetPostRetraceCallback(VIRetraceCallback cb) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return nullptr;
 }
 void VIInit(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void VIWaitForRetrace(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void VIConfigure(const GXRenderModeObj* rm) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void VIConfigurePan(u16 xOrg, u16 yOrg, u16 width, u16 height) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void VIFlush(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void VISetNextFrameBuffer(void* fb) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void VISetNextRightFrameBuffer(void* fb) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void VISetBlack(BOOL black) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void VISet3D(BOOL threeD) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 u32 VIGetRetraceCount(void) {
-    UNIMPLEMENTED();
+    return RetraceCount;
 }
 u32 VIGetNextField(void) {
     UNIMPLEMENTED();

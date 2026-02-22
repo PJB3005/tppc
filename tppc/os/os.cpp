@@ -99,19 +99,6 @@ void OSDumpStopwatch(OSStopwatch* sw) {
     UNIMPLEMENTED();
 }
 
-OSTick OSGetTick(void) {
-    UNIMPLEMENTED();
-}
-OSTime OSGetTime(void) {
-    UNIMPLEMENTED();
-}
-void OSTicksToCalendarTime(OSTime ticks, OSCalendarTime* td) {
-    UNIMPLEMENTED();
-}
-OSTime OSCalendarTimeToTicks(OSCalendarTime* td) {
-    UNIMPLEMENTED();
-}
-
 void OSLockMutex(OSMutex* mutex) {
     SOFT_UNIMPLEMENTED();
 }
@@ -202,15 +189,15 @@ void __OSCacheInit(void) {
 }
 
 BOOL OSEnableInterrupts(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
     return 0;
 }
 BOOL OSDisableInterrupts(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
     return 0;
 }
 BOOL OSRestoreInterrupts(BOOL level) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
     return 0;
 }
 
@@ -274,25 +261,26 @@ void OSInitThreadQueue(OSThreadQueue* queue) {
 }
 
 void OSSleepThread(OSThreadQueue* queue) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void OSWakeupThread(OSThreadQueue* queue) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 s32 OSSuspendThread(OSThread* thread) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return 0;
 }
 s32 OSResumeThread(OSThread* thread) {
-    UNIMPLEMENTED();
-}
-OSThread* OSGetCurrentThread(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return 0;
 }
 s32 OSEnableScheduler(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return 0;
 }
 s32 OSDisableScheduler(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return 0;
 }
 void OSCancelThread(OSThread* thread) {
     UNIMPLEMENTED();
@@ -441,8 +429,10 @@ void OSFillFPUContext(OSContext* context) {
 }
 
 OSErrorHandler OSSetErrorHandler(OSError error, OSErrorHandler handler) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return nullptr;
 }
+
 u32 __OSFpscrEnableBits;
 OSErrorHandler __OSErrorTable[17];
 

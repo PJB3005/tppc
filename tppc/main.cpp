@@ -13,6 +13,8 @@ void main01(void);
 
 int main(int argc, char* argv[]) {
     TPPC_OSInitMemory();
+    TPPC_InitMainThread();
+    TPPC_OSInitClock();
 
     fmt::print("Main!\n");
 

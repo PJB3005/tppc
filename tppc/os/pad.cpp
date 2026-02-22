@@ -9,25 +9,26 @@ BOOL PADRecalibrate(u32 mask) {
     UNIMPLEMENTED();
 }
 BOOL PADInit() {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return TRUE;
 }
 u32 PADRead(PADStatus* status) {
     UNIMPLEMENTED();
 }
 void PADSetSamplingRate(u32 msec) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void __PADTestSamplingRate(u32 tvmode) {
     UNIMPLEMENTED();
 }
 void PADControlAllMotors(const u32* commandArray) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void PADControlMotor(s32 chan, u32 command) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void PADSetSpec(u32 spec) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 u32 PADGetSpec() {
     UNIMPLEMENTED();
@@ -39,7 +40,7 @@ BOOL PADSync(void) {
     UNIMPLEMENTED();
 }
 void PADSetAnalogMode(u32 mode) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 BOOL __PADDisableRecalibration(BOOL disable) {
     UNIMPLEMENTED();

@@ -64,7 +64,7 @@ void AllocRealMemory() {
 
     RealMemoryEnd = POINTER_ADD(RealMemoryStart, REAL_MEMORY_SIZE);
 
-    OSSetArenaLo(RealMemoryStart);
+    OSSetArenaLo(POINTER_ADD(RealMemoryStart, ARENA_START_OFFSET));
     OSSetArenaHi(RealMemoryEnd);
 
     fmt::println(

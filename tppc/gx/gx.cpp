@@ -37,11 +37,11 @@ void GXTexModeSync(void) {
     UNIMPLEMENTED();
 }
 GXDrawSyncCallback GXSetDrawSyncCallback(GXDrawSyncCallback cb) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
     return 0;
 }
 GXDrawDoneCallback GXSetDrawDoneCallback(GXDrawDoneCallback cb) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
     return 0;
 }
 
@@ -736,7 +736,8 @@ BOOL IsWriteGatherBufferEmpty(void) {
     UNIMPLEMENTED();
 }
 GXFifoObj* GXInit(void* base, u32 size) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return nullptr;
 }
 
 void GXPokeAlphaMode(GXCompare func, u8 threshold) {
