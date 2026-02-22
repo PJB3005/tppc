@@ -33,6 +33,7 @@ void* JKRAramStream::sMessageBuffer[4] = {
 OSMessageQueue JKRAramStream::sMessageQueue = {0};
 
 JKRAramStream::JKRAramStream(s32 priority) : JKRThread(stack_size, 0x10, priority) {
+    OSSetThreadName(getThreadRecord(), "AramStream");
     resume();
 }
 

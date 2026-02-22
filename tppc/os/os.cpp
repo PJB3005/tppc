@@ -97,36 +97,6 @@ void OSDumpStopwatch(OSStopwatch* sw) {
     UNIMPLEMENTED();
 }
 
-void OSLockMutex(OSMutex* mutex) {
-    SOFT_UNIMPLEMENTED();
-}
-
-void OSInitMutex(OSMutex* mutex) {
-    SOFT_UNIMPLEMENTED();
-}
-
-void OSUnlockMutex(OSMutex* mutex) {
-    SOFT_UNIMPLEMENTED();
-}
-
-BOOL OSTryLockMutex(OSMutex* mutex) {
-    UNIMPLEMENTED();
-    return 0;
-
-}
-
-void OSInitCond(OSCond* cond) {
-    SOFT_UNIMPLEMENTED();
-}
-
-void OSWaitCond(OSCond* cond, OSMutex* mutex) {
-    SOFT_UNIMPLEMENTED();
-}
-
-void OSSignalCond(OSCond* cond) {
-    SOFT_UNIMPLEMENTED();
-}
-
 void DCInvalidateRange(void* addr, u32 nBytes) {
     UNIMPLEMENTED();
 }
@@ -261,20 +231,12 @@ void OSSleepThread(OSThreadQueue* queue) {
 void OSWakeupThread(OSThreadQueue* queue) {
     SOFT_UNIMPLEMENTED();
 }
-s32 OSSuspendThread(OSThread* thread) {
-    SOFT_UNIMPLEMENTED();
-    return 0;
-}
-s32 OSResumeThread(OSThread* thread) {
-    SOFT_UNIMPLEMENTED();
-    return 0;
-}
 s32 OSEnableScheduler(void) {
-    SOFT_UNIMPLEMENTED();
+    UNIMPLEMENTED();
     return 0;
 }
 s32 OSDisableScheduler(void) {
-    SOFT_UNIMPLEMENTED();
+    UNIMPLEMENTED();
     return 0;
 }
 void OSCancelThread(OSThread* thread) {
@@ -290,13 +252,6 @@ BOOL OSIsThreadTerminated(OSThread* thread) {
     UNIMPLEMENTED();
 }
 void OSYieldThread(void) {
-    UNIMPLEMENTED();
-}
-int OSCreateThread(OSThread* thread, void* (*func)(void*), void* param, void* stack, u32 stackSize, OSPriority priority, u16 attr) {
-    SOFT_UNIMPLEMENTED();
-    return 1;
-}
-void OSExitThread(void* val) {
     UNIMPLEMENTED();
 }
 int OSJoinThread(OSThread* thread, void* val) {
@@ -326,28 +281,6 @@ void OSSetThreadSpecific(s32 index, void* ptr) {
 void* OSGetThreadSpecific(s32 index) {
     UNIMPLEMENTED();
 }
-
-void OSInitMessageQueue(OSMessageQueue* mq, void* msgArray, s32 msgCount) {
-    OSInitThreadQueue(&mq->queueSend);
-    OSInitThreadQueue(&mq->queueReceive);
-    mq->msgArray = msgArray;
-    mq->msgCount = msgCount;
-    mq->firstIndex = 0;
-    mq->usedCount = 0;
-}
-int OSSendMessage(OSMessageQueue* mq, void* msg, s32 flags) {
-    SOFT_UNIMPLEMENTED();
-    return 0;
-}
-int OSReceiveMessage(OSMessageQueue* mq, void* msg, s32 flags) {
-    SOFT_UNIMPLEMENTED();
-    return 0;
-}
-int OSJamMessage(OSMessageQueue* mq, void* msg, s32 flags) {
-    SOFT_UNIMPLEMENTED();
-    return 0;
-}
-
 BOOL OSCheckAlarmQueue(void) {
     UNIMPLEMENTED();
 }

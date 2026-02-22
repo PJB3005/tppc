@@ -103,6 +103,17 @@ OSThread* OSGetIdleFunction(void);
 s32 OSCheckActiveThreads(void);
 void OSSetThreadSpecific(s32 index, void* ptr);
 void* OSGetThreadSpecific(s32 index);
+#if TPPC
+void OSSetThreadName(OSThread* thread, const char* name);
+#else
+inline void OSSetThreadName(OSThread* thread, const char* name) { }
+#endif
+
+#if TPPC
+    void OSThreadsReady();
+#else
+    inline void OSSetThreadName() { }
+#endif
 
 OSSwitchThreadCallback OSSetSwitchThreadCallback(OSSwitchThreadCallback callback);
 

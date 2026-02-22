@@ -37,6 +37,7 @@ void mDoDvdErr_ThdInit() {
 
     OSCreateThread(&DvdErr_thread, (void*(*)(void*))mDoDvdErr_Watch, NULL, DvdErr_stack + sizeof(DvdErr_stack),
                     sizeof(DvdErr_stack), OSGetThreadPriority(OSGetCurrentThread()) - 3, 1);
+    OSSetThreadName(&DvdErr_thread, "DVD error");
     OSResumeThread(&DvdErr_thread);
     OSCreateAlarm(&Alarm);
     OSSetPeriodicAlarm(&Alarm, time, OS_BUS_CLOCK / 4, AlarmHandler);

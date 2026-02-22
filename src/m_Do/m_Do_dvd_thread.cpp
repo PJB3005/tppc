@@ -52,6 +52,7 @@ static u8 padding[0x18];
 void mDoDvdThd::create(s32 param_0) {
     OSCreateThread(&l_thread, (void*(*)(void*))mDoDvdThd::main, &l_param,
                    l_threadStack.stack + sizeof(l_threadStack), sizeof(l_threadStack), param_0, 1);
+    OSSetThreadName(&l_thread, "DVD");
     OSResumeThread(&l_thread);
 }
 

@@ -48,6 +48,8 @@ OSMessageQueue JKRAram::sMessageQueue = {0};
 
 JKRAram::JKRAram(u32 audio_buffer_size, u32 audio_graph_size, s32 priority)
     : JKRThread(stack_size, 0x10, priority) {
+    OSSetThreadName(getThreadRecord(), "Aram");
+
     u32 aramBase = ARInit(mStackArray, ARRAY_SIZEU(mStackArray));
     ARQInit();
 

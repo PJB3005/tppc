@@ -84,9 +84,13 @@ void mDoMemCd_Ctrl_c::ThdInit() {
 
     OSInitMutex(&mMutex);
     OSInitCond(&mCond);
+
+#if !TPPC // Let's just implement memory card logic ourselves.
     OSCreateThread(&MemCardThread, (void*(*)(void*))mDoMemCd_main, NULL, MemCardStack + sizeof(MemCardStack),
                    sizeof(MemCardStack), OSGetThreadPriority(OSGetCurrentThread()) + 1, 1);
+    OSSetThreadName(&MemCardThread, "MemCardThread");
     OSResumeThread(&MemCardThread);
+#endif
 
     // "Memory Card Thread Init\n"
     OS_REPORT("メモリーカードスレッド起動\n");

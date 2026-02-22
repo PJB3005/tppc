@@ -10,6 +10,9 @@ add_library(tppc_os
         OSBootInfo.cpp
         OSThread.cpp
         OSTime.cpp
+        OSThread_Windows.cpp
+        OSMutex.cpp
+        OSMessageQueue.cpp
 )
 
 target_include_directories(tppc_os SYSTEM PRIVATE ../../include/)

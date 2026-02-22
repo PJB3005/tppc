@@ -5,6 +5,7 @@
 #include <revolution/os/OSMessage.h>
 #else
 #include <dolphin/os/OSThread.h>
+#include <dolphin/os/OSMutex.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -16,8 +17,14 @@ typedef void* OSMessage;
 #define OS_MESSAGE_BLOCK   1
 
 typedef struct {
+#if TPPC
+    OSMutex mutex;
+    OSCond sendEvent;
+    OSCond receiveEvent;
+#else
     OSThreadQueue queueSend;
     OSThreadQueue queueReceive;
+#endif
     void* msgArray;
     s32 msgCount;
     s32 firstIndex;

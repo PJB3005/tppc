@@ -728,6 +728,8 @@ void main01(void) {
 
     g_mDoAud_audioHeap = JKRCreateSolidHeap(audioHeapSize, JKRGetCurrentHeap(), false);
 
+    OSThreadsReady();
+
     do {
         static u32 frame;
         frame++;
