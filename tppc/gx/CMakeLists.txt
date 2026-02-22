@@ -1,6 +1,7 @@
 add_library(tppc_gx
         gd.cpp
-        gf.cpp)
+        gf.cpp
+        GXVert.cpp)
 
 target_include_directories(tppc_gx SYSTEM PRIVATE ../../include/)
 
