@@ -86,7 +86,8 @@ s32 DVDGetCommandBlockStatus(const DVDCommandBlock* block) {
     UNIMPLEMENTED();
 }
 s32 DVDGetDriveStatus(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return DVD_STATE_BUSY;
 }
 BOOL DVDSetAutoInvalidation(BOOL autoInval) {
     UNIMPLEMENTED();
@@ -123,7 +124,7 @@ int DVDSetAutoFatalMessaging(BOOL enable) {
 
 // DVD FS
 s32 DVDConvertPathToEntrynum(const char* pathPtr) {
-    UNIMPLEMENTED();
+    return 0;
 }
 BOOL DVDFastOpen(s32 entrynum, DVDFileInfo* fileInfo) {
     UNIMPLEMENTED();

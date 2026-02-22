@@ -7,7 +7,7 @@ void GXSetMisc(GXMiscToken token, u32 val) {
     UNIMPLEMENTED();
 }
 void GXFlush(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXResetWriteGatherPipe(void) {
     UNIMPLEMENTED();
@@ -47,233 +47,233 @@ GXDrawDoneCallback GXSetDrawDoneCallback(GXDrawDoneCallback cb) {
 }
 
 void GXSetFog(GXFogType type, f32 startz, f32 endz, f32 nearz, f32 farz, GXColor color) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitFogAdjTable(GXFogAdjTable* table, u16 width, const f32 projmtx[4][4]) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetFogRangeAdj(GXBool enable, u16 center, const GXFogAdjTable* table) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetBlendMode(GXBlendMode type, GXBlendFactor src_factor, GXBlendFactor dst_factor, GXLogicOp op) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetColorUpdate(GXBool update_enable) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetAlphaUpdate(GXBool update_enable) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetZMode(GXBool compare_enable, GXCompare func, GXBool update_enable) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetZCompLoc(GXBool before_tex) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetPixelFmt(GXPixelFmt pix_fmt, GXZFmt16 z_fmt) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetDither(GXBool dither) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetDstAlpha(GXBool enable, u8 alpha) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetFieldMask(GXBool odd_mask, GXBool even_mask) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetFieldMode(GXBool field_mode, GXBool half_aspect_ratio) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetFogColor(GXColor color) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 
 void GXSetScissor(u32 left, u32 top, u32 wd, u32 ht) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetCullMode(GXCullMode mode) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetCoPlanar(GXBool enable) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 
 void GXProject(f32 x, f32 y, f32 z, const f32 mtx[3][4], const f32* pm, const f32* vp, f32* sx, f32* sy, f32* sz) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetProjection(const f32 mtx[4][4], GXProjectionType type) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetProjectionv(const f32* ptr) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXLoadPosMtxImm(const f32 mtx[3][4], u32 id) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXLoadPosMtxIndx(u16 mtx_indx, u32 id) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXLoadNrmMtxImm(const f32 mtx[3][4], u32 id) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXLoadNrmMtxImm3x3(const f32 mtx[3][3], u32 id) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXLoadNrmMtxIndx3x3(u16 mtx_indx, u32 id) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetCurrentMtx(u32 id) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXLoadTexMtxImm(const f32 mtx[][4], u32 id, GXTexMtxType type) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXLoadTexMtxIndx(u16 mtx_indx, u32 id, GXTexMtxType type) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetViewportJitter(f32 left, f32 top, f32 wd, f32 ht, f32 nearz, f32 farz, u32 field) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetViewport(f32 left, f32 top, f32 wd, f32 ht, f32 nearz, f32 farz) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetScissorBoxOffset(s32 x_off, s32 y_off) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetClipMode(GXClipMode mode) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetZScaleOffset(f32 scale, f32 offset) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 
 void GXInitLightAttn(GXLightObj* lt_obj, f32 a0, f32 a1, f32 a2, f32 k0, f32 k1, f32 k2) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitLightAttnA(GXLightObj* lt_obj, f32 a0, f32 a1, f32 a2) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitLightAttnK(GXLightObj* lt_obj, f32 k0, f32 k1, f32 k2) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitLightSpot(GXLightObj* lt_obj, f32 cutoff, GXSpotFn spot_func) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitLightDistAttn(GXLightObj* lt_obj, f32 ref_dist, f32 ref_br, GXDistAttnFn dist_func) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitLightPos(GXLightObj* lt_obj, f32 x, f32 y, f32 z) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitLightDir(GXLightObj* lt_obj, f32 nx, f32 ny, f32 nz) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitSpecularDir(GXLightObj* lt_obj, f32 nx, f32 ny, f32 nz) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitSpecularDirHA(GXLightObj* lt_obj, f32 nx, f32 ny, f32 nz, f32 hx, f32 hy, f32 hz) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitLightColor(GXLightObj* lt_obj, GXColor color) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXLoadLightObjImm(const GXLightObj* lt_obj, GXLightID light) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXLoadLightObjIndx(u32 lt_obj_indx, GXLightID light) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetChanAmbColor(GXChannelID chan, GXColor amb_color) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetChanMatColor(GXChannelID chan, GXColor mat_color) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetNumChans(u8 nChans) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetChanCtrl(GXChannelID chan, GXBool enable, GXColorSrc amb_src, GXColorSrc mat_src, u32 light_mask, GXDiffuseFn diff_fn, GXAttnFn attn_fn) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 
 void GXSetVtxDesc(GXAttr attr, GXAttrType type) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetVtxDescv(const GXVtxDescList* attrPtr) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXClearVtxDesc(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetVtxAttrFmt(GXVtxFmt vtxfmt, GXAttr attr, GXCompCnt cnt, GXCompType type, u8 frac) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetVtxAttrFmtv(GXVtxFmt vtxfmt, const GXVtxAttrFmtList* list) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetArray(GXAttr attr, void* base_ptr, u8 stride) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInvalidateVtxCache(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTexCoordGen2(GXTexCoordID dst_coord, GXTexGenType func, GXTexGenSrc src_param, u32 mtx, GXBool normalize, u32 pt_texmtx) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetNumTexGens(u8 nTexGens) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTevOp(GXTevStageID id, GXTevMode mode) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTevColorIn(GXTevStageID stage, GXTevColorArg a, GXTevColorArg b, GXTevColorArg c, GXTevColorArg d) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTevAlphaIn(GXTevStageID stage, GXTevAlphaArg a, GXTevAlphaArg b, GXTevAlphaArg c, GXTevAlphaArg d) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTevColorOp(GXTevStageID stage, GXTevOp op, GXTevBias bias, GXTevScale scale, GXBool clamp, GXTevRegID out_reg) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTevAlphaOp(GXTevStageID stage, GXTevOp op, GXTevBias bias, GXTevScale scale, GXBool clamp, GXTevRegID out_reg) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTevColor(GXTevRegID id, GXColor color) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTevColorS10(GXTevRegID id, GXColorS10 color) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTevKColor(GXTevKColorID id, GXColor color) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTevKColorSel(GXTevStageID stage, GXTevKColorSel sel) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTevKAlphaSel(GXTevStageID stage, GXTevKAlphaSel sel) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTevSwapMode(GXTevStageID stage, GXTevSwapSel ras_sel, GXTevSwapSel tex_sel) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTevSwapModeTable(GXTevSwapSel table, GXTevColorChan red, GXTevColorChan green, GXTevColorChan blue, GXTevColorChan alpha) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTevClampMode(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetAlphaCompare(GXCompare comp0, u8 ref0, GXAlphaOp op, GXCompare comp1, u8 ref1) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetZTexture(GXZTexOp op, GXTexFmt fmt, u32 bias) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTevOrder(GXTevStageID stage, GXTexCoordID coord, GXTexMapID map, GXChannelID color) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetNumTevStages(u8 nStages) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 
 static void __GXGetTexTileShift(GXTexFmt fmt, u32* rowTileS, u32* colTileS) {
@@ -394,113 +394,115 @@ void* GXGetTexObjUserData(const GXTexObj* obj) {
     return nullptr;
 }
 void GXLoadTexObjPreLoaded(GXTexObj* obj, GXTexRegion* region, GXTexMapID id) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXLoadTexObj(GXTexObj* obj, GXTexMapID id) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitTlutObj(GXTlutObj* tlut_obj, void* lut, GXTlutFmt fmt, u16 n_entries) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXLoadTlut(GXTlutObj* tlut_obj, u32 tlut_name) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitTexCacheRegion(GXTexRegion* region, u8 is_32b_mipmap, u32 tmem_even, GXTexCacheSize size_even, u32 tmem_odd, GXTexCacheSize size_odd) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitTexPreLoadRegion(GXTexRegion* region, u32 tmem_even, u32 size_even, u32 tmem_odd, u32 size_odd) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitTlutRegion(GXTlutRegion* region, u32 tmem_addr, GXTlutSize tlut_size) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInvalidateTexRegion(GXTexRegion* region) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInvalidateTexAll(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 GXTexRegionCallback GXSetTexRegionCallback(GXTexRegionCallback f) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return {};
 }
 GXTlutRegionCallback GXSetTlutRegionCallback(GXTlutRegionCallback f) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return {};
 }
 void GXPreLoadEntireTexture(GXTexObj* tex_obj, GXTexRegion* region) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTexCoordScaleManually(GXTexCoordID coord, u8 enable, u16 ss, u16 ts) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTexCoordCylWrap(GXTexCoordID coord, u8 s_enable, u8 t_enable) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTexCoordBias(GXTexCoordID coord, u8 s_enable, u8 t_enable) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitTexObjFilter(GXTexObj* obj, GXTexFilter min_filt, GXTexFilter mag_filt) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitTexObjMaxLOD(GXTexObj* obj, f32 max_lod) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitTexObjMinLOD(GXTexObj* obj, f32 min_lod) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitTexObjLODBias(GXTexObj* obj, f32 lod_bias) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitTexObjBiasClamp(GXTexObj* obj, u8 bias_clamp) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitTexObjEdgeLOD(GXTexObj* obj, u8 do_edge_lod) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitTexObjMaxAniso(GXTexObj* obj, GXAnisotropy max_aniso) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 
 void GXBegin(GXPrimitive type, GXVtxFmt vtxfmt, u16 nverts) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 
 void GXSetTevIndirect(GXTevStageID tev_stage, GXIndTexStageID ind_stage, GXIndTexFormat format, GXIndTexBiasSel bias_sel, GXIndTexMtxID matrix_sel, GXIndTexWrap wrap_s, GXIndTexWrap wrap_t, GXBool add_prev, GXBool utc_lod, GXIndTexAlphaSel alpha_sel) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetIndTexMtx(GXIndTexMtxID mtx_id, const f32 offset[2][3], s8 scale_exp) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetIndTexCoordScale(GXIndTexStageID ind_state, GXIndTexScale scale_s, GXIndTexScale scale_t) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetIndTexOrder(GXIndTexStageID ind_stage, GXTexCoordID tex_coord, GXTexMapID tex_map) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetNumIndStages(u8 nIndStages) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTevDirect(GXTevStageID tev_stage) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTevIndWarp(GXTevStageID tev_stage, GXIndTexStageID ind_stage, u8 signed_offset, u8 replace_mode, GXIndTexMtxID matrix_sel) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTevIndTile(GXTevStageID tev_stage, GXIndTexStageID ind_stage, u16 tilesize_s,
     u16 tilesize_t, u16 tilespacing_s, u16 tilespacing_t, GXIndTexFormat format,
     GXIndTexMtxID matrix_sel, GXIndTexBiasSel bias_sel, GXIndTexAlphaSel alpha_sel) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTevIndBumpST(GXTevStageID tev_stage, GXIndTexStageID ind_stage, GXIndTexMtxID matrix_sel) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTevIndBumpXYZ(GXTevStageID tev_stage, GXIndTexStageID ind_stage, GXIndTexMtxID matrix_sel) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetTevIndRepeat(GXTevStageID tev_stage) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void __GXSetIndirectMask(u32 mask) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 
 // Attr
@@ -818,10 +820,12 @@ GXFifoObj* GXGetGPFifo(void) {
     UNIMPLEMENTED();
 }
 u32 GXGetOverflowCount(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return 0;
 }
 u32 GXResetOverflowCount(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return 0;
 }
 volatile void* GXRedirectWriteGatherPipe(void* ptr) {
     UNIMPLEMENTED();
@@ -831,58 +835,61 @@ void GXRestoreWriteGatherPipe(void) {
 }
 
 void GXSetGPMetric(GXPerf0 perf0, GXPerf1 perf1) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXReadGPMetric(u32* cnt0, u32* cnt1) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXClearGPMetric(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 u32 GXReadGP0Metric(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return 0;
 }
 u32 GXReadGP1Metric(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return 0;
 }
 void GXReadMemMetric(u32* cp_req, u32* tc_req, u32* cpu_rd_req, u32* cpu_wr_req, u32* dsp_req, u32* io_req, u32* vi_req, u32* pe_req, u32* rf_req, u32* fi_req) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXClearMemMetric(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXReadPixMetric(u32* top_pixels_in, u32* top_pixels_out, u32* bot_pixels_in, u32* bot_pixels_out, u32* clr_pixels_in, u32* copy_clks) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXClearPixMetric(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetVCacheMetric(GXVCachePerf attr) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXReadVCacheMetric(u32* check, u32* miss, u32* stall) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXClearVCacheMetric(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXInitXfRasMetric(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXReadXfRasMetric(u32* xf_wait_in, u32* xf_wait_out, u32* ras_busy, u32* clocks) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 u32 GXReadClksPerVtx(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return 0;
 }
 void GXSetLineWidth(u8 width, GXTexOffset texOffsets) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXSetPointSize(u8 pointSize, GXTexOffset texOffsets) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void GXEnableTexOffsets(GXTexCoordID coord, u8 line_enable, u8 point_enable) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 
 BOOL IsWriteGatherBufferEmpty(void) {

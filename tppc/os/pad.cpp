@@ -13,7 +13,9 @@ BOOL PADInit() {
     return TRUE;
 }
 u32 PADRead(PADStatus* status) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    *status = {};
+    return 0;
 }
 void PADSetSamplingRate(u32 msec) {
     SOFT_UNIMPLEMENTED();
@@ -55,8 +57,8 @@ PADSamplingCallback PADSetSamplingCallback(PADSamplingCallback callback) {
 
 // Padclamp
 void PADClamp(PADStatus* status) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void PADClampCircle(PADStatus* status) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }

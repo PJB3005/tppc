@@ -336,13 +336,16 @@ void OSInitMessageQueue(OSMessageQueue* mq, void* msgArray, s32 msgCount) {
     mq->usedCount = 0;
 }
 int OSSendMessage(OSMessageQueue* mq, void* msg, s32 flags) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return 0;
 }
 int OSReceiveMessage(OSMessageQueue* mq, void* msg, s32 flags) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return 0;
 }
 int OSJamMessage(OSMessageQueue* mq, void* msg, s32 flags) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return 0;
 }
 
 BOOL OSCheckAlarmQueue(void) {
@@ -463,7 +466,7 @@ OSResetCallback OSSetResetCallback(OSResetCallback callback) {
     UNIMPLEMENTED();
 }
 BOOL OSGetResetSwitchState(void) {
-    UNIMPLEMENTED();
+    return FALSE;
 }
 BOOL OSGetResetButtonState(void) {
     UNIMPLEMENTED();
