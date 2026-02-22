@@ -338,6 +338,7 @@ target_include_directories(JFramework SYSTEM PRIVATE include/dolphin/)
 target_include_directories(JFramework SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(JFramework SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE JFramework)
+target_compile_definitions(JFramework PRIVATE TPPC_OS_REPORT=1)
 add_library(J3DU)
 target_sources(J3DU PRIVATE
     src/JSystem/J3DU/J3DUClipper.cpp
@@ -349,6 +350,7 @@ target_include_directories(J3DU SYSTEM PRIVATE include/dolphin/)
 target_include_directories(J3DU SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(J3DU SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE J3DU)
+target_compile_definitions(J3DU PRIVATE TPPC_OS_REPORT=1)
 add_library(JParticle)
 target_sources(JParticle PRIVATE
     src/JSystem/JParticle/JPAResourceManager.cpp
@@ -373,6 +375,7 @@ target_include_directories(JParticle SYSTEM PRIVATE include/dolphin/)
 target_include_directories(JParticle SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(JParticle SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE JParticle)
+target_compile_definitions(JParticle PRIVATE TPPC_OS_REPORT=1)
 add_library(JStage)
 target_sources(JStage PRIVATE
     src/JSystem/JStage/JSGActor.cpp
@@ -389,6 +392,7 @@ target_include_directories(JStage SYSTEM PRIVATE include/dolphin/)
 target_include_directories(JStage SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(JStage SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE JStage)
+target_compile_definitions(JStage PRIVATE TPPC_OS_REPORT=1)
 add_library(JStudio)
 target_sources(JStudio PRIVATE
     src/JSystem/JStudio/JStudio/ctb.cpp
@@ -412,6 +416,7 @@ target_include_directories(JStudio SYSTEM PRIVATE include/dolphin/)
 target_include_directories(JStudio SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(JStudio SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE JStudio)
+target_compile_definitions(JStudio PRIVATE TPPC_OS_REPORT=1)
 add_library(JStudio_JStage)
 target_sources(JStudio_JStage PRIVATE
     src/JSystem/JStudio/JStudio_JStage/control.cpp
@@ -428,6 +433,7 @@ target_include_directories(JStudio_JStage SYSTEM PRIVATE include/dolphin/)
 target_include_directories(JStudio_JStage SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(JStudio_JStage SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE JStudio_JStage)
+target_compile_definitions(JStudio_JStage PRIVATE TPPC_OS_REPORT=1)
 add_library(JStudio_JAudio2)
 target_sources(JStudio_JAudio2 PRIVATE
     src/JSystem/JStudio/JStudio_JAudio2/control.cpp
@@ -439,6 +445,7 @@ target_include_directories(JStudio_JAudio2 SYSTEM PRIVATE include/dolphin/)
 target_include_directories(JStudio_JAudio2 SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(JStudio_JAudio2 SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE JStudio_JAudio2)
+target_compile_definitions(JStudio_JAudio2 PRIVATE TPPC_OS_REPORT=1)
 add_library(JStudio_JParticle)
 target_sources(JStudio_JParticle PRIVATE
     src/JSystem/JStudio/JStudio_JParticle/control.cpp
@@ -450,6 +457,7 @@ target_include_directories(JStudio_JParticle SYSTEM PRIVATE include/dolphin/)
 target_include_directories(JStudio_JParticle SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(JStudio_JParticle SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE JStudio_JParticle)
+target_compile_definitions(JStudio_JParticle PRIVATE TPPC_OS_REPORT=1)
 add_library(JAudio2)
 target_sources(JAudio2 PRIVATE
     src/JSystem/JAudio2/JASCalc.cpp
@@ -527,6 +535,7 @@ target_include_directories(JAudio2 SYSTEM PRIVATE include/dolphin/)
 target_include_directories(JAudio2 SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(JAudio2 SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE JAudio2)
+target_compile_definitions(JAudio2 PRIVATE TPPC_OS_REPORT=1)
 add_library(JAWExtSystem)
 target_sources(JAWExtSystem PRIVATE
     src/JSystem/JAWExtSystem/JAWSystem.cpp
@@ -538,6 +547,7 @@ target_include_directories(JAWExtSystem SYSTEM PRIVATE include/dolphin/)
 target_include_directories(JAWExtSystem SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(JAWExtSystem SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE JAWExtSystem)
+target_compile_definitions(JAWExtSystem PRIVATE TPPC_OS_REPORT=1)
 add_library(JMessage)
 target_sources(JMessage PRIVATE
     src/JSystem/JMessage/control.cpp
@@ -552,6 +562,7 @@ target_include_directories(JMessage SYSTEM PRIVATE include/dolphin/)
 target_include_directories(JMessage SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(JMessage SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE JMessage)
+target_compile_definitions(JMessage PRIVATE TPPC_OS_REPORT=1)
 add_library(Z2AudioLib)
 target_sources(Z2AudioLib PRIVATE
     src/Z2AudioLib/Z2Calc.cpp
@@ -616,6 +627,7 @@ target_include_directories(JKernel SYSTEM PRIVATE include/dolphin/)
 target_include_directories(JKernel SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(JKernel SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE JKernel)
+target_compile_definitions(JKernel PRIVATE TPPC_OS_REPORT=1)
 add_library(JSupport)
 target_sources(JSupport PRIVATE
     src/JSystem/JSupport/JSUList.cpp
@@ -629,6 +641,7 @@ target_include_directories(JSupport SYSTEM PRIVATE include/dolphin/)
 target_include_directories(JSupport SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(JSupport SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE JSupport)
+target_compile_definitions(JSupport PRIVATE TPPC_OS_REPORT=1)
 add_library(JGadget)
 target_sources(JGadget PRIVATE
     src/JSystem/JGadget/binary.cpp
@@ -641,6 +654,7 @@ target_include_directories(JGadget SYSTEM PRIVATE include/dolphin/)
 target_include_directories(JGadget SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(JGadget SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE JGadget)
+target_compile_definitions(JGadget PRIVATE TPPC_OS_REPORT=1)
 add_library(JUtility)
 target_sources(JUtility PRIVATE
     src/JSystem/JUtility/JUTCacheFont.cpp
@@ -670,6 +684,7 @@ target_include_directories(JUtility SYSTEM PRIVATE include/dolphin/)
 target_include_directories(JUtility SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(JUtility SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE JUtility)
+target_compile_definitions(JUtility PRIVATE TPPC_OS_REPORT=1)
 add_library(J2DGraph)
 target_sources(J2DGraph PRIVATE
     src/JSystem/J2DGraph/J2DGrafContext.cpp
@@ -697,6 +712,7 @@ target_include_directories(J2DGraph SYSTEM PRIVATE include/dolphin/)
 target_include_directories(J2DGraph SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(J2DGraph SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE J2DGraph)
+target_compile_definitions(J2DGraph PRIVATE TPPC_OS_REPORT=1)
 add_library(J3DGraphBase)
 target_sources(J3DGraphBase PRIVATE
     src/JSystem/J3DGraphBase/J3DGD.cpp
@@ -720,6 +736,7 @@ target_include_directories(J3DGraphBase SYSTEM PRIVATE include/dolphin/)
 target_include_directories(J3DGraphBase SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(J3DGraphBase SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE J3DGraphBase)
+target_compile_definitions(J3DGraphBase PRIVATE TPPC_OS_REPORT=1)
 add_library(J3DGraphAnimator)
 target_sources(J3DGraphAnimator PRIVATE
     src/JSystem/J3DGraphAnimator/J3DShapeTable.cpp
@@ -740,6 +757,7 @@ target_include_directories(J3DGraphAnimator SYSTEM PRIVATE include/dolphin/)
 target_include_directories(J3DGraphAnimator SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(J3DGraphAnimator SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE J3DGraphAnimator)
+target_compile_definitions(J3DGraphAnimator PRIVATE TPPC_OS_REPORT=1)
 add_library(J3DGraphLoader)
 target_sources(J3DGraphLoader PRIVATE
     src/JSystem/J3DGraphLoader/J3DMaterialFactory.cpp
@@ -757,6 +775,7 @@ target_include_directories(J3DGraphLoader SYSTEM PRIVATE include/dolphin/)
 target_include_directories(J3DGraphLoader SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(J3DGraphLoader SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE J3DGraphLoader)
+target_compile_definitions(J3DGraphLoader PRIVATE TPPC_OS_REPORT=1)
 add_library(JMath)
 target_sources(JMath PRIVATE
     src/JSystem/JMath/JMath.cpp
@@ -769,6 +788,7 @@ target_include_directories(JMath SYSTEM PRIVATE include/dolphin/)
 target_include_directories(JMath SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(JMath SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE JMath)
+target_compile_definitions(JMath PRIVATE TPPC_OS_REPORT=1)
 add_library(mtx)
 target_sources(mtx PRIVATE
     src/dolphin/mtx/mtx.c

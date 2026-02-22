@@ -215,7 +215,7 @@ DECL_WEAK void OSReportForceEnableOff(void);
 DECL_WEAK void OSReportForceEnableOn(void);
 DECL_WEAK void OSVReport(const char* format, va_list list);
 
-#if DEBUG
+#if TPPC_OS_REPORT || DEBUG
 #define OS_REPORT(...) OSReport(__VA_ARGS__)
 #define OS_WARNING(...) OSReport_Warning(__VA_ARGS__)
 #define OS_REPORT_ERROR(...) OSReport_Error(__VA_ARGS__)
