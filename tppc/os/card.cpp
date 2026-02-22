@@ -8,7 +8,7 @@ s32 CARDRenameAsync(s32 chan, const char* oldName, const char* newName, CARDCall
 
 // CARDBios
 void CARDInit(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 s32 CARDGetResultCode(s32 chan) {
     UNIMPLEMENTED();

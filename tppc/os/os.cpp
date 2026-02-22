@@ -116,18 +116,15 @@ BOOL OSTryLockMutex(OSMutex* mutex) {
 }
 
 void OSInitCond(OSCond* cond) {
-    UNIMPLEMENTED();
-
+    SOFT_UNIMPLEMENTED();
 }
 
 void OSWaitCond(OSCond* cond, OSMutex* mutex) {
-    UNIMPLEMENTED();
-
+    SOFT_UNIMPLEMENTED();
 }
 
 void OSSignalCond(OSCond* cond) {
-    UNIMPLEMENTED();
-
+    SOFT_UNIMPLEMENTED();
 }
 
 void DCInvalidateRange(void* addr, u32 nBytes) {
@@ -312,7 +309,7 @@ int OSSetThreadPriority(OSThread* thread, OSPriority priority) {
     UNIMPLEMENTED();
 }
 s32 OSGetThreadPriority(OSThread* thread) {
-    UNIMPLEMENTED();
+    return thread->priority;
 }
 OSThread* OSSetIdleFunction(OSIdleFunction idleFunction, void* param, void* stack, u32 stackSize) {
     UNIMPLEMENTED();
@@ -352,22 +349,22 @@ BOOL OSCheckAlarmQueue(void) {
     UNIMPLEMENTED();
 }
 void OSInitAlarm(void) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void OSCreateAlarm(OSAlarm* alarm) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void OSSetAlarm(OSAlarm* alarm, OSTime tick, OSAlarmHandler handler) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void OSSetAbsAlarm(OSAlarm* alarm, OSTime time, OSAlarmHandler handler) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void OSSetPeriodicAlarm(OSAlarm* alarm, OSTime start, OSTime period, OSAlarmHandler handler) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void OSCancelAlarm(OSAlarm *alarm) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
 }
 void OSSetAlarmTag(OSAlarm* alarm, u32 tag) {
     UNIMPLEMENTED();
@@ -458,7 +455,8 @@ void __OSReboot(u32 resetCode, u32 bootDol) {
 }
 
 OSSwitchThreadCallback OSSetSwitchThreadCallback(OSSwitchThreadCallback callback) {
-    UNIMPLEMENTED();
+    SOFT_UNIMPLEMENTED();
+    return nullptr;
 }
 
 OSResetCallback OSSetResetCallback(OSResetCallback callback) {
