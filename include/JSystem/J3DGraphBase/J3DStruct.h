@@ -3,12 +3,12 @@
 
 #include <dolphin/gx.h>
 #include <dolphin/mtx.h>
-#include <dolphin/mtx.h>
+#include "JSystem/JMath/JMath.h"
 #include "global.h"
 
 /**
  * @ingroup jsystem-j3d
- * 
+ *
  */
 struct J3DLightInfo {
     bool operator==(J3DLightInfo& other) const;

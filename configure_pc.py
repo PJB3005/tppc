@@ -1,7 +1,7 @@
 import configure
 
 BUILD_LIBS = {
-    "mtx",
+    # "mtx",
     "machine",
     "framework",
     "c",

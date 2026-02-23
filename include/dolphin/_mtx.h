@@ -6,6 +6,10 @@
 #else
 #include <dolphin/types.h>
 
+#if TPPC_AURORA
+#error "Use aurora mtx.h"
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif

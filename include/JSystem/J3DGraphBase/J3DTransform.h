@@ -3,6 +3,8 @@
 
 #include <dolphin/mtx.h>
 
+#include "JSystem/JMath/JMath.h"
+
 struct J3DTextureSRTInfo;
 
 /**

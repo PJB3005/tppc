@@ -5,6 +5,11 @@ find_package(SDL3 CONFIG REQUIRED)
 find_package(fmt CONFIG REQUIRED)
 find_package(mimalloc CONFIG REQUIRED)
 
+include(cmake/aurora.cmake)
+
+link_libraries(aurora_mtx)
+add_compile_definitions(TPPC_AURORA=1)
+
 add_executable(Tppc
         tppc/OSAlloc_Mimalloc.cpp
         tests/tag_test.cpp

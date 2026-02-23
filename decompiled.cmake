@@ -790,22 +790,3 @@ target_include_directories(JMath SYSTEM PRIVATE assets/GZ2E01/)
 target_include_directories(JMath SYSTEM PRIVATE build_ack/include/)
 target_link_libraries(Tppc PRIVATE JMath)
 target_compile_definitions(JMath PRIVATE TPPC_OS_REPORT=1)
-add_library(mtx)
-target_sources(mtx PRIVATE
-    src/dolphin/mtx/mtx.c
-    src/dolphin/mtx/mtxvec.c
-    src/dolphin/mtx/mtx44.c
-    src/dolphin/mtx/vec.c
-    src/dolphin/mtx/quat.c
-)
-set_source_files_properties(src/dolphin/mtx/mtx.c PROPERTIES LANGUAGE CXX)
-set_source_files_properties(src/dolphin/mtx/mtxvec.c PROPERTIES LANGUAGE CXX)
-set_source_files_properties(src/dolphin/mtx/mtx44.c PROPERTIES LANGUAGE CXX)
-set_source_files_properties(src/dolphin/mtx/vec.c PROPERTIES LANGUAGE CXX)
-set_source_files_properties(src/dolphin/mtx/quat.c PROPERTIES LANGUAGE CXX)
-target_include_directories(mtx PRIVATE src/)
-target_include_directories(mtx SYSTEM PRIVATE include/)
-target_include_directories(mtx SYSTEM PRIVATE include/dolphin/)
-target_include_directories(mtx SYSTEM PRIVATE assets/GZ2E01/)
-target_include_directories(mtx SYSTEM PRIVATE build_ack/include/)
-target_link_libraries(Tppc PRIVATE mtx)
