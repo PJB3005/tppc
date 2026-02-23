@@ -18,5 +18,6 @@ void TPPC_OSInitMemory();
 void TPPC_FillBootInfo();
 void TPPC_InitMainThread();
 void TPPC_OSInitClock();
+void TPPC_InitDVD();
 
 #endif  // TPPC_OS_IMPL_HPP

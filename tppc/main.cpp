@@ -14,6 +14,7 @@ int main(int argc, char* argv[]) {
     EnableVTProcessing();
 #endif
 
+    TPPC_InitDVD();
     TPPC_OSInitMemory();
     TPPC_InitMainThread();
     TPPC_OSInitClock();

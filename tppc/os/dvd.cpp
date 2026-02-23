@@ -1,5 +1,7 @@
 #include "os_impl.hpp"
 
+#include "nod.h"
+
 // DVD
 void DVDInit(void) {
     SOFT_UNIMPLEMENTED();

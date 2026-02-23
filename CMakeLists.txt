@@ -19,6 +19,13 @@ target_sources(
 add_compile_definitions(TPPC=1 TPPC_DEBUG=1)
 add_compile_definitions(VERSION=0) # VERSION_GCN_USA
 
+# nod-ffi reference
+add_library(nod STATIC IMPORTED GLOBAL)
+target_include_directories(nod INTERFACE "${NOD_DIRECTORY}/nod-ffi/include/")
+target_link_libraries(nod INTERFACE kernel32.lib ntdll.lib userenv.lib ws2_32.lib dbghelp.lib)
+set_target_properties(nod PROPERTIES IMPORTED_LOCATION_DEBUG "${NOD_DIRECTORY}/target/debug/nod_ffi.lib")
+set_target_properties(nod PROPERTIES IMPORTED_LOCATION_RELEASE "${NOD_DIRECTORY}/target/release/nod_ffi.lib")
+
 if (MSVC)
     add_compile_options(/GR- /utf-8)
 else ()

@@ -13,6 +13,7 @@ add_library(tppc_os
         OSThread_Windows.cpp
         OSMutex.cpp
         OSMessageQueue.cpp
+        DVDInit.cpp
 )
 
 target_include_directories(tppc_os SYSTEM PRIVATE ../../include/)
@@ -20,3 +21,4 @@ target_include_directories(tppc_os SYSTEM PRIVATE ../../include/)
 target_sources(tppc_os PRIVATE os.cpp ppc.cpp)
 
 target_link_libraries(tppc_os PRIVATE fmt::fmt)
+target_link_libraries(tppc_os PRIVATE nod)
